@@ -99,6 +99,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Circle.cs" />
+    <Compile Include="Classes\EighthCircle.cs" />
+    <Compile Include="Classes\HalfCircle.cs" />
+    <Compile Include="Classes\Heart.cs" />
+    <Compile Include="Classes\Line.cs" />
+    <Compile Include="Classes\Path.cs" />
+    <Compile Include="Classes\PathType.cs" />
+    <Compile Include="Classes\QuarterCircle.cs" />
+    <Compile Include="Classes\Symbol.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
