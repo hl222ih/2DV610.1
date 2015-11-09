@@ -12,7 +12,7 @@ namespace _2DV610.Classes
         
         public Path(PathType pathType, String path)
         {
-            this.pathType = PathType.Unspecified;
+            this.pathType = pathType;
         }
 
         public PathType GetPathType()
