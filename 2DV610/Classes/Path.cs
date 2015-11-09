@@ -15,7 +15,7 @@ namespace _2DV610.Classes
             this.pathType = PathType.Unspecified;
         }
 
-        public PathType getPathType()
+        public PathType GetPathType()
         {
             return pathType;
         }

@@ -28,12 +28,12 @@ namespace _2DV610.Test
             EighthCircle eighthCircle = new EighthCircle("");
             Heart heart = new Heart("");
 
-            Assert.True(line.getPathType().Equals(PathType.Line));
-            Assert.True(circle.getPathType().Equals(PathType.Circle));
-            Assert.True(halfCircle.getPathType().Equals(PathType.HalfCircle));
-            Assert.True(quarterCircle.getPathType().Equals(PathType.QuarterCircle));
-            Assert.True(eighthCircle.getPathType().Equals(PathType.EighthCircle));
-            Assert.True(heart.getPathType().Equals(PathType.Heart));
+            Assert.True(line.GetPathType().Equals(PathType.Line));
+            Assert.True(circle.GetPathType().Equals(PathType.Circle));
+            Assert.True(halfCircle.GetPathType().Equals(PathType.HalfCircle));
+            Assert.True(quarterCircle.GetPathType().Equals(PathType.QuarterCircle));
+            Assert.True(eighthCircle.GetPathType().Equals(PathType.EighthCircle));
+            Assert.True(heart.GetPathType().Equals(PathType.Heart));
         }
     }
 }
