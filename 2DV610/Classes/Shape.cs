@@ -8,16 +8,11 @@ namespace _2DV610.Classes
 {
     public abstract class Shape
     {
-        private ShapeType pathType;
+        public ShapeType PathType { get; private set; }
         
         public Shape(ShapeType pathType)
         {
-            this.pathType = pathType;
-        }
-
-        public ShapeType GetPathType()
-        {
-            return pathType;
+            PathType = pathType;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace _2DV610.Classes
 {
     public class Heart : Shape
     {
-        public Heart(String path) : base(ShapeType.Heart)
+        public Heart() : base(ShapeType.Heart)
         {
         }
     }

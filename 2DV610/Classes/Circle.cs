@@ -8,8 +8,8 @@ namespace _2DV610.Classes
 {
     public class Circle : Shape
     {
-        public Circle(String path) : base(ShapeType.Circle)
+        public Circle(int cx, int cy, int radius) : base(ShapeType.Circle)
         {
-        }
+        }        
     }
 }

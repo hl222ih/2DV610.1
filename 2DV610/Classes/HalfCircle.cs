@@ -8,7 +8,7 @@ namespace _2DV610.Classes
 {
     public class HalfCircle : Shape
     {
-        public HalfCircle(String path) : base(ShapeType.HalfCircle)
+        public HalfCircle() : base(ShapeType.HalfCircle)
         {
         }
     }

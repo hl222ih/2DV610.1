@@ -8,7 +8,7 @@ namespace _2DV610.Classes
 {
     public class QuarterCircle : Shape
     {
-        public QuarterCircle(String path) : base(ShapeType.QuarterCircle)
+        public QuarterCircle() : base(ShapeType.QuarterCircle)
         {
         }
     }

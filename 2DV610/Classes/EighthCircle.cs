@@ -8,7 +8,7 @@ namespace _2DV610.Classes
 {
     public class EighthCircle : Shape
     {
-        public EighthCircle(String path) : base(ShapeType.EighthCircle)
+        public EighthCircle() : base(ShapeType.EighthCircle)
         {
         }
     }
