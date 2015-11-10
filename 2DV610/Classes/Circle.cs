@@ -14,6 +14,9 @@ namespace _2DV610.Classes
 
         public Circle(int cx, int cy, int radius) : base(ShapeType.Circle)
         {
+            CX = cx;
+            CY = cy;
+            Radius = radius;
         }        
     }
 }

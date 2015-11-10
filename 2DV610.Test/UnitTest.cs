@@ -43,7 +43,7 @@ namespace _2DV610.Test
 
             Assert.True(circle.CX.Equals(64)); //x position of circle's center
             Assert.True(circle.CY.Equals(64)); //y position of circle's center
-            Assert.True(circle.Radius.Equals(32)); //radius of circle
+            Assert.True(circle.Radius.Equals(32)); //circle's radius
         }
 
         //[Fact]
