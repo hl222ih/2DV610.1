@@ -18,6 +18,12 @@ namespace _2DV610.Classes
             CX = cx;
             CY = cy;
             Radius = radius;
+            X = cx - radius;
+            Y = cy - radius;
+            Width = radius * 2;
+            Height = radius * 2;
+            Diameter = radius * 2;
+
         }        
     }
 }
