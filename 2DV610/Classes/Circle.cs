@@ -11,6 +11,7 @@ namespace _2DV610.Classes
         public int CX { get; private set; }
         public int CY { get; private set; }
         public int Radius { get; private set; }
+        public int Diameter { get; }
 
         public Circle(int cx, int cy, int radius) : base(ShapeType.Circle)
         {

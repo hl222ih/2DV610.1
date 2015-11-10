@@ -40,10 +40,14 @@ namespace _2DV610.Test
         public void CircleValuesTest()
         {
             Circle circle = new Circle(64, 64, 32);
-
-            Assert.True(circle.CX.Equals(64)); //x position of circle's center
-            Assert.True(circle.CY.Equals(64)); //y position of circle's center
-            Assert.True(circle.Radius.Equals(32)); //circle's radius
+            Assert.True(circle.CX.Equals(64), "x of circle's center is not correct");
+            Assert.True(circle.CY.Equals(64), "y of circle's center is not correct");
+            Assert.True(circle.Radius.Equals(32), "radius of circle is not correct");
+            Assert.True(circle.X.Equals(32), "x of square of inscribed circle is not correct");
+            Assert.True(circle.Y.Equals(32), "y of square of inscribed circle is not correct");
+            Assert.True(circle.Width.Equals(64), "width of square of inscribed circle is not correct");
+            Assert.True(circle.Height.Equals(64), "height of square of inscribed circle is not correct");
+            Assert.True(circle.Diameter.Equals(64), "diameter of circle is not correct");
         }
 
         //[Fact]
