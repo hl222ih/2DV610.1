@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public class EighthCircle : Path
+    public class EighthCircle : Shape
     {
-        public EighthCircle(String path) : base(PathType.EighthCircle, path)
+        public EighthCircle(String path) : base(ShapeType.EighthCircle)
         {
         }
     }

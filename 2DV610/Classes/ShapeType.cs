@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public class HalfCircle : Shape
+    public enum ShapeType
     {
-        public HalfCircle(String path) : base(ShapeType.HalfCircle)
-        {
-        }
+        Unspecified,
+        Line,
+        Circle,
+        HalfCircle,
+        QuarterCircle,
+        EighthCircle,
+        Heart
     }
 }

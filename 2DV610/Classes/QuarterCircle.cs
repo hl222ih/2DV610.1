@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public class QuarterCircle : Path
+    public class QuarterCircle : Shape
     {
-        public QuarterCircle(String path) : base(PathType.QuarterCircle, path)
+        public QuarterCircle(String path) : base(ShapeType.QuarterCircle)
         {
         }
     }

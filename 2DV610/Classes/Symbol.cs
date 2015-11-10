@@ -8,16 +8,17 @@ namespace _2DV610.Classes
 {
     public class Symbol
     {
-        List<Path> paths;
+        List<Symbol> symbols;
+        List<Shape> shapes;
 
         public Symbol()
         {
-            paths = new List<Path>();
+            throw new NotImplementedException();
         }
 
-        public string getCombinedPath()
+        public List<Shape> GetShapes()
         {
-            return String.Empty;
+            throw new NotImplementedException();
         }
     }
 }

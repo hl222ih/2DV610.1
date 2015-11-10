@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public class Heart : Path
+    public class Heart : Shape
     {
-        public Heart(String path) : base(PathType.Heart, path)
+        public Heart(String path) : base(ShapeType.Heart)
         {
         }
     }

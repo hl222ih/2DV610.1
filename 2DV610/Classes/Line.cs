@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public class Line : Path
+    public class Line : Shape
     {
         int startX;
         int startY;
@@ -17,7 +17,7 @@ namespace _2DV610.Classes
         /// Creates a Line path.
         /// </summary>
         /// <param name="path">"L startX startY diffX diffY"</param>
-        public Line(String path) : base(PathType.Line, path)
+        public Line(String path) : base(ShapeType.Line)
         {
             string[] pathArr = path.Split(' ');
             if (pathArr.Length != 5) throw new ArgumentException("Not correct number of arguments in string.");

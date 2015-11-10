@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public class Circle : Path
+    public class Circle : Shape
     {
-        public Circle(String path) : base(PathType.Circle, path)
+        public Circle(String path) : base(ShapeType.Circle)
         {
         }
     }

@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public enum PathType
+    public class Svg
     {
-        Unspecified,
-        Line,
-        Circle,
-        HalfCircle,
-        QuarterCircle,
-        EighthCircle,
-        Heart
+        public Symbol Symbol { get; private set; }
+
+        public Svg(string path)
+        {
+            Symbol = new Symbol();
+        }
     }
 }

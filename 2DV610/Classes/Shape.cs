@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public abstract class Path
+    public abstract class Shape
     {
-        private PathType pathType;
+        private ShapeType pathType;
         
-        public Path(PathType pathType, String path)
+        public Shape(ShapeType pathType)
         {
             this.pathType = pathType;
         }
 
-        public PathType GetPathType()
+        public ShapeType GetPathType()
         {
             return pathType;
         }

@@ -104,9 +104,10 @@
     <Compile Include="Classes\HalfCircle.cs" />
     <Compile Include="Classes\Heart.cs" />
     <Compile Include="Classes\Line.cs" />
-    <Compile Include="Classes\Path.cs" />
-    <Compile Include="Classes\PathType.cs" />
+    <Compile Include="Classes\Shape.cs" />
+    <Compile Include="Classes\ShapeType.cs" />
     <Compile Include="Classes\QuarterCircle.cs" />
+    <Compile Include="Classes\Svg.cs" />
     <Compile Include="Classes\Symbol.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
