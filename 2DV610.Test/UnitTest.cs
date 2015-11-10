@@ -35,6 +35,16 @@ namespace _2DV610.Test
             Assert.True(eighthCircle.PathType.Equals(ShapeType.EighthCircle));
             Assert.True(heart.PathType.Equals(ShapeType.Heart));
         }
+        
+        [Fact]
+        public void CircleValuesTest()
+        {
+            Circle circle = new Circle(64, 64, 32);
+
+            Assert.True(circle.CX.Equals(64)); //x position of circle's center
+            Assert.True(circle.CY.Equals(64)); //y position of circle's center
+            Assert.True(circle.Radius.Equals(32)); //radius of circle
+        }
 
         //[Fact]
         //public void InvalidLineArgumentsThrowsArgumentException()

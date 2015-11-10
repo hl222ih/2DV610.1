@@ -8,6 +8,10 @@ namespace _2DV610.Classes
 {
     public class Circle : Shape
     {
+        public int CX { get; private set; }
+        public int CY { get; private set; }
+        public int Radius { get; private set; }
+
         public Circle(int cx, int cy, int radius) : base(ShapeType.Circle)
         {
         }        
