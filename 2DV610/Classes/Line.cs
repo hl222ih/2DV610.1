@@ -16,7 +16,7 @@ namespace _2DV610.Classes
         {
             get
             {
-                return Math.Sqrt(Width * Width + Height * Height); //may overflow
+                return Math.Sqrt(Width * Width + Height * Height);
             }
         }
 
@@ -61,8 +61,8 @@ namespace _2DV610.Classes
                 }
             }
                 
-            X = X1;
-            Y = Y1;
+            X = X1 < X2 ? X1 : X2;
+            Y = Y1 < Y2 ? Y1 : Y2;
             Width = X2 - X1;
             Height = Math.Abs(Y2 - Y1);
         }

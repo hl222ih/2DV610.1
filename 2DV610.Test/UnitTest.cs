@@ -87,8 +87,8 @@ namespace _2DV610.Test
             Assert.True(line.Y1.Equals(y1), "y of line's upper left edge is not correct");
             Assert.True(line.X2.Equals(x2), "x of line's lower right edge is not correct");
             Assert.True(line.Y2.Equals(y2), "y of line's lower right edge is not correct");
-            Assert.True(line.X.Equals(line.X1), "X and X1 should be equal");
-            Assert.True(line.Y.Equals(line.Y1), "Y and Y1 should be equal");
+            Assert.True(line.X.Equals(line.X1 < line.X2 ? line.X1 : line.X2 ), "X and X1 or X2 (whichever is smallest) should be equal");
+            Assert.True(line.Y.Equals(line.Y1 < line.Y2 ? line.Y1 : line.Y2), "Y and Y1 or Y2 (whichever is smallest) should be equal");
             Assert.True(line.Width.Equals(width), "width of square of inscribed line is not correct");
             Assert.True(line.Height.Equals(height), "height of square of inscribed line is not correct");
             Assert.True(line.Length.Equals(hypotenuse), "line's length is not correct");
@@ -138,6 +138,9 @@ namespace _2DV610.Test
                     Assert.True(line.Y2.Equals(y2));
                 }
             }
+            Assert.True(line.X.Equals(line.X1 < line.X2 ? line.X1 : line.X2), "X and X1 or X2 (whichever is smallest) should be equal");
+            Assert.True(line.Y.Equals(line.Y1 < line.Y2 ? line.Y1 : line.Y2), "Y and Y1 or Y2 (whichever is smallest) should be equal");
+
         }
 
         [Fact]
@@ -152,7 +155,7 @@ namespace _2DV610.Test
             Assert.Throws<ArgumentOutOfRangeException>(() => new Line(0, 1281, 0, 0));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Line(0, 0, 128001, 0));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Line(0, 0, 0, 1281));
-            ////Accepted values does not throw an exception
+            //Accepted values does not throw an exception
             new Line(0, 0, 128000, 1280);
             new Line(0, 1280, 128000, 0);
             new Line(128000, 0, 0, 1280);
