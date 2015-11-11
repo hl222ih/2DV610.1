@@ -122,7 +122,8 @@ namespace _2DV610.Test
                 Assert.True(line.X2.Equals(x2));
                 Assert.True(line.Y1.Equals(y1));
                 Assert.True(line.Y2.Equals(y2));
-            } else
+            }
+            else
             {
                 Assert.True(line.X1.Equals(x1));
                 Assert.True(line.X2.Equals(x2));
@@ -130,7 +131,8 @@ namespace _2DV610.Test
                 {
                     Assert.True(line.Y1.Equals(y2));
                     Assert.True(line.Y2.Equals(y1));
-                } else
+                }
+                else
                 {
                     Assert.True(line.Y1.Equals(y1));
                     Assert.True(line.Y2.Equals(y2));
