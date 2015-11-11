@@ -8,41 +8,14 @@ namespace _2DV610.Classes
 {
     public class Line : Shape
     {
-        int startX;
-        int startY;
-        int endX;
-        int endY;
+        public int X1 { get; private set; }
+        public int Y1 { get; private set; }
+        public int X2 { get; private set; }
+        public int Y2 { get; private set; }
+        public double Length { get; }
 
-        /// <summary>
-        /// Creates a Line path.
-        /// </summary>
-        /// <param name="path">"L startX startY diffX diffY"</param>
-        public Line() : base(ShapeType.Line)
+        public Line(int x1, int y1, int x2, int y2) : base(ShapeType.Line)
         {
-            //string[] pathArr = path.Split(' ');
-            //if (pathArr.Length != 5) throw new ArgumentException("Not correct number of arguments in string.");
-            //if (!pathArr[0].Equals("L")) throw new ArgumentException("Not correct path type given in first string argument.");
-
-            //int diffX;
-            //int diffY;
-
-            //try
-            //{
-            //    string s = pathArr[0];
-            //    startX = int.Parse(pathArr[1]);
-            //    startY = int.Parse(pathArr[2]);
-            //    diffX = int.Parse(pathArr[3]);
-            //    diffY = int.Parse(pathArr[4]);
-            //}
-            //catch
-            //{
-            //    throw new ArgumentException("X and Y values must be integers");
-            //}
-
-            //if (diffX == 0 && diffY == 0)
-            //{
-            //    throw new ArgumentException("Line may not be of zero length");
-            //}
         }
     }
 }

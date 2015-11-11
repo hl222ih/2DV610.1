@@ -21,8 +21,8 @@ namespace _2DV610.Test
         [Fact]
         public void CorrectPathTypeTest()
         {
-            Line line = new Line();
-            Circle circle = new Circle(64, 64, 32);
+            Line line = new Line(0, 0, 0, 0);
+            Circle circle = new Circle(0, 0, 0);
             HalfCircle halfCircle = new HalfCircle();
             QuarterCircle quarterCircle = new QuarterCircle();
             EighthCircle eighthCircle = new EighthCircle();
@@ -39,11 +39,11 @@ namespace _2DV610.Test
         [Fact]
         public void CircleValuesTest()
         {
-            Circle circle = new Circle(64, 64, 32);
-            Assert.True(circle.CX.Equals(64), "x of circle's center is not correct");
+            Circle circle = new Circle(84, 64, 32);
+            Assert.True(circle.CX.Equals(84), "x of circle's center is not correct");
             Assert.True(circle.CY.Equals(64), "y of circle's center is not correct");
             Assert.True(circle.Radius.Equals(32), "radius of circle is not correct");
-            Assert.True(circle.X.Equals(32), "x of square of inscribed circle is not correct");
+            Assert.True(circle.X.Equals(52), "x of square of inscribed circle is not correct");
             Assert.True(circle.Y.Equals(32), "y of square of inscribed circle is not correct");
             Assert.True(circle.Width.Equals(64), "width of square of inscribed circle is not correct");
             Assert.True(circle.Height.Equals(64), "height of square of inscribed circle is not correct");
@@ -71,6 +71,28 @@ namespace _2DV610.Test
             new Circle(int.MaxValue - 10, 10, 10);
         }
 
+        [Fact]
+        public void LineValuesTest()
+        {
+            int x1 = 32;
+            int y1 = 64;
+            int x2 = 128;
+            int y2 = 224;
+            int width = x2 - x1;
+            int height = y2 - y1;
+            double hypotenuse = Math.Sqrt(Math.Pow(width, 2) + Math.Pow(height, 2));
+
+            Line line = new Line(x1, y1, x2, y2);
+            Assert.True(line.X1.Equals(x1), "x of line's upper left edge is not correct");
+            Assert.True(line.Y1.Equals(y1), "y of line's upper left edge is not correct");
+            Assert.True(line.X1.Equals(x2), "x of line's lower right edge is not correct");
+            Assert.True(line.Y1.Equals(y2), "y of line's lower right edge is not correct");
+            Assert.True(line.X.Equals(line.X1), "X and X1 should be equal");
+            Assert.True(line.Y.Equals(line.Y1), "Y and Y1 should be equal");
+            Assert.True(line.Width.Equals(width), "width of square of inscribed line is not correct");
+            Assert.True(line.Height.Equals(height), "height of square of inscribed line is not correct");
+            Assert.True(line.Length.Equals(hypotenuse), "line's length is not correct");            
+        }
     }
 
 }
