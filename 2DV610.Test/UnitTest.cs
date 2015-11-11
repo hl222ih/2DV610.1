@@ -53,7 +53,7 @@ namespace _2DV610.Test
         [Fact]
         public void CircleOutsideInputDomainThrowsArgumentOutOfRangeException()
         {
-            //Available height is from 0 to 1280. Available width is from 0 to int.MaxValue
+            //Available height is from 0 to 1280. Available width is from 0 to 128000.
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(10, 20, 11));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(20, 10, 11));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(-1, 0, 0)); //cx < 0
@@ -61,14 +61,14 @@ namespace _2DV610.Test
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(0, 0, -1)); //radius < 0
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(641, 641, 641));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(0, 1281, 0));
-            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(int.MaxValue - 9, 10, 10));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(128000 - 9, 10, 10));
             //Accepted values does not throw an exception
             new Circle(0, 0, 0);
             new Circle(10, 10, 10);
             new Circle(20, 20, 11);
             new Circle(2560, 640, 640);
             new Circle(0, 1280, 0);
-            new Circle(int.MaxValue - 10, 10, 10);
+            new Circle(128000 - 10, 10, 10);
         }
 
         [Fact]
@@ -138,6 +138,25 @@ namespace _2DV610.Test
                     Assert.True(line.Y2.Equals(y2));
                 }
             }
+        }
+
+        [Fact]
+        public void LineOutsideInputDomainThrowsArgumentOutOfRangeException()
+        {
+            //Available height is from 0 to 1280. Width from 0 to 128000.
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Line(-1, 0, 0, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Line(0, -1, 0, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Line(0, 0, -1, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Line(0, 0, 0, -1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Line(128001, 0, 0, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Line(0, 1281, 0, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Line(0, 0, 128001, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Line(0, 0, 0, 1281));
+            ////Accepted values does not throw an exception
+            new Line(0, 0, 128000, 1280);
+            new Line(0, 1280, 128000, 0);
+            new Line(128000, 0, 0, 1280);
+            new Line(128000, 1280, 0, 0);
         }
     }
 }
