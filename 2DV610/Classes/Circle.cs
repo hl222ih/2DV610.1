@@ -39,7 +39,21 @@ namespace _2DV610.Classes
 
         public Circle(int x, int y, int diameter, bool dummy) : base(ShapeType.Circle)
         {
-            throw new NotImplementedException();
+            CX = x + diameter / 2;
+            CY = y + diameter / 2;
+            Radius = diameter / 2;
+            X = x;
+            Y = y;
+            Width = diameter;
+            Height = diameter;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
+
+            Circle c = (Circle)obj;
+            return X == c.X && Y == c.Y && Radius == c.Radius;
         }
     }
 }
