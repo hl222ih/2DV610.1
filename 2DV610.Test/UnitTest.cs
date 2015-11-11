@@ -35,7 +35,7 @@ namespace _2DV610.Test
             Assert.True(eighthCircle.ShapeType.Equals(ShapeType.EighthCircle));
             Assert.True(heart.ShapeType.Equals(ShapeType.Heart));
         }
-        
+
         [Fact]
         public void CircleValuesTest()
         {
@@ -91,8 +91,51 @@ namespace _2DV610.Test
             Assert.True(line.Y.Equals(line.Y1), "Y and Y1 should be equal");
             Assert.True(line.Width.Equals(width), "width of square of inscribed line is not correct");
             Assert.True(line.Height.Equals(height), "height of square of inscribed line is not correct");
-            Assert.True(line.Length.Equals(hypotenuse), "line's length is not correct");            
+            Assert.True(line.Length.Equals(hypotenuse), "line's length is not correct");
+        }
+
+        [Theory]
+        [InlineData(50, 50, 100, 100),
+         InlineData(100, 100, 50, 50),
+         InlineData(50, 100, 100, 50),
+         InlineData(100, 50, 50, 100),
+         InlineData(50, 50, 100, 50),
+         InlineData(100, 50, 50, 50),
+         InlineData(50, 50, 50, 100),
+         InlineData(50, 100, 50, 50)]
+        public void LineXYSwitchTest(int x1, int y1, int x2, int y2)
+        {
+            Line line = new Line(x1, y1, x2, y2);
+
+            //X1,Y1 should be the leftmost coordinates of the line.
+            //If the line is vertical, X1,Y1 should be the uppermost coordinates of the line.
+            if (x1 > x2)
+            {
+                Assert.True(line.X1.Equals(x2));
+                Assert.True(line.Y1.Equals(y2));
+                Assert.True(line.X2.Equals(x1));
+                Assert.True(line.Y2.Equals(y1));
+            }
+            else if (x1 < x2)
+            {
+                Assert.True(line.X1.Equals(x1));
+                Assert.True(line.X2.Equals(x2));
+                Assert.True(line.Y1.Equals(y1));
+                Assert.True(line.Y2.Equals(y2));
+            } else
+            {
+                Assert.True(line.X1.Equals(x1));
+                Assert.True(line.X2.Equals(x2));
+                if (y1 > y2)
+                {
+                    Assert.True(line.Y1.Equals(y2));
+                    Assert.True(line.Y2.Equals(y1));
+                } else
+                {
+                    Assert.True(line.Y1.Equals(y1));
+                    Assert.True(line.Y2.Equals(y2));
+                }
+            }
         }
     }
-
 }
