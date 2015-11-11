@@ -161,5 +161,14 @@ namespace _2DV610.Test
             new Line(128000, 0, 0, 1280);
             new Line(128000, 1280, 0, 0);
         }
+
+        [Fact]
+        public void CircleConstructorsEqualityTest()
+        {
+            Circle circle1 = new Circle(84, 64, 32);
+            Circle circle2 = new Circle(52, 32, 64, false);
+            Assert.True(circle1.Equals(circle2), "the circles should be equal");
+        }
+
     }
 }

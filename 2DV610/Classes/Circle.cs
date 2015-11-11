@@ -35,6 +35,11 @@ namespace _2DV610.Classes
             Y = cy - radius;
             Width = radius * 2;
             Height = radius * 2;
-        }        
+        }
+
+        public Circle(int x, int y, int diameter, bool dummy) : base(ShapeType.Circle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
