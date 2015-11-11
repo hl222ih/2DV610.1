@@ -85,8 +85,8 @@ namespace _2DV610.Test
             Line line = new Line(x1, y1, x2, y2);
             Assert.True(line.X1.Equals(x1), "x of line's upper left edge is not correct");
             Assert.True(line.Y1.Equals(y1), "y of line's upper left edge is not correct");
-            Assert.True(line.X1.Equals(x2), "x of line's lower right edge is not correct");
-            Assert.True(line.Y1.Equals(y2), "y of line's lower right edge is not correct");
+            Assert.True(line.X2.Equals(x2), "x of line's lower right edge is not correct");
+            Assert.True(line.Y2.Equals(y2), "y of line's lower right edge is not correct");
             Assert.True(line.X.Equals(line.X1), "X and X1 should be equal");
             Assert.True(line.Y.Equals(line.Y1), "Y and Y1 should be equal");
             Assert.True(line.Width.Equals(width), "width of square of inscribed line is not correct");
