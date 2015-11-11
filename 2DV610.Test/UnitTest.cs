@@ -71,15 +71,6 @@ namespace _2DV610.Test
             new Circle(int.MaxValue - 10, 10, 10);
         }
 
-        //[Fact]
-        //public void InvalidLineArgumentsThrowsArgumentException()
-        //{
-        //    Assert.Throws<ArgumentException>(() => new Line(""));
-        //    Assert.Throws<ArgumentException>(() => new Line("R 0 0 0 0"));
-        //    Assert.Throws<ArgumentException>(() => new Line("L 0 0 0 0"));
-        //    Assert.Throws<ArgumentException>(() => new Line("L 0 0 64 64 64"));
-        //    Assert.Throws<ArgumentException>(() => new Line("L 0 64 64"));
-        //}
     }
 
 }
