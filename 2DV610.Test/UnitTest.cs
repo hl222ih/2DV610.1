@@ -50,6 +50,27 @@ namespace _2DV610.Test
             Assert.True(circle.Diameter.Equals(64), "diameter of circle is not correct");
         }
 
+        [Fact]
+        public void CircleOutsideInputDomainThrowsArgumentOutOfRangeException()
+        {
+            //Available height is from 0 to 1280. Available width is from 0 to int.MaxValue
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(10, 20, 11));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(20, 10, 11));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(-1, 0, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(0, -1, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(0, -1, -1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(641, 641, 641));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(1281, 0, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(10, int.MaxValue-9, 10));
+            //Accepted values does not throw an exception
+            new Circle(0, 0, 0);
+            new Circle(10, 10, 10);
+            new Circle(20, 20, 11);
+            new Circle(640, 2560, 640);
+            new Circle(1280, 0, 0);
+            new Circle(10, int.MaxValue - 10, 10);
+        }
+
         //[Fact]
         //public void InvalidLineArgumentsThrowsArgumentException()
         //{
