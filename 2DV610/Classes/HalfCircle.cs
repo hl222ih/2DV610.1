@@ -11,5 +11,10 @@ namespace _2DV610.Classes
         public HalfCircle() : base(ShapeType.HalfCircle)
         {
         }
+
+        public override bool HorizontallyTranslates(Shape shape)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

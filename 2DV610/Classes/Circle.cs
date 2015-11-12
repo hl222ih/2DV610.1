@@ -60,5 +60,10 @@ namespace _2DV610.Classes
         {
             return X * Y * Radius; //possible overflow ok
         }
+
+        public override bool HorizontallyTranslates(Shape shape)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

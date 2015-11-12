@@ -11,5 +11,10 @@ namespace _2DV610.Classes
         public QuarterCircle() : base(ShapeType.QuarterCircle)
         {
         }
+
+        public override bool HorizontallyTranslates(Shape shape)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

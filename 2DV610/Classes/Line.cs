@@ -66,5 +66,10 @@ namespace _2DV610.Classes
             Width = X2 - X1;
             Height = Math.Abs(Y2 - Y1);
         }
+
+        public override bool HorizontallyTranslates(Shape shape)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

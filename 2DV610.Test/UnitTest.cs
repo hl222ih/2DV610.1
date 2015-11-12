@@ -176,6 +176,16 @@ namespace _2DV610.Test
         }
 
         [Fact]
+        public void CircleTranslationTest()
+        {
+            //Translation is when two shapes have the same size and form but might be differently positioned.
+            Circle circle1 = new Circle(50, 64, 32);
+            Circle circle2 = new Circle(100, 64, 32);
+            Assert.True(circle1.HorizontallyTranslates(circle2), "horizontal translation between the circles should be true.");
+            Assert.True(circle2.HorizontallyTranslates(circle1), "horizontal translation between the circles should be true.");
+        }
+
+        [Fact]
         public void LeftEarValuesTest()
         {
             int x = 32;

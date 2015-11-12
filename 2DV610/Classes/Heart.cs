@@ -11,5 +11,10 @@ namespace _2DV610.Classes
         public Heart() : base(ShapeType.Heart)
         {
         }
+
+        public override bool HorizontallyTranslates(Shape shape)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

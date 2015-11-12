@@ -29,5 +29,10 @@ namespace _2DV610.Classes
             LeftX = x;
             RightX = x + Width;
         }
+
+        public override bool HorizontallyTranslates(Shape shape)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

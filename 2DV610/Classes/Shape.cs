@@ -73,5 +73,7 @@ namespace _2DV610.Classes
         {
             ShapeType = shapeType;
         }
+
+        public abstract bool HorizontallyTranslates(Shape shape);
     }
 }
