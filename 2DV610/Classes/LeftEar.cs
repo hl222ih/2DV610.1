@@ -10,6 +10,11 @@ namespace _2DV610.Classes
     {
         public LeftEar(int x, int y) : base(ShapeType.LeftEar)
         {
+            X = x;
+            Y = y;
+            //Ear shapes has a fixed width and height
+            Width = 256;
+            Height = 512;
         }
     }
 }
