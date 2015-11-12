@@ -8,6 +8,10 @@ namespace _2DV610.Classes
 {
     public abstract class HalfCircle : Shape
     {
+        public int CX { get; protected set; }
+        public int CY { get; protected set; }
+        public int Radius { get; protected set; }
+
         public HalfCircle(int x, int y, int radius, ShapeType shapeType) : base(shapeType)
         {
         }

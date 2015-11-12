@@ -199,7 +199,20 @@ namespace _2DV610.Test
             Assert.True(circle1.GetPath().Equals("M18,64A32,32 0 1,0 82,64A32,32 0 1,0 18,64"), "didn't return the correct path string.");
         }
 
-                    [Fact]
+        [Fact]
+        public void LeftHalfCircleValuesTest()
+        {
+            HalfCircle halfCircle = new LeftHalfCircle(84, 64, 32);
+            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
+            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
+            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
+            Assert.True(halfCircle.X.Equals(52), "x of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Y.Equals(32), "y of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Width.Equals(32), "width of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Height.Equals(64), "height of square of inscribed half circle is not correct");
+        }
+
+        [Fact]
         public void LeftEarValuesTest()
         {
             int x = 32;
