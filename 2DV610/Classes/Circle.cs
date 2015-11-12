@@ -71,7 +71,31 @@ namespace _2DV610.Classes
 
         public override string GetPath()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+
+            //start point
+            sb.Append("M");
+            sb.Append(CX - Radius);
+            sb.Append(",");
+            sb.Append(CY);
+            //lower half circle
+            sb.Append("a");
+            sb.Append(Radius);
+            sb.Append(",");
+            sb.Append(Radius);
+            sb.Append(" 0 1,0 ");
+            sb.Append(2 * Radius);
+            sb.Append(",0");
+            //upper half circle
+            sb.Append("a");
+            sb.Append(Radius);
+            sb.Append(",");
+            sb.Append(Radius);
+            sb.Append(" 0 1,0 ");
+            sb.Append(-2 * Radius);
+            sb.Append(",0");
+
+            return sb.ToString();
         }
     }
 }
