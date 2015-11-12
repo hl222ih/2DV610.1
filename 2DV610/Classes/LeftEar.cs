@@ -8,7 +8,7 @@ namespace _2DV610.Classes
 {
     public class LeftEar : Ear
     {
-        public LeftEar() : base(ShapeType.Unspecified)
+        public LeftEar() : base(ShapeType.LeftEar)
         {
         }
     }
