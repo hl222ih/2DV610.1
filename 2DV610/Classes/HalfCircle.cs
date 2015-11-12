@@ -12,8 +12,11 @@ namespace _2DV610.Classes
         public int CY { get; protected set; }
         public int Radius { get; protected set; }
 
-        public HalfCircle(int x, int y, int radius, ShapeType shapeType) : base(shapeType)
+        public HalfCircle(int cx, int cy, int radius, ShapeType shapeType) : base(shapeType)
         {
+            CX = cx;
+            CY = cy;
+            Radius = radius;
         }
 
         public override bool HorizontallyTranslates(Shape shape)

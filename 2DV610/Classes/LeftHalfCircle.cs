@@ -10,7 +10,10 @@ namespace _2DV610.Classes
     {
         public LeftHalfCircle(int cx, int cy, int radius) : base(cx, cy, radius, ShapeType.LeftHalfCircle)
         {
-
+            X = cx - radius;
+            Y = cy - radius;
+            Width = radius;
+            Height = radius * 2;
         }
     }
 }
