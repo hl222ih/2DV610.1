@@ -196,5 +196,26 @@ namespace _2DV610.Test
             Assert.True(leftEar.RightX.Equals(x + Width));
         }
 
+        [Fact]
+        public void RightEarValuesTest()
+        {
+            int x = 32;
+            int y = 64;
+            const int Width = 256;
+            const int Height = 512;
+
+            RightEar rightEar = new RightEar(x, y);
+            Assert.True(rightEar.X.Equals(x));
+            Assert.True(rightEar.Y.Equals(y));
+            Assert.True(rightEar.Width.Equals(Width));
+            Assert.True(rightEar.Height.Equals(Height));
+
+            Assert.True(rightEar.TopY.Equals(y));
+            Assert.True(rightEar.MidY.Equals(y + Height / 4));
+            Assert.True(rightEar.BottomY.Equals(y + Height));
+            Assert.True(rightEar.LeftX.Equals(x));
+            Assert.True(rightEar.RightX.Equals(x + Width));
+        }
+
     }
 }
