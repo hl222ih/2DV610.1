@@ -186,6 +186,13 @@ namespace _2DV610.Test
         }
 
         [Fact]
+        public void CircleGetPathTest()
+        {
+            Circle circle1 = new Circle(50, 64, 32);
+            Assert.True(circle1.GetPath().Equals("M18,64a32,32 0 1,0 64,0a32,32 0 1,0 -64,0"), "didn't return the correct path string.");
+        }
+
+        [Fact]
         public void LeftEarValuesTest()
         {
             int x = 32;
