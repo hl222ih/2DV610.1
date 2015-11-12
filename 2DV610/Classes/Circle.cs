@@ -79,21 +79,23 @@ namespace _2DV610.Classes
             sb.Append(",");
             sb.Append(CY);
             //lower half circle
-            sb.Append("a");
+            sb.Append("A");
             sb.Append(Radius);
             sb.Append(",");
             sb.Append(Radius);
             sb.Append(" 0 1,0 ");
-            sb.Append(2 * Radius);
-            sb.Append(",0");
+            sb.Append(CX + Radius);
+            sb.Append(",");
+            sb.Append(CY);
             //upper half circle
-            sb.Append("a");
+            sb.Append("A");
             sb.Append(Radius);
             sb.Append(",");
             sb.Append(Radius);
             sb.Append(" 0 1,0 ");
-            sb.Append(-2 * Radius);
-            sb.Append(",0");
+            sb.Append(CX - Radius);
+            sb.Append(",");
+            sb.Append(CY);
 
             return sb.ToString();
         }
