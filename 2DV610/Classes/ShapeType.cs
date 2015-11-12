@@ -14,6 +14,8 @@ namespace _2DV610.Classes
         HalfCircle,
         QuarterCircle,
         EighthCircle,
+        LeftEar,
+        RightEar,
         Heart
     }
 }

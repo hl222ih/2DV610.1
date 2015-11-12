@@ -100,10 +100,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Circle.cs" />
+    <Compile Include="Classes\Ear.cs" />
     <Compile Include="Classes\EighthCircle.cs" />
     <Compile Include="Classes\HalfCircle.cs" />
     <Compile Include="Classes\Heart.cs" />
+    <Compile Include="Classes\LeftEar.cs" />
     <Compile Include="Classes\Line.cs" />
+    <Compile Include="Classes\RightEar.cs" />
     <Compile Include="Classes\Shape.cs" />
     <Compile Include="Classes\ShapeType.cs" />
     <Compile Include="Classes\QuarterCircle.cs" />

@@ -26,6 +26,8 @@ namespace _2DV610.Test
             HalfCircle halfCircle = new HalfCircle();
             QuarterCircle quarterCircle = new QuarterCircle();
             EighthCircle eighthCircle = new EighthCircle();
+            LeftEar leftEar = new LeftEar();
+            RightEar rightEar = new RightEar();
             Heart heart = new Heart();
 
             Assert.True(line.ShapeType.Equals(ShapeType.Line));
@@ -33,6 +35,8 @@ namespace _2DV610.Test
             Assert.True(halfCircle.ShapeType.Equals(ShapeType.HalfCircle));
             Assert.True(quarterCircle.ShapeType.Equals(ShapeType.QuarterCircle));
             Assert.True(eighthCircle.ShapeType.Equals(ShapeType.EighthCircle));
+            Assert.True(leftEar.ShapeType.Equals(ShapeType.LeftEar));
+            Assert.True(rightEar.ShapeType.Equals(ShapeType.RightEar));
             Assert.True(heart.ShapeType.Equals(ShapeType.Heart));
         }
 
