@@ -71,5 +71,10 @@ namespace _2DV610.Classes
         {
             throw new NotImplementedException();
         }
+
+        public override string GetPath()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

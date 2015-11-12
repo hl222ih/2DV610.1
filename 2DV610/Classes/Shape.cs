@@ -75,5 +75,7 @@ namespace _2DV610.Classes
         }
 
         public abstract bool HorizontallyTranslates(Shape shape);
+
+        public abstract string GetPath();
     }
 }

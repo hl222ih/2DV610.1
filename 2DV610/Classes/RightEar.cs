@@ -11,5 +11,10 @@ namespace _2DV610.Classes
         public RightEar(int x, int y) : base(x, y, ShapeType.RightEar)
         {
         }
+
+        public override string GetPath()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

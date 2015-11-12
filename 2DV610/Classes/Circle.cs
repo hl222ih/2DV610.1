@@ -68,5 +68,10 @@ namespace _2DV610.Classes
             Circle c = (Circle)shape;
             return Y == c.Y && Radius == c.Radius;
         }
+
+        public override string GetPath()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
