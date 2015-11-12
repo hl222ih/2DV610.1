@@ -178,12 +178,22 @@ namespace _2DV610.Test
         [Fact]
         public void LeftEarValuesTest()
         {
-            LeftEar leftEar = new LeftEar(32, 64);
-            Assert.True(leftEar.X.Equals(32));
-            Assert.True(leftEar.Y.Equals(64));
-            Assert.True(leftEar.Width.Equals(256));
-            Assert.True(leftEar.Height.Equals(512));
+            int x = 32;
+            int y = 64;
+            const int Width = 256;
+            const int Height = 512;
 
+            LeftEar leftEar = new LeftEar(x, y);
+            Assert.True(leftEar.X.Equals(x));
+            Assert.True(leftEar.Y.Equals(y));
+            Assert.True(leftEar.Width.Equals(Width));
+            Assert.True(leftEar.Height.Equals(Height));
+            
+            Assert.True(leftEar.TopY.Equals(y));
+            Assert.True(leftEar.MidY.Equals(y + Height / 4));
+            Assert.True(leftEar.BottomY.Equals(y + Height));
+            Assert.True(leftEar.LeftX.Equals(x));
+            Assert.True(leftEar.RightX.Equals(x + Width));
         }
 
     }
