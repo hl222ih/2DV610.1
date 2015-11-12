@@ -14,8 +14,20 @@ namespace _2DV610.Classes
         public int LeftX { get; protected set; }
         public int RightX { get; protected set; }
 
-        public Ear(ShapeType shapeType) : base(shapeType)
+        public Ear(int x, int y, ShapeType shapeType) : base(shapeType)
         {
+            X = x;
+            Y = y;
+
+            //Ear shapes has a fixed width and height
+            Width = 256;
+            Height = 512;
+
+            TopY = y;
+            MidY = y + Height / 4;
+            BottomY = y + Height;
+            LeftX = x;
+            RightX = x + Width;
         }
     }
 }

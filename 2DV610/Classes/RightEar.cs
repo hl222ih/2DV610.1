@@ -8,7 +8,7 @@ namespace _2DV610.Classes
 {
     public class RightEar : Ear
     {
-        public RightEar(int x, int y) : base(ShapeType.RightEar)
+        public RightEar(int x, int y) : base(x, y, ShapeType.RightEar)
         {
         }
     }
