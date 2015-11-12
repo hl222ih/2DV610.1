@@ -15,6 +15,12 @@ namespace _2DV610.Classes
             //Ear shapes has a fixed width and height
             Width = 256;
             Height = 512;
+
+            TopY = Y;
+            MidY = Y + Height / 4;
+            BottomY = Y + Height;
+            LeftX = X;
+            RightX = X + Width;
         }
     }
 }

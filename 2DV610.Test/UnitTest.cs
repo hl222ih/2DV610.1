@@ -188,7 +188,7 @@ namespace _2DV610.Test
             Assert.True(leftEar.Y.Equals(y));
             Assert.True(leftEar.Width.Equals(Width));
             Assert.True(leftEar.Height.Equals(Height));
-            
+
             Assert.True(leftEar.TopY.Equals(y));
             Assert.True(leftEar.MidY.Equals(y + Height / 4));
             Assert.True(leftEar.BottomY.Equals(y + Height));
