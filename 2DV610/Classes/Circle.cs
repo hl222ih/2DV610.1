@@ -63,7 +63,10 @@ namespace _2DV610.Classes
 
         public override bool HorizontallyTranslates(Shape shape)
         {
-            throw new NotImplementedException();
+            if (ShapeType != shape.ShapeType) return false;
+
+            Circle c = (Circle)shape;
+            return Y == c.Y && Radius == c.Radius;
         }
     }
 }
