@@ -175,5 +175,16 @@ namespace _2DV610.Test
             Assert.True(circle1.GetHashCode() == circle2.GetHashCode(), "the circles should generate the same hash code");
         }
 
+        [Fact]
+        public void LeftEarValuesTest()
+        {
+            LeftEar leftEar = new LeftEar(32, 64);
+            Assert.True(leftEar.X.Equals(32));
+            Assert.True(leftEar.Y.Equals(64));
+            Assert.True(leftEar.Width.Equals(256));
+            Assert.True(leftEar.Height.Equals(512));
+
+        }
+
     }
 }
