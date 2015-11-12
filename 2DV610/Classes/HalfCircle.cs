@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public class HalfCircle : Shape
+    public abstract class HalfCircle : Shape
     {
-        public HalfCircle() : base(ShapeType.HalfCircle)
+        public HalfCircle(int x, int y, int radius, ShapeType shapeType) : base(shapeType)
         {
         }
 

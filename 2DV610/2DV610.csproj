@@ -105,13 +105,17 @@
     <Compile Include="Classes\HalfCircle.cs" />
     <Compile Include="Classes\Heart.cs" />
     <Compile Include="Classes\LeftEar.cs" />
+    <Compile Include="Classes\LeftHalfCircle.cs" />
     <Compile Include="Classes\Line.cs" />
+    <Compile Include="Classes\LowerHalfCircle.cs" />
     <Compile Include="Classes\RightEar.cs" />
+    <Compile Include="Classes\RightHalfCircle.cs" />
     <Compile Include="Classes\Shape.cs" />
     <Compile Include="Classes\ShapeType.cs" />
     <Compile Include="Classes\QuarterCircle.cs" />
     <Compile Include="Classes\Svg.cs" />
     <Compile Include="Classes\Symbol.cs" />
+    <Compile Include="Classes\UpperHalfCircle.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
