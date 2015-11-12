@@ -26,8 +26,8 @@ namespace _2DV610.Test
             HalfCircle halfCircle = new HalfCircle();
             QuarterCircle quarterCircle = new QuarterCircle();
             EighthCircle eighthCircle = new EighthCircle();
-            LeftEar leftEar = new LeftEar();
-            RightEar rightEar = new RightEar();
+            LeftEar leftEar = new LeftEar(0,0);
+            RightEar rightEar = new RightEar(0,0);
             Heart heart = new Heart();
 
             Assert.True(line.ShapeType.Equals(ShapeType.Line));
