@@ -55,5 +55,10 @@ namespace _2DV610.Classes
             Circle c = (Circle)obj;
             return X == c.X && Y == c.Y && Radius == c.Radius;
         }
+
+        public override int GetHashCode()
+        {
+            return X * Y * Radius; //possible overflow ok
+        }
     }
 }
