@@ -168,6 +168,7 @@ namespace _2DV610.Test
             Circle circle1 = new Circle(84, 64, 32);
             Circle circle2 = new Circle(52, 32, 64, false);
             Assert.True(circle1.Equals(circle2), "the circles should be equal");
+            Assert.True(circle1.GetHashCode() == circle2.GetHashCode(), "the circles should generate the same hash code");
         }
 
     }
