@@ -12,7 +12,7 @@ namespace _2DV610.Classes
 
         public Svg(string path)
         {
-            Symbol = new Symbol();
+            Symbol = new Symbol("");
         }
     }
 }

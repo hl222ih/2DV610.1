@@ -11,12 +11,27 @@ namespace _2DV610.Classes
         List<Symbol> symbols;
         List<Shape> shapes;
 
-        public Symbol()
+        public Symbol(string svgPath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Symbol(string[] svgPaths)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddShape(Shape shape)
         {
             throw new NotImplementedException();
         }
 
         public List<Shape> GetShapes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(ShapeType shapeType)
         {
             throw new NotImplementedException();
         }
