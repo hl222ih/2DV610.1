@@ -19,7 +19,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void CorrectPathTypeTest()
+        public void CorrectShapeTypeTest()
         {
             Line line = new Line(0, 0, 0, 0);
             Circle circle = new Circle(0, 0, 0);
@@ -69,7 +69,8 @@ namespace _2DV610.Test
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(-1, 0, 0)); //cx < 0
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(0, -1, 0)); //cy < 0
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(0, 0, -1)); //radius < 0
-            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(641, 641, 641));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(640, 641, 641));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(641, 640, 641));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(0, 1281, 0));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(128000 - 9, 10, 10));
             //Accepted values does not throw an exception
@@ -213,6 +214,92 @@ namespace _2DV610.Test
         }
 
         [Fact]
+        public void LeftHalfCircleOutsideInputDomainThrowsArgumentOutOfRangeException()
+        {
+            //Available height is from 0 to 1280. Available width is from 0 to 128000.
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LeftHalfCircle(10, 20, 11));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LeftHalfCircle(20, 10, 11));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LeftHalfCircle(-1, 0, 0)); //cx < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LeftHalfCircle(0, -1, 0)); //cy < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LeftHalfCircle(0, 0, -1)); //radius < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LeftHalfCircle(641, 640, 641));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LeftHalfCircle(640, 641, 640));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LeftHalfCircle(0, 1281, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LeftHalfCircle(128001, 0, 0));
+            //Accepted values does not throw an exception
+            new LeftHalfCircle(0, 0, 0);
+            new LeftHalfCircle(640, 640, 640);
+            new LeftHalfCircle(20, 20, 11);
+            new LeftHalfCircle(2560, 640, 640);
+            new LeftHalfCircle(0, 1280, 0);
+            new LeftHalfCircle(128000, 100, 100);
+        }
+
+        [Fact]
+        public void RightHalfCircleOutsideInputDomainThrowsArgumentOutOfRangeException()
+        {
+            //Available height is from 0 to 1280. Available width is from 0 to 128000.
+            Assert.Throws<ArgumentOutOfRangeException>(() => new RightHalfCircle(20, 10, 11));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new RightHalfCircle(-1, 0, 0)); //cx < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new RightHalfCircle(0, -1, 0)); //cy < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new RightHalfCircle(0, 0, -1)); //radius < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new RightHalfCircle(0, 640, 641));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new RightHalfCircle(0, 641, 640));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new RightHalfCircle(0, 1281, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new RightHalfCircle(128000, 1, 1));
+            //Accepted values does not throw an exception
+            new RightHalfCircle(0, 0, 0);
+            new RightHalfCircle(0, 640, 640);
+            new RightHalfCircle(0, 11, 11);
+            new RightHalfCircle(2560, 640, 640);
+            new RightHalfCircle(0, 1280, 0);
+            new RightHalfCircle(127900, 100, 100);
+        }
+
+        [Fact]
+        public void UpperHalfCircleOutsideInputDomainThrowsArgumentOutOfRangeException()
+        {
+            //Available height is from 0 to 1280. Available width is from 0 to 128000.
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperHalfCircle(10, 20, 11));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperHalfCircle(20, 10, 11));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperHalfCircle(-1, 0, 0)); //cx < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperHalfCircle(0, -1, 0)); //cy < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperHalfCircle(0, 0, -1)); //radius < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperHalfCircle(641, 640, 641));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperHalfCircle(640, 639, 640));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperHalfCircle(0, 1281, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperHalfCircle(128000, 1, 1));
+            //Accepted values does not throw an exception
+            new UpperHalfCircle(0, 0, 0);
+            new UpperHalfCircle(640, 1280, 640);
+            new UpperHalfCircle(10, 10, 10);
+            new UpperHalfCircle(2560, 640, 640);
+            new UpperHalfCircle(0, 1280, 0);
+            new UpperHalfCircle(127900, 100, 100);
+        }
+
+        [Fact]
+        public void LowerHalfCircleOutsideInputDomainThrowsArgumentOutOfRangeException()
+        {
+            //Available height is from 0 to 1280. Available width is from 0 to 128000.
+            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(10, 20, 11));
+            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(-1, 0, 0)); //cx < 0
+            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(0, -1, 0)); //cy < 0
+            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(0, 0, -1)); //radius < 0
+            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(641, 640, 641));
+            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(640, 641, 640));
+            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(1, 1280, 1));
+            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(128000, 1, 1));
+            //Accepted values does not throw an exception
+            //new LowerHalfCircle(0, 0, 0);
+            //new LowerHalfCircle(640, 0, 640);
+            //new LowerHalfCircle(1270, 1270, 10);
+            //new LowerHalfCircle(2560, 640, 640);
+            //new LowerHalfCircle(0, 1280, 0);
+            //new LowerHalfCircle(127900, 1180, 100);
+        }
+
+        [Fact]
         public void RightHalfCircleValuesTest()
         {
             HalfCircle halfCircle = new RightHalfCircle(84, 64, 32);
@@ -245,8 +332,8 @@ namespace _2DV610.Test
             Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
             Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
             Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
-            Assert.True(halfCircle.X.Equals(84), "x of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Y.Equals(32), "y of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.X.Equals(52), "x of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Y.Equals(64), "y of square of inscribed half circle is not correct");
             Assert.True(halfCircle.Width.Equals(64), "width of square of inscribed half circle is not correct");
             Assert.True(halfCircle.Height.Equals(32), "height of square of inscribed half circle is not correct");
         }
