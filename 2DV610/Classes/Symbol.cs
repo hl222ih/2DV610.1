@@ -34,6 +34,7 @@ namespace _2DV610.Classes
             {
                 if (pathElements[i] == "M")
                 {
+                    //TODO: check that pathElements have enough elements for M.
                     int x = 0;
                     int y = 0;
                     if (int.TryParse(pathElements[i + 1], out x) &&
@@ -52,6 +53,7 @@ namespace _2DV610.Classes
                 }
                 else if (pathElements[i].Equals("A", StringComparison.OrdinalIgnoreCase))
                 {
+                    //TODO: check that pathElements have enough elements for A/a.
                     int rx = 0;
                     int ry = 0;
                     int x = 0;
@@ -70,28 +72,44 @@ namespace _2DV610.Classes
                         int.TryParse(pathElements[i + 10], out y))
                     {
 
-                        if (pathElements[i] == "a")
+
+                        Shape shape;
+                        if (pathElements[i + 7] == "0") //sweep-flag is 0
+                        {
+                            if (currentX < x) //left-to-right
+                            {
+                                shape = new LowerHalfCircle(currentX + rx, currentY, rx);
+                            }
+                            else //right-to-left
+                            {
+                                shape = new UpperHalfCircle(currentX - rx, currentY, rx);
+                            }
+                        }
+                        else //sweep-flag is 1
+                        {
+                            if (currentX > x) //right-to-left
+                            {
+                                shape = new LowerHalfCircle(currentX - rx, currentY, rx);
+                            }
+                            else //left-to-right
+                            {
+                                shape = new UpperHalfCircle(currentX + rx, currentY, rx);
+                            }
+                        }
+
+                        shapes.Add(shape);
+
+                        //adjust current coordinates
+                        if (pathElements[i] == "a") //relative
                         {
                             currentX += x;
                             currentY += y;
                         }
-                        else //"A"
+                        else //"A", absolute
                         {
                             currentX = x;
                             currentY = y;
                         }
-
-                        Shape shape;
-                        if (pathElements[i + 7] == "0")
-                        {
-                            shape = new LowerHalfCircle(currentX - rx, currentY, rx);
-                        }
-                        else
-                        {
-                            shape = new LowerHalfCircle(currentX + rx, currentY, rx);
-                        }
-
-                        shapes.Add(shape);
 
                         i += 10;
                     }
