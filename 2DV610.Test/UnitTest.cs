@@ -236,6 +236,19 @@ namespace _2DV610.Test
         }
 
         [Fact]
+        public void RightHalfCircleValuesTest()
+        {
+            HalfCircle halfCircle = new RightHalfCircle(84, 64, 32);
+            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
+            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
+            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
+            Assert.True(halfCircle.X.Equals(84), "x of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Y.Equals(32), "y of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Width.Equals(32), "width of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Height.Equals(64), "height of square of inscribed half circle is not correct");
+        }
+
+        [Fact]
         public void RightHalfCircleOutsideInputDomainThrowsArgumentOutOfRangeException()
         {
             //Available height is from 0 to 1280. Available width is from 0 to 128000.
@@ -254,6 +267,19 @@ namespace _2DV610.Test
             new RightHalfCircle(2560, 640, 640);
             new RightHalfCircle(0, 1280, 0);
             new RightHalfCircle(127900, 100, 100);
+        }
+
+        [Fact]
+        public void UpperHalfCircleValuesTest()
+        {
+            HalfCircle halfCircle = new UpperHalfCircle(84, 64, 32);
+            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
+            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
+            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
+            Assert.True(halfCircle.X.Equals(52), "x of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Y.Equals(32), "y of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Width.Equals(64), "width of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Height.Equals(32), "height of square of inscribed half circle is not correct");
         }
 
         [Fact]
@@ -279,6 +305,19 @@ namespace _2DV610.Test
         }
 
         [Fact]
+        public void LowerHalfCircleValuesTest()
+        {
+            HalfCircle halfCircle = new LowerHalfCircle(84, 64, 32);
+            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
+            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
+            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
+            Assert.True(halfCircle.X.Equals(52), "x of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Y.Equals(64), "y of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Width.Equals(64), "width of square of inscribed half circle is not correct");
+            Assert.True(halfCircle.Height.Equals(32), "height of square of inscribed half circle is not correct");
+        }
+
+        [Fact]
         public void LowerHalfCircleOutsideInputDomainThrowsArgumentOutOfRangeException()
         {
             //Available height is from 0 to 1280. Available width is from 0 to 128000.
@@ -297,45 +336,6 @@ namespace _2DV610.Test
             new LowerHalfCircle(2560, 640, 640);
             new LowerHalfCircle(0, 1280, 0);
             new LowerHalfCircle(127900, 1180, 100);
-        }
-
-        [Fact]
-        public void RightHalfCircleValuesTest()
-        {
-            HalfCircle halfCircle = new RightHalfCircle(84, 64, 32);
-            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
-            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
-            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
-            Assert.True(halfCircle.X.Equals(84), "x of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Y.Equals(32), "y of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Width.Equals(32), "width of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Height.Equals(64), "height of square of inscribed half circle is not correct");
-        }
-
-        [Fact]
-        public void UpperHalfCircleValuesTest()
-        {
-            HalfCircle halfCircle = new UpperHalfCircle(84, 64, 32);
-            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
-            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
-            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
-            Assert.True(halfCircle.X.Equals(52), "x of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Y.Equals(32), "y of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Width.Equals(64), "width of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Height.Equals(32), "height of square of inscribed half circle is not correct");
-        }
-
-        [Fact]
-        public void LowerHalfCircleValuesTest()
-        {
-            HalfCircle halfCircle = new LowerHalfCircle(84, 64, 32);
-            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
-            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
-            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
-            Assert.True(halfCircle.X.Equals(52), "x of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Y.Equals(64), "y of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Width.Equals(64), "width of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Height.Equals(32), "height of square of inscribed half circle is not correct");
         }
 
         [Fact]
