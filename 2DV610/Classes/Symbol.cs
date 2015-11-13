@@ -19,7 +19,7 @@ namespace _2DV610.Classes
             symbols = new List<Symbol>();
             shapes = new List<Shape>();
             
-            MatchCollection matchList = Regex.Matches(svgPath, @"(\d+|[MA]|,)");
+            MatchCollection matchList = Regex.Matches(svgPath, @"(\d+|[MAa]|,)");
             pathElements = matchList.Cast<Match>().Select(match => match.Value).ToArray();
 
             int currentX = 0;
@@ -40,17 +40,17 @@ namespace _2DV610.Classes
                         pathElements[i + 2] == "," &&
                         int.TryParse(pathElements[i + 3], out y))
                     {
-                        i += 3;
                         currentX = x;
                         currentY = y;
 
+                        i += 3;
                     }
                     //else
                     //{
                     //throw new FormatException("Couldn't parse passed in string");
                     //}
                 }
-                else if (pathElements[i] == "A")
+                else if (pathElements[i].Equals("A", StringComparison.OrdinalIgnoreCase))
                 {
                     int rx = 0;
                     int ry = 0;
@@ -68,11 +68,21 @@ namespace _2DV610.Classes
                         pathElements[i + 9] == "," &&
                         int.TryParse(pathElements[i + 10], out y))
                     {
-                        i += 10;
-                        currentX = x;
-                        currentY = y;
+                        if (pathElements[i] == "a")
+                        {
+                            currentX += x;
+                            currentY += y;
+                        }
+                        else
+                        {
+                            currentX = x;
+                            currentY = y;
+                        }
+
                         Shape shape = new LowerHalfCircle(currentX, currentY, rx);
                         shapes.Add(shape);
+
+                        i += 10;
                     }
                     //else
                     //{
