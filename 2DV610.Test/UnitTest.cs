@@ -386,10 +386,14 @@ namespace _2DV610.Test
         {
             Shape shape = new LowerHalfCircle(50, 64, 32);
 
-            Symbol symbol1 = new Symbol("M18,64 A 32,32 0 1,0 82,64"); //absolute 
-            Symbol symbol2 = new Symbol("M18,64 a 32,32 0 1,0 64,0"); //relative 
+            Symbol symbol1 = new Symbol("M18,64 A 32,32 0 0,0 82,64"); //absolute left to right
+            Symbol symbol2 = new Symbol("M18,64 a 32,32 0 0,0 64,0"); //relative left to right
+            Symbol symbol3 = new Symbol("M82,64 A 32,32 0 0,1 18,64"); //absolute right to left
+            Symbol symbol4 = new Symbol("M82,64 a 32,32 0 0,1 -64,0"); //relative right to left
             Assert.True(symbol1.Contains(shape));
             Assert.True(symbol2.Contains(shape));
+            Assert.True(symbol3.Contains(shape));
+            Assert.True(symbol4.Contains(shape));
         }
 
     }
