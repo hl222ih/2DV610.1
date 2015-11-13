@@ -382,7 +382,7 @@ namespace _2DV610.Test
 
 
         [Fact]
-        public void SymbolOfHalfCircleTest()
+        public void SymbolOfLowerHalfCircleTest()
         {
             Shape shape = new LowerHalfCircle(50, 64, 32);
 
@@ -396,5 +396,19 @@ namespace _2DV610.Test
             Assert.True(symbol4.Contains(shape));
         }
 
+        [Fact]
+        public void SymbolOfUpperHalfCircleTest()
+        {
+            Shape shape = new UpperHalfCircle(50, 64, 32);
+
+            Symbol symbol1 = new Symbol("M18,64 A 32,32 0 0,1 82,64"); //absolute left to right
+            Symbol symbol2 = new Symbol("M18,64 a 32,32 0 0,1 64,0"); //relative left to right
+            Symbol symbol3 = new Symbol("M82,64 A 32,32 0 0,0 18,64"); //absolute right to left
+            Symbol symbol4 = new Symbol("M82,64 a 32,32 0 0,0 -64,0"); //relative right to left
+            Assert.True(symbol1.Contains(shape));
+            Assert.True(symbol2.Contains(shape));
+            Assert.True(symbol3.Contains(shape));
+            Assert.True(symbol4.Contains(shape));
+        }
     }
 }
