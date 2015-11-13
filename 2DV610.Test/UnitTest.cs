@@ -282,21 +282,21 @@ namespace _2DV610.Test
         public void LowerHalfCircleOutsideInputDomainThrowsArgumentOutOfRangeException()
         {
             //Available height is from 0 to 1280. Available width is from 0 to 128000.
-            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(10, 20, 11));
-            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(-1, 0, 0)); //cx < 0
-            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(0, -1, 0)); //cy < 0
-            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(0, 0, -1)); //radius < 0
-            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(641, 640, 641));
-            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(640, 641, 640));
-            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(1, 1280, 1));
-            //Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(128000, 1, 1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(10, 20, 11));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(-1, 0, 0)); //cx < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(0, -1, 0)); //cy < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(0, 0, -1)); //radius < 0
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(641, 640, 641));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(640, 641, 640));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(1, 1280, 1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LowerHalfCircle(128000, 1, 1));
             //Accepted values does not throw an exception
-            //new LowerHalfCircle(0, 0, 0);
-            //new LowerHalfCircle(640, 0, 640);
-            //new LowerHalfCircle(1270, 1270, 10);
-            //new LowerHalfCircle(2560, 640, 640);
-            //new LowerHalfCircle(0, 1280, 0);
-            //new LowerHalfCircle(127900, 1180, 100);
+            new LowerHalfCircle(0, 0, 0);
+            new LowerHalfCircle(640, 0, 640);
+            new LowerHalfCircle(1270, 1270, 10);
+            new LowerHalfCircle(2560, 640, 640);
+            new LowerHalfCircle(0, 1280, 0);
+            new LowerHalfCircle(127900, 1180, 100);
         }
 
         [Fact]
