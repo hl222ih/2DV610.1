@@ -106,9 +106,10 @@ namespace _2DV610.Classes
             throw new NotImplementedException();
         }
 
-        public bool Contains(ShapeType shapeType)
+        public bool Contains(Shape shape)
         {
-            return shapes.Exists(s => s.ShapeType == shapeType);
+            return false;
+            //return shapes.Exists(s => s.ShapeType == shapeType);
         }
     }
 }
