@@ -56,30 +56,41 @@ namespace _2DV610.Classes
                     int ry = 0;
                     int x = 0;
                     int y = 0;
+                    double disregard;
 
                     if (int.TryParse(pathElements[i + 1], out rx) &&
                         pathElements[i + 2] == "," &&
                         int.TryParse(pathElements[i + 3], out ry) &&
-                        pathElements[i + 4] == "0" &&
-                        pathElements[i + 5] == "1" &&
+                        double.TryParse(pathElements[i + 4], out disregard) &&
+                        (pathElements[i + 5] == "0" || pathElements[i + 5] == "1") &&
                         pathElements[i + 6] == "," &&
-                        pathElements[i + 7] == "0" &&
+                        (pathElements[i + 7] == "0" || pathElements[i + 7] == "1") &&
                         int.TryParse(pathElements[i + 8], out x) &&
                         pathElements[i + 9] == "," &&
                         int.TryParse(pathElements[i + 10], out y))
                     {
+
                         if (pathElements[i] == "a")
                         {
                             currentX += x;
                             currentY += y;
                         }
-                        else
+                        else //"A"
                         {
                             currentX = x;
                             currentY = y;
                         }
 
-                        Shape shape = new LowerHalfCircle(currentX, currentY, rx);
+                        Shape shape;
+                        if (pathElements[i + 7] == "0")
+                        {
+                            shape = new LowerHalfCircle(currentX - rx, currentY, rx);
+                        }
+                        else
+                        {
+                            shape = new LowerHalfCircle(currentX + rx, currentY, rx);
+                        }
+
                         shapes.Add(shape);
 
                         i += 10;
