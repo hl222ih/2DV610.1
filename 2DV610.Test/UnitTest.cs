@@ -380,5 +380,13 @@ namespace _2DV610.Test
             Assert.True(rightEar.RightX.Equals(x + Width));
         }
 
+
+        [Fact]
+        public void SymbolOfHalfCircleTest()
+        {
+            Symbol symbol = new Symbol("M18, 64A32, 32 0 1, 0 82, 64");
+            Assert.True(symbol.Contains(ShapeType.LowerHalfCircle));
+        }
+
     }
 }
