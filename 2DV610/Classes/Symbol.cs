@@ -108,8 +108,7 @@ namespace _2DV610.Classes
 
         public bool Contains(Shape shape)
         {
-            return false;
-            //return shapes.Exists(s => s.ShapeType == shapeType);
+            return shapes.Exists(s => s.HorizontallyTranslates(shape));
         }
     }
 }
