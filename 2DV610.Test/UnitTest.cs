@@ -384,9 +384,12 @@ namespace _2DV610.Test
         [Fact]
         public void SymbolOfHalfCircleTest()
         {
-            Symbol symbol = new Symbol("M18, 64A32, 32 0 1, 0 82, 64");
             Shape shape = new LowerHalfCircle(50, 64, 32);
-            Assert.True(symbol.Contains(shape));
+
+            Symbol symbol1 = new Symbol("M18,64 A 32,32 0 1,0 82,64"); //absolute 
+            Symbol symbol2 = new Symbol("M18,64 a 32,32 0 1,0 64,0"); //relative 
+            Assert.True(symbol1.Contains(shape));
+            Assert.True(symbol2.Contains(shape));
         }
 
     }
