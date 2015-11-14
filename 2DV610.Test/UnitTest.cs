@@ -425,6 +425,7 @@ namespace _2DV610.Test
             string svgPath = "M18,24";
             PathCommand command = new PathCommand(svgPath);
             Assert.True(command.GetRelativePath() == "m18,24");
+            Assert.True(command.GetAbsolutePath() == "M18,24");
         }
 
     }

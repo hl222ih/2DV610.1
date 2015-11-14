@@ -50,10 +50,16 @@ namespace _2DV610.Classes
             return path;
         }
 
+        public string GetAbsolutePath()
+        {
+            return GetRelativePath();
+        }
+
         private string GetRelativeMoveToPath(string x, string y)
         {
             return String.Format("m{0},{1}", x, y);
         }
 
+       
     }
 }
