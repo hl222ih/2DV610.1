@@ -415,6 +415,14 @@ namespace _2DV610.Test
         public void SvgTest()
         {
             Svg svg = new Svg("M18,64 A 32,32 0 0,1 82,64");
+            //Assert.True(svg.CommandCount == 2);
+        }
+
+        [Fact]
+        public void PathCommandTest()
+        {
+            string[] elements = new string[] { "M", "18", "64" };
+            PathCommand command = new PathCommand(elements);
         }
 
     }

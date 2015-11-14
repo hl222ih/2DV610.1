@@ -8,5 +8,9 @@ namespace _2DV610.Classes
 {
     public class PathCommand
     {
+        public PathCommand(string[] elements)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
