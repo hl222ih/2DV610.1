@@ -45,14 +45,16 @@ namespace _2DV610.Classes
             switch (elems[0])
             {
                 case "M":
-                    EndX = float.Parse(elems[1]) - StartX;
-                    relativeElements[1] = EndX.ToString();
-                    EndY = float.Parse(elems[2]) - StartY;
-                    relativeElements[2] = EndY.ToString();
+                    EndX = float.Parse(elems[1]);
+                    EndY = float.Parse(elems[2]);
+                    relativeElements[1] = (EndX - StartX).ToString();
+                    relativeElements[2] = (EndY - StartY).ToString();
                     break;
                 case "m":
-                    absoluteElements[1] = (float.Parse(elems[1]) + StartX).ToString();
-                    absoluteElements[2] = (float.Parse(elems[2]) + StartY).ToString();
+                    EndX = float.Parse(elems[1]) + StartX;
+                    EndY = float.Parse(elems[2]) + StartY;
+                    absoluteElements[1] = EndX.ToString();
+                    absoluteElements[2] = EndY.ToString();
                     break;
                 case "A":
                     relativeElements[6] = (float.Parse(elems[6]) - StartX).ToString();
