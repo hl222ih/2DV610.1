@@ -39,6 +39,18 @@ namespace _2DV610.Classes
                     absoluteElements[1] = (float.Parse(elems[1]) + currentX).ToString();
                     absoluteElements[2] = (float.Parse(elems[2]) + currentY).ToString();
                     break;
+                case "A":
+                    relativeElements[6] = (float.Parse(elems[6]) - currentX).ToString();
+                    relativeElements[7] = (float.Parse(elems[7]) - currentY).ToString();
+                    absoluteElements[6] = elems[6];
+                    absoluteElements[7] = elems[7];
+                    break;
+                case "a":
+                    absoluteElements[6] = (float.Parse(elems[6]) + currentX).ToString();
+                    absoluteElements[7] = (float.Parse(elems[7]) + currentY).ToString();
+                    relativeElements[6] = elems[6];
+                    relativeElements[7] = elems[7];
+                    break;
                 default:
                     break;
             }
@@ -53,6 +65,10 @@ namespace _2DV610.Classes
             {
                 path = GetRelativeMoveToPath(relativeElements[1], relativeElements[2]);
             }
+            else if (relativeElements[0] == "a")
+            {
+                path = GetRelativeArcPath(relativeElements[1], relativeElements[2], relativeElements[3], relativeElements[4], relativeElements[5], relativeElements[6], relativeElements[7]);
+            }
 
             return path;
         }
@@ -64,6 +80,10 @@ namespace _2DV610.Classes
             if (absoluteElements[0] == "M")
             {
                 path = GetAbsoluteMoveToPath(absoluteElements[1], absoluteElements[2]);
+            }
+            else if (absoluteElements[0] == "A")
+            {
+                path = GetAbsoluteArcPath(absoluteElements[1], absoluteElements[2], absoluteElements[3], absoluteElements[4], absoluteElements[5], absoluteElements[6], absoluteElements[7]);
             }
 
             return path;
@@ -78,5 +98,16 @@ namespace _2DV610.Classes
         {
             return String.Format("M{0},{1}", x, y);
         }
+
+        private string GetRelativeArcPath(string rx, string ry, string xAxisRotation, string largeArcFlag, string sweepFlag, string x, string y)
+        {
+            return String.Format("a{0},{1} {2} {3},{4} {5},{6}", rx, ry, xAxisRotation, largeArcFlag, sweepFlag, x, y);
+        }
+
+        private string GetAbsoluteArcPath(string rx, string ry, string xAxisRotation, string largeArcFlag, string sweepFlag, string x, string y)
+        {
+            return String.Format("A{0},{1} {2} {3},{4} {5},{6}", rx, ry, xAxisRotation, largeArcFlag, sweepFlag, x, y);
+        }
+
     }
 }
