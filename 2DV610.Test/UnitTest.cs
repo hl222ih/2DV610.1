@@ -481,5 +481,32 @@ namespace _2DV610.Test
             Assert.True(command4.GetAbsolutePath() == "A32,32 0 0,1 74,20");
         }
 
+        [Fact]
+        public void APathStartEndValuesTest()
+        {
+            string svgPath1 = "A32,32 0 0,1 82,64";
+            string svgPath2 = "a32,32 0 0,1 64,0";
+            PathCommand command1 = new PathCommand(svgPath1);
+            PathCommand command2 = new PathCommand(svgPath1, 10, 20);
+            PathCommand command3 = new PathCommand(svgPath2);
+            PathCommand command4 = new PathCommand(svgPath2, 10, 20);
+            Assert.True(command1.StartX == 0);
+            Assert.True(command1.StartY == 0);
+            Assert.True(command1.EndX == 82);
+            Assert.True(command1.EndY == 64);
+            Assert.True(command2.StartX == 10);
+            Assert.True(command2.StartY == 20);
+            Assert.True(command2.EndX == 82);
+            Assert.True(command2.EndY == 64);
+            Assert.True(command3.StartX == 0);
+            Assert.True(command3.StartY == 0);
+            Assert.True(command3.EndX == 64);
+            Assert.True(command3.EndY == 0);
+            Assert.True(command4.StartX == 10);
+            Assert.True(command4.StartY == 20);
+            Assert.True(command4.EndX == 74);
+            Assert.True(command4.EndY == 20);
+        }
+
     }
 }
