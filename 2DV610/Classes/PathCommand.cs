@@ -11,10 +11,11 @@ namespace _2DV610.Classes
         string[] relativeElements;
         string[] absoluteElements;
 
-        public PathCommand(string[] elements, float currentX = 0, float currentY = 0)
+        public PathCommand(string svgPath, float currentX = 0, float currentY = 0)
         {
-            relativeElements = elements;
-            absoluteElements = elements;
+            throw new NotImplementedException();
+            //relativeElements = elements;
+            //absoluteElements = elements;
         }
     }
 }

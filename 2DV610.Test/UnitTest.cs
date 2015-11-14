@@ -421,8 +421,9 @@ namespace _2DV610.Test
         [Fact]
         public void PathCommandTest()
         {
-            string[] elements = new string[] { "M", "18", "64" };
-            PathCommand command = new PathCommand(elements);
+            //string[] elements = new string[] { "M", "18", "64" };
+            string svgPath = "M18,24";
+            PathCommand command = new PathCommand(svgPath);
         }
 
     }
