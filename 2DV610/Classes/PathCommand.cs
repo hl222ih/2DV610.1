@@ -44,10 +44,15 @@ namespace _2DV610.Classes
 
             if (relativeElements[0] == "m")
             {
-                path = String.Format("{0}{1},{2}", relativeElements[0], relativeElements[1], relativeElements[2]);
+                path = GetRelativeMoveToPath(relativeElements[1], relativeElements[2]);
             }
 
             return path;
+        }
+
+        private string GetRelativeMoveToPath(string x, string y)
+        {
+            return String.Format("m{0},{1}", x, y);
         }
 
     }
