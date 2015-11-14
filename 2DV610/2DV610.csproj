@@ -108,6 +108,7 @@
     <Compile Include="Classes\LeftHalfCircle.cs" />
     <Compile Include="Classes\Line.cs" />
     <Compile Include="Classes\LowerHalfCircle.cs" />
+    <Compile Include="Classes\PathCommand.cs" />
     <Compile Include="Classes\RightEar.cs" />
     <Compile Include="Classes\RightHalfCircle.cs" />
     <Compile Include="Classes\Shape.cs" />

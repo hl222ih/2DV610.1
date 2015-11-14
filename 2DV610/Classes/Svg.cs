@@ -8,12 +8,18 @@ namespace _2DV610.Classes
 {
     public class Svg
     {
-        //public Symbol Symbol { get; private set; }
+        private PathCommand[] pathCommands;
 
+        public int CommandCount {
+            get
+            {
+                return 0;
+            }
+        }
         public Svg(string path)
         {
-            throw new NotImplementedException();
             //Symbol = new Symbol("");
         }
+
     }
 }
