@@ -23,5 +23,10 @@ namespace _2DV610.Classes
             absoluteElements = elems;
         }
 
+        public string GetRelativePath()
+        {
+            return relativeElements.ToString();
+        }
+
     }
 }

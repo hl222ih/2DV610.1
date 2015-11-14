@@ -424,6 +424,7 @@ namespace _2DV610.Test
             //string[] elements = new string[] { "M", "18", "64" };
             string svgPath = "M18,24";
             PathCommand command = new PathCommand(svgPath);
+            Assert.True(command.GetRelativePath() == "m18,24");
         }
 
     }
