@@ -8,9 +8,13 @@ namespace _2DV610.Classes
 {
     public class PathCommand
     {
-        public PathCommand(string[] elements)
+        string[] relativeElements;
+        string[] absoluteElements;
+
+        public PathCommand(string[] elements, float currentX = 0, float currentY = 0)
         {
-            throw new NotImplementedException();
+            relativeElements = elements;
+            absoluteElements = elements;
         }
     }
 }
