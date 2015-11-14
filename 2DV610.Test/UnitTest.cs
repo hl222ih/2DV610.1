@@ -410,5 +410,12 @@ namespace _2DV610.Test
             Assert.True(symbol3.Contains(shape));
             Assert.True(symbol4.Contains(shape));
         }
+
+        [Fact]
+        public void SvgTest()
+        {
+            Svg svg = new Svg("M18,64 A 32,32 0 0,1 82,64");
+        }
+
     }
 }
