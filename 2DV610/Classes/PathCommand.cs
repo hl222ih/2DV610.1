@@ -32,6 +32,14 @@ namespace _2DV610.Classes
                     relativeElements[2] = (float.Parse(elems[2]) - currentY).ToString();
                     absoluteElements[2] = elems[2];
                     break;
+                case "m":
+                    relativeElements[0] = "m";
+                    absoluteElements[0] = "M";
+                    relativeElements[1] = elems[1];
+                    absoluteElements[1] = (float.Parse(elems[1]) + currentX).ToString();
+                    relativeElements[2] = elems[2];
+                    absoluteElements[2] = (float.Parse(elems[2]) + currentY).ToString();
+                    break;
                 default:
                     break;
             }
