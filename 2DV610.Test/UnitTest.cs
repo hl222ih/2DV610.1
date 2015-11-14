@@ -4,8 +4,6 @@ using Xunit.Abstractions;
 using _2DV610;
 using _2DV610.Classes;
 
-//using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
-
 namespace _2DV610.Test
 {
 
@@ -436,6 +434,25 @@ namespace _2DV610.Test
             Assert.True(command4.GetRelativePath() == "m18,24");
             Assert.True(command4.GetAbsolutePath() == "M28,44");
 
+        }
+
+        [Fact]
+        public void APathCommandTest()
+        {
+            string svgPath1 = "A32,32 0 0,1 82,64";
+            string svgPath2 = "a32,32 0 0,1 64,0";
+            PathCommand command1 = new PathCommand(svgPath1);
+            PathCommand command2 = new PathCommand(svgPath1, 10, 20);
+            PathCommand command3 = new PathCommand(svgPath2);
+            PathCommand command4 = new PathCommand(svgPath2, 10, 20);
+            Assert.True(command1.GetRelativePath() == "a32,32 0 0,1 82,64");
+            Assert.True(command1.GetAbsolutePath() == "A32,32 0 0,1 82,64");
+            Assert.True(command2.GetRelativePath() == "a32,32 0 0,1 72,44");
+            Assert.True(command2.GetAbsolutePath() == "A32,32 0 0,1 82,64");
+            Assert.True(command3.GetRelativePath() == "a32,32 0 0,1 64,0");
+            Assert.True(command3.GetAbsolutePath() == "A32,32 0 0,1 64,0");
+            Assert.True(command4.GetRelativePath() == "a32,32 0 0,1 64,0");
+            Assert.True(command4.GetAbsolutePath() == "A32,32 0 0,1 74,20");
         }
 
     }
