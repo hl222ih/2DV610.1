@@ -18,14 +18,36 @@ namespace _2DV610.Classes
             MatchCollection matchList = Regex.Matches(svgCommandPath, @"([MmZzLlHhVvCcSsQqTtAa]|\d+(?:\.\d+)?)");
             //put the matched elements in an Array
             string[] elems = matchList.Cast<Match>().Select(match => match.Value).ToArray();
-            
-            relativeElements = elems;
-            absoluteElements = elems;
+
+            relativeElements = (string[])elems.Clone();
+            absoluteElements = (string[])elems.Clone();
+
+            switch (elems[0])
+            {
+                case "M":
+                    relativeElements[0] = "m";
+                    absoluteElements[0] = "M";
+                    relativeElements[1] = (float.Parse(elems[1]) - currentX).ToString();
+                    absoluteElements[1] = elems[1];
+                    relativeElements[2] = (float.Parse(elems[2]) - currentY).ToString();
+                    absoluteElements[2] = elems[2];
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         public string GetRelativePath()
         {
-            return relativeElements.ToString();
+            string path = String.Empty;
+
+            if (relativeElements[0] == "m")
+            {
+                path = String.Format("{0}{1},{2}", relativeElements[0], relativeElements[1], relativeElements[2]);
+            }
+
+            return path;
         }
 
     }
