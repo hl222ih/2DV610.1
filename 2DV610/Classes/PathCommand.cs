@@ -9,47 +9,58 @@ namespace _2DV610.Classes
 {
     public class PathCommand
     {
-        string[] relativeElements;
-        string[] absoluteElements;
+        private string[] relativeElements;
+        private string[] absoluteElements;
+        public float StartX { get; private set; }
+        public float StartY { get; private set; }
+        public float EndX { get; private set; }
+        public float EndY { get; private set; }
 
-        public PathCommand(string svgCommandPath, float currentX = 0, float currentY = 0)
+        public PathCommand(string svgCommandPath, float startX = 0, float startY = 0)
+        {
+            StartX = startX;
+            StartY = startY;
+            string[] elems = ParsePathElements(svgCommandPath);
+            AdjustElementsValues(elems);
+        }
+
+        private string[] ParsePathElements(string svgPath)
         {
             //match path elements that are valid path commands and floats
-            MatchCollection matchList = Regex.Matches(svgCommandPath, @"([MmZzLlHhVvCcSsQqTtAa]|\d+(?:\.\d+)?)");
+            MatchCollection matchList = Regex.Matches(svgPath, @"([MmZzLlHhVvCcSsQqTtAa]|\d+(?:\.\d+)?)");
             //put the matched elements in an Array
             string[] elems = matchList.Cast<Match>().Select(match => match.Value).ToArray();
 
+            return elems;
+        }
+
+        private void AdjustElementsValues(string[] elems)
+        {
             relativeElements = (string[])elems.Clone();
             absoluteElements = (string[])elems.Clone();
 
             relativeElements[0] = elems[0].ToLower();
             absoluteElements[0] = elems[0].ToUpper();
-
+            
             switch (elems[0])
             {
                 case "M":
-                    relativeElements[1] = (float.Parse(elems[1]) - currentX).ToString();
-                    relativeElements[2] = (float.Parse(elems[2]) - currentY).ToString();
-                    absoluteElements[1] = elems[1];
-                    absoluteElements[2] = elems[2];
+                    EndX = float.Parse(elems[1]) - StartX;
+                    relativeElements[1] = EndX.ToString();
+                    EndY = float.Parse(elems[2]) - StartY;
+                    relativeElements[2] = EndY.ToString();
                     break;
                 case "m":
-                    relativeElements[1] = elems[1];
-                    relativeElements[2] = elems[2];
-                    absoluteElements[1] = (float.Parse(elems[1]) + currentX).ToString();
-                    absoluteElements[2] = (float.Parse(elems[2]) + currentY).ToString();
+                    absoluteElements[1] = (float.Parse(elems[1]) + StartX).ToString();
+                    absoluteElements[2] = (float.Parse(elems[2]) + StartY).ToString();
                     break;
                 case "A":
-                    relativeElements[6] = (float.Parse(elems[6]) - currentX).ToString();
-                    relativeElements[7] = (float.Parse(elems[7]) - currentY).ToString();
-                    absoluteElements[6] = elems[6];
-                    absoluteElements[7] = elems[7];
+                    relativeElements[6] = (float.Parse(elems[6]) - StartX).ToString();
+                    relativeElements[7] = (float.Parse(elems[7]) - StartY).ToString();
                     break;
                 case "a":
-                    absoluteElements[6] = (float.Parse(elems[6]) + currentX).ToString();
-                    absoluteElements[7] = (float.Parse(elems[7]) + currentY).ToString();
-                    relativeElements[6] = elems[6];
-                    relativeElements[7] = elems[7];
+                    absoluteElements[6] = (float.Parse(elems[6]) + StartX).ToString();
+                    absoluteElements[7] = (float.Parse(elems[7]) + StartY).ToString();
                     break;
                 default:
                     break;
