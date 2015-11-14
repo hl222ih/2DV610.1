@@ -57,12 +57,16 @@ namespace _2DV610.Classes
                     absoluteElements[2] = EndY.ToString();
                     break;
                 case "A":
-                    relativeElements[6] = (float.Parse(elems[6]) - StartX).ToString();
-                    relativeElements[7] = (float.Parse(elems[7]) - StartY).ToString();
+                    EndX = float.Parse(elems[6]);
+                    EndY = float.Parse(elems[7]);
+                    relativeElements[6] = (EndX - StartX).ToString();
+                    relativeElements[7] = (EndY - StartY).ToString();
                     break;
                 case "a":
-                    absoluteElements[6] = (float.Parse(elems[6]) + StartX).ToString();
-                    absoluteElements[7] = (float.Parse(elems[7]) + StartY).ToString();
+                    EndX = float.Parse(elems[6]) + StartX;
+                    EndY = float.Parse(elems[7]) + StartY;
+                    absoluteElements[6] = EndX.ToString();
+                    absoluteElements[7] = EndY.ToString();
                     break;
                 default:
                     break;
