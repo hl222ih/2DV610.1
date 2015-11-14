@@ -433,11 +433,33 @@ namespace _2DV610.Test
             Assert.True(command3.GetAbsolutePath() == "M18,24");
             Assert.True(command4.GetRelativePath() == "m18,24");
             Assert.True(command4.GetAbsolutePath() == "M28,44");
+        }
+
+        [Fact]
+        public void MPathStartEndValuesTest()
+        {
+            string svgPath1 = "M18,24";
+            string svgPath2 = "m18,24";
+            PathCommand command1 = new PathCommand(svgPath1);
+            PathCommand command2 = new PathCommand(svgPath1, 10, 20);
+            PathCommand command3 = new PathCommand(svgPath2);
+            PathCommand command4 = new PathCommand(svgPath2, 10, 20);
             Assert.True(command1.StartX == 0);
             Assert.True(command1.StartY == 0);
             Assert.True(command1.EndX == 18);
             Assert.True(command1.EndY == 24);
-
+            Assert.True(command2.StartX == 10);
+            Assert.True(command2.StartY == 20);
+            Assert.True(command2.EndX == 18);
+            Assert.True(command2.EndY == 24);
+            Assert.True(command3.StartX == 0);
+            Assert.True(command3.StartY == 0);
+            Assert.True(command3.EndX == 18);
+            Assert.True(command3.EndY == 24);
+            Assert.True(command4.StartX == 10);
+            Assert.True(command4.StartY == 20);
+            Assert.True(command4.EndX == 28);
+            Assert.True(command4.EndY == 44);
         }
 
         [Fact]
