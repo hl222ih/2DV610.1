@@ -52,7 +52,14 @@ namespace _2DV610.Classes
 
         public string GetAbsolutePath()
         {
-            return GetRelativePath();
+            string path = String.Empty;
+
+            if (absoluteElements[0] == "M")
+            {
+                path = GetAbsoluteMoveToPath(absoluteElements[1], absoluteElements[2]);
+            }
+
+            return path;
         }
 
         private string GetRelativeMoveToPath(string x, string y)
@@ -60,6 +67,9 @@ namespace _2DV610.Classes
             return String.Format("m{0},{1}", x, y);
         }
 
-       
+        private string GetAbsoluteMoveToPath(string x, string y)
+        {
+            return String.Format("M{0},{1}", x, y);
+        }
     }
 }
