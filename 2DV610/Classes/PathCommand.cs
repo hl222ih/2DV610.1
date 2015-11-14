@@ -22,22 +22,21 @@ namespace _2DV610.Classes
             relativeElements = (string[])elems.Clone();
             absoluteElements = (string[])elems.Clone();
 
+            relativeElements[0] = elems[0].ToLower();
+            absoluteElements[0] = elems[0].ToUpper();
+
             switch (elems[0])
             {
                 case "M":
-                    relativeElements[0] = "m";
-                    absoluteElements[0] = "M";
                     relativeElements[1] = (float.Parse(elems[1]) - currentX).ToString();
-                    absoluteElements[1] = elems[1];
                     relativeElements[2] = (float.Parse(elems[2]) - currentY).ToString();
+                    absoluteElements[1] = elems[1];
                     absoluteElements[2] = elems[2];
                     break;
                 case "m":
-                    relativeElements[0] = "m";
-                    absoluteElements[0] = "M";
                     relativeElements[1] = elems[1];
-                    absoluteElements[1] = (float.Parse(elems[1]) + currentX).ToString();
                     relativeElements[2] = elems[2];
+                    absoluteElements[1] = (float.Parse(elems[1]) + currentX).ToString();
                     absoluteElements[2] = (float.Parse(elems[2]) + currentY).ToString();
                     break;
                 default:
