@@ -433,6 +433,10 @@ namespace _2DV610.Test
             Assert.True(command3.GetAbsolutePath() == "M18,24");
             Assert.True(command4.GetRelativePath() == "m18,24");
             Assert.True(command4.GetAbsolutePath() == "M28,44");
+            Assert.True(command1.StartX == 0);
+            Assert.True(command1.StartY == 0);
+            Assert.True(command1.EndX == 18);
+            Assert.True(command1.EndY == 24);
 
         }
 
