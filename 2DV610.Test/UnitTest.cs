@@ -501,7 +501,7 @@ namespace _2DV610.Test
         public void APathStartEndValuesTest()
         {
             string svgPath1 = "A32,32 0 0,1 82,64";
-            string svgPath2 = "a32,32 0 0,1 64,0";
+            string svgPath2 = "a32,32 0 0,1 -64,0";
             PathCommand command1 = new PathCommand(svgPath1);
             PathCommand command2 = new PathCommand(svgPath1, 10, 20);
             PathCommand command3 = new PathCommand(svgPath2);
@@ -516,12 +516,38 @@ namespace _2DV610.Test
             Assert.True(command2.EndY == 64);
             Assert.True(command3.StartX == 0);
             Assert.True(command3.StartY == 0);
-            Assert.True(command3.EndX == 64);
+            Assert.True(command3.EndX == -64);
             Assert.True(command3.EndY == 0);
             Assert.True(command4.StartX == 10);
             Assert.True(command4.StartY == 20);
-            Assert.True(command4.EndX == 74);
+            Assert.True(command4.EndX == -54);
             Assert.True(command4.EndY == 20);
         }
+
+        [Fact]
+        public void APathCommandIsTest()
+        {
+            PathCommand command1 = new PathCommand("A32,32 0 0,1 64,0");
+            PathCommand command2 = new PathCommand("a32,32 0 0,1 64,0");
+            PathCommand command3 = new PathCommand("a32,32 0 0,1 -64,0");
+            PathCommand command4 = new PathCommand("A32,32 0 1,0 64,0");
+            PathCommand command5 = new PathCommand("a32,32 0 1,0 64,0");
+            PathCommand command6 = new PathCommand("a32,32 0 1,0 -64,0");
+            Assert.False(command1.IsMoveToCommand());
+            Assert.True(command1.IsArcCommand());
+            Assert.True(command1.IsUpper());
+            Assert.False(command1.IsLower());
+            Assert.True(command2.IsUpper());
+            Assert.False(command2.IsLower());
+            Assert.False(command3.IsUpper());
+            Assert.True(command3.IsLower());
+            Assert.False(command4.IsUpper());
+            Assert.True(command4.IsLower());
+            Assert.False(command5.IsUpper());
+            Assert.True(command5.IsLower());
+            Assert.True(command6.IsUpper());
+            Assert.False(command6.IsLower());
+        }
+
     }
 }
