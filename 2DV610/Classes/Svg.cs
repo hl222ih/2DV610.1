@@ -38,7 +38,6 @@ namespace _2DV610.Classes
         }
         private string[] SplitMultiCommandSvgPath(string path)
         {
-            //MmZzLlHhVvCcSsQqTtAa
             MatchCollection matchList = Regex.Matches(path, @"([MmZzLlHhVvCcSsQqTtAa][^MmZzLlHhVvCcSsQqTtAa]*)");
             string[] paths = matchList.Cast<Match>().Select(match => match.Value).ToArray();
 

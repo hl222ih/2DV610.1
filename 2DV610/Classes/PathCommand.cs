@@ -28,7 +28,6 @@ namespace _2DV610.Classes
         {
             //match path elements that are valid path commands and floats
             MatchCollection matchList = Regex.Matches(svgPath, @"([MmZzLlHhVvCcSsQqTtAa]|\d+(?:\.\d+)?)");
-            //put the matched elements in an Array
             string[] elems = matchList.Cast<Match>().Select(match => match.Value).ToArray();
 
             return elems;
