@@ -285,6 +285,13 @@ namespace _2DV610.Classes
                 //adjust isRight
                 throw new NotImplementedException("Not implemented for the command type");
             }
+            if (type == CType.EllipticalArc)
+            {
+                if (relativeElements[5] == "1" && StartY <= EndY || relativeElements[5] == "0" && StartY >= EndY)
+                {
+                    isRight = true;
+                }
+            }
 
             return isRight;
         }
@@ -298,6 +305,13 @@ namespace _2DV610.Classes
             {
                 //adjust isLeft
                 throw new NotImplementedException("Not implemented for the command type");
+            }
+            if (type == CType.EllipticalArc)
+            {
+                if (relativeElements[5] == "1" && StartY >= EndY || relativeElements[5] == "0" && StartY <= EndY)
+                {
+                    isLeft = true;
+                }
             }
 
             return isLeft;
