@@ -38,7 +38,7 @@ namespace _2DV610.Classes
                         }
                         else if (c.IsUpper())
                         {
-                            //
+                            shape = new UpperHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
                         }
                     }
 
