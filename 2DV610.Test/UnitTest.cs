@@ -436,6 +436,18 @@ namespace _2DV610.Test
         }
 
         [Fact]
+        public void MPathCommandIsTest()
+        {
+            PathCommand command = new PathCommand("M18,24");
+            Assert.True(command.IsMoveToCommand());
+            Assert.False(command.IsArcCommand());
+            Assert.False(command.IsUpper());
+            Assert.False(command.IsLower());
+            Assert.False(command.IsRight());
+            Assert.False(command.IsLeft());
+        }
+
+        [Fact]
         public void MPathStartEndValuesTest()
         {
             string svgPath1 = "M18,24";
@@ -460,6 +472,10 @@ namespace _2DV610.Test
             Assert.True(command4.StartY == 20);
             Assert.True(command4.EndX == 28);
             Assert.True(command4.EndY == 44);
+            Assert.True(command1.CenterX == 18);
+            Assert.True(command1.CenterY == 24);
+            Assert.True(command1.RadiusX == 0);
+            Assert.True(command1.RadiusY == 0);
         }
 
         [Fact]
@@ -506,22 +522,6 @@ namespace _2DV610.Test
             Assert.True(command4.StartY == 20);
             Assert.True(command4.EndX == 74);
             Assert.True(command4.EndY == 20);
-        }
-
-        [Fact]
-        public void PathCommandTest()
-        {
-            PathCommand command = new PathCommand("M18,24");
-            Assert.True(command.IsMoveToCommand());
-            Assert.False(command.IsArcCommand());
-            Assert.False(command.IsUpper());
-            Assert.False(command.IsLower());
-            Assert.False(command.IsRight());
-            Assert.False(command.IsLeft());
-            Assert.True(command.CenterX == 18);
-            Assert.True(command.CenterY == 24);
-            Assert.True(command.RadiusX == 0);
-            Assert.True(command.RadiusY == 0);
         }
     }
 }
