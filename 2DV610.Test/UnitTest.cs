@@ -525,7 +525,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void APathCommandIsTest()
+        public void APathCommandIsUpperLowerTest()
         {
             PathCommand command1 = new PathCommand("A32,32 0 0,1 64,0");
             PathCommand command2 = new PathCommand("a32,32 0 0,1 64,0");
@@ -533,6 +533,8 @@ namespace _2DV610.Test
             PathCommand command4 = new PathCommand("A32,32 0 1,0 64,0");
             PathCommand command5 = new PathCommand("a32,32 0 1,0 64,0");
             PathCommand command6 = new PathCommand("a32,32 0 1,0 -64,0");
+            PathCommand command7 = new PathCommand("a32,32 0 1,0 0,64");
+            PathCommand command8 = new PathCommand("a32,32 0 1,0 0,-64");
             Assert.False(command1.IsMoveToCommand());
             Assert.True(command1.IsArcCommand());
             Assert.True(command1.IsUpper());
@@ -547,6 +549,10 @@ namespace _2DV610.Test
             Assert.True(command5.IsLower());
             Assert.True(command6.IsUpper());
             Assert.False(command6.IsLower());
+            Assert.True(command7.IsUpper());
+            Assert.True(command7.IsLower());
+            Assert.True(command8.IsUpper());
+            Assert.True(command8.IsLower());
         }
 
     }
