@@ -114,7 +114,6 @@
     <Compile Include="Classes\Shape.cs" />
     <Compile Include="Classes\ShapeType.cs" />
     <Compile Include="Classes\QuarterCircle.cs" />
-    <Compile Include="Classes\Svg.cs" />
     <Compile Include="Classes\Symbol.cs" />
     <Compile Include="Classes\UpperHalfCircle.cs" />
     <Compile Include="MainPage.xaml.cs">

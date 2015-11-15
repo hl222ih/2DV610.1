@@ -9,10 +9,26 @@ namespace _2DV610.Classes
 {
     public class Symbol
     {
-        List<Symbol> symbols;
-        List<Shape> shapes;
+        private List<Symbol> symbols;
+        private List<Shape> shapes;
+        private string[] pathElements;
+        private List<PathCommand> pathCommands; //extracted from path, used to create shapes
 
-        string[] pathElements;
+        public PathCommand[] PathCommands
+        {
+            get
+            {
+                return pathCommands.ToArray();
+            }
+        }
+
+        public int CommandCount
+        {
+            get
+            {
+                return pathCommands.Count;
+            }
+        }
 
         public Symbol(PathCommand[] commands)
         {
@@ -51,118 +67,37 @@ namespace _2DV610.Classes
         }
         public Symbol(string svgPath)
         {
-            symbols = new List<Symbol>();
-            shapes = new List<Shape>();
-            
-            MatchCollection matchList = Regex.Matches(svgPath, @"(\d+|[MAa]|,)");
-            pathElements = matchList.Cast<Match>().Select(match => match.Value).ToArray();
+            Initialize(svgPath);
 
-            int currentX = 0;
-            int currentY = 0;
-
-            //Mx,y mx,y
-            //Lx,y lx,y
-            //Vx,y vx,y
-            //Hx,y hx,y
-            //Arx,ry 0 1,0 endX,endY
-            for (int i = 0; i < pathElements.Length; i++)
+            for (int i = 0; i < pathCommands.Count; i++)
             {
-                if (pathElements[i] == "M")
-                {
-                    //TODO: check that pathElements have enough elements for M.
-                    int x = 0;
-                    int y = 0;
-                    if (int.TryParse(pathElements[i + 1], out x) &&
-                        pathElements[i + 2] == "," &&
-                        int.TryParse(pathElements[i + 3], out y))
-                    {
-                        currentX = x;
-                        currentY = y;
+                PathCommand c = pathCommands[i];
 
-                        i += 3;
-                    }
-                    //else
-                    //{
-                    //throw new FormatException("Couldn't parse passed in string");
-                    //}
+                if (c.IsMoveToCommand())
+                {
+                    //
                 }
-                else if (pathElements[i].Equals("A", StringComparison.OrdinalIgnoreCase))
+                else if (pathCommands[i].IsArcCommand())
                 {
-                    //TODO: check that pathElements have enough elements for A/a.
-                    int rx = 0;
-                    int ry = 0;
-                    int x = 0;
-                    int y = 0;
-                    double disregard;
-
-                    if (int.TryParse(pathElements[i + 1], out rx) &&
-                        pathElements[i + 2] == "," &&
-                        int.TryParse(pathElements[i + 3], out ry) &&
-                        double.TryParse(pathElements[i + 4], out disregard) &&
-                        (pathElements[i + 5] == "0" || pathElements[i + 5] == "1") &&
-                        pathElements[i + 6] == "," &&
-                        (pathElements[i + 7] == "0" || pathElements[i + 7] == "1") &&
-                        int.TryParse(pathElements[i + 8], out x) &&
-                        pathElements[i + 9] == "," &&
-                        int.TryParse(pathElements[i + 10], out y))
+                    Shape shape = null;
+                    if (c.RadiusX == c.RadiusY && c.StartY == c.EndY) //IsCircular, IsHorizontal
                     {
-
-
-                        Shape shape;
-                        if (pathElements[i + 7] == "0") //sweep-flag is 0
+                        if (c.IsLower())
                         {
-                            if (currentX < x) //left-to-right
-                            {
-                                shape = new LowerHalfCircle(currentX + rx, currentY, rx);
-                            }
-                            else //right-to-left
-                            {
-                                shape = new UpperHalfCircle(currentX - rx, currentY, rx);
-                            }
+                            shape = new LowerHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
                         }
-                        else //sweep-flag is 1
+                        else if (c.IsUpper())
                         {
-                            if (currentX > x) //right-to-left
-                            {
-                                shape = new LowerHalfCircle(currentX - rx, currentY, rx);
-                            }
-                            else //left-to-right
-                            {
-                                shape = new UpperHalfCircle(currentX + rx, currentY, rx);
-                            }
+                            shape = new UpperHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
                         }
+                    }
 
+                    if (shape != null)
+                    {
                         shapes.Add(shape);
-
-                        //adjust current coordinates
-                        if (pathElements[i] == "a") //relative
-                        {
-                            currentX += x;
-                            currentY += y;
-                        }
-                        else //"A", absolute
-                        {
-                            currentX = x;
-                            currentY = y;
-                        }
-
-                        i += 10;
                     }
-                    //else
-                    //{
-                    //throw new FormatException("Couldn't parse passed in string");
-                    //}
                 }
-                //else
-                //{
-                //throw new FormatException("Couldn't parse passed in string");
-                //}
             }
-
-            //foreach (Symbol symbol in symbols)
-            //{
-            //throw new NotImplementedException();
-            //}
         }
 
         public Symbol(string[] svgPaths)
@@ -184,5 +119,35 @@ namespace _2DV610.Classes
         {
             return shapes.Exists(s => s.HorizontallyTranslates(shape));
         }
+
+        private void Initialize(string svgPath)
+        {
+            pathCommands = new List<PathCommand>();
+            string[] paths = SplitMultiCommandSvgPath(svgPath);
+            float startX = 0;
+            float startY = 0;
+            for (int i = 0; i < paths.Length; i++)
+            {
+                PathCommand command = new PathCommand(paths[i], startX, startY);
+                startX = command.EndX;
+                startY = command.EndY;
+                pathCommands.Add(command);
+            }
+
+            symbols = new List<Symbol>();
+            shapes = new List<Shape>();
+
+            MatchCollection matchList = Regex.Matches(svgPath, @"(\d+|[MAa]|,)");
+            pathElements = matchList.Cast<Match>().Select(match => match.Value).ToArray();
+
+        }
+        private string[] SplitMultiCommandSvgPath(string path)
+        {
+            MatchCollection matchList = Regex.Matches(path, @"([MmZzLlHhVvCcSsQqTtAa][^MmZzLlHhVvCcSsQqTtAa]*)");
+            string[] paths = matchList.Cast<Match>().Select(match => match.Value).ToArray();
+
+            return paths;
+        }
+
     }
 }
