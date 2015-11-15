@@ -383,8 +383,8 @@ namespace _2DV610.Test
         public void SymbolOfLowerHalfCircleTest()
         {
             Shape shape = new LowerHalfCircle(50, 64, 32);
-            Svg svg1 = new Svg("M18,64 A 32,32 0 0,0 82,64");
-            Svg svg2 = new Svg("M18,64 a 32,32 0 0,0 64,0");
+            Svg svg1 = new Svg("M18,64 A 32,32 0 1,0 82,64");
+            Svg svg2 = new Svg("M18,64 a 32,32 0 1,0 64,0");
             Svg svg3 = new Svg("M82,64 A 32,32 0 0,1 18,64");
             Svg svg4 = new Svg("M82,64 a 32,32 0 0,1 -64,0");
             Symbol symbol1 = new Symbol(svg1.PathCommands);
@@ -406,11 +406,19 @@ namespace _2DV610.Test
         public void SymbolOfUpperHalfCircleTest()
         {
             Shape shape = new UpperHalfCircle(50, 64, 32);
+            Svg svg1 = new Svg("M18,64 A 32,32 0 0,1 82,64");
+            Svg svg2 = new Svg("M18,64 a 32,32 0 0,1 64,0");
+            Svg svg3 = new Svg("M82,64 A 32,32 0 1,0 18,64");
+            Svg svg4 = new Svg("M82,64 a 32,32 0 1,0 -64,0");
+            Symbol symbol1 = new Symbol(svg1.PathCommands);
+            Symbol symbol2 = new Symbol(svg2.PathCommands);
+            Symbol symbol3 = new Symbol(svg3.PathCommands);
+            Symbol symbol4 = new Symbol(svg4.PathCommands);
 
-            Symbol symbol1 = new Symbol("M18,64 A 32,32 0 0,1 82,64"); //absolute left to right
-            Symbol symbol2 = new Symbol("M18,64 a 32,32 0 0,1 64,0"); //relative left to right
-            Symbol symbol3 = new Symbol("M82,64 A 32,32 0 0,0 18,64"); //absolute right to left
-            Symbol symbol4 = new Symbol("M82,64 a 32,32 0 0,0 -64,0"); //relative right to left
+            //Symbol symbol1 = new Symbol("M18,64 A 32,32 0 0,1 82,64"); //absolute left to right
+            //Symbol symbol2 = new Symbol("M18,64 a 32,32 0 0,1 64,0"); //relative left to right
+            //Symbol symbol3 = new Symbol("M82,64 A 32,32 0 0,0 18,64"); //absolute right to left
+            //Symbol symbol4 = new Symbol("M82,64 a 32,32 0 0,0 -64,0"); //relative right to left
             Assert.True(symbol1.Contains(shape));
             Assert.True(symbol2.Contains(shape));
             Assert.True(symbol3.Contains(shape));
