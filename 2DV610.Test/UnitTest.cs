@@ -555,5 +555,33 @@ namespace _2DV610.Test
             Assert.True(command8.IsLower());
         }
 
+        [Fact]
+        public void APathCommandIsRightLeftTest()
+        {
+            PathCommand command1 = new PathCommand("A32,32 0 0,1 0,64");
+            PathCommand command2 = new PathCommand("a32,32 0 0,1 0,64");
+            PathCommand command3 = new PathCommand("a32,32 0 0,1 0,-64");
+            PathCommand command4 = new PathCommand("A32,32 0 1,0 0,64");
+            PathCommand command5 = new PathCommand("a32,32 0 1,0 0,64");
+            PathCommand command6 = new PathCommand("a32,32 0 1,0 0,-64");
+            PathCommand command7 = new PathCommand("a32,32 0 1,0 64,0");
+            PathCommand command8 = new PathCommand("a32,32 0 1,0 -64,0");
+            Assert.True(command1.IsRight());
+            Assert.False(command1.IsLeft());
+            Assert.True(command2.IsRight());
+            Assert.False(command2.IsLeft());
+            Assert.False(command3.IsRight());
+            Assert.True(command3.IsLeft());
+            Assert.False(command4.IsRight());
+            Assert.True(command4.IsLeft());
+            Assert.False(command5.IsRight());
+            Assert.True(command5.IsLeft());
+            Assert.True(command6.IsRight());
+            Assert.False(command6.IsLeft());
+            Assert.True(command7.IsRight());
+            Assert.True(command8.IsLeft());
+            Assert.True(command7.IsRight());
+            Assert.True(command8.IsLeft());
+        }
     }
 }
