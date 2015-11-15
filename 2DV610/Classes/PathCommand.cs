@@ -323,5 +323,19 @@ namespace _2DV610.Classes
             return isLeft;
         }
 
+        public bool IsCircular()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsHorizontal()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsVertical()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -587,5 +587,29 @@ namespace _2DV610.Test
             Assert.True(command7.IsRight());
             Assert.True(command8.IsLeft());
         }
+
+        [Fact]
+        public void APathCommandIsCircularVerticalHorizontalTest()
+        {
+            PathCommand command1 = new PathCommand("a32,32 0 0,1 64,0");
+            PathCommand command2 = new PathCommand("a32,16 0 0,1 64,0");
+            PathCommand command3 = new PathCommand("a32,16 0 1,0 0,64");
+            PathCommand command4 = new PathCommand("a32,32 0 1,0 0,64");
+            Assert.True(command1.IsCircular());
+            Assert.False(command2.IsCircular());
+            Assert.False(command3.IsCircular());
+            Assert.True(command4.IsCircular());
+            Assert.True(command1.IsHorizontal());
+            Assert.True(command2.IsHorizontal());
+            Assert.False(command3.IsHorizontal());
+            Assert.False(command4.IsHorizontal());
+            Assert.False(command1.IsVertical());
+            Assert.False(command2.IsVertical());
+            Assert.True(command3.IsVertical());
+            Assert.True(command4.IsVertical());
+
+        }
+
+
     }
 }
