@@ -115,6 +115,10 @@ namespace _2DV610.Classes
                             {
                                 shape = new LeftHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
                             }
+                            else if (c.IsRight())
+                            {
+                                shape = new RightHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
+                            }
                         }
                     }
 
