@@ -46,7 +46,7 @@ namespace _2DV610.Classes
                 else if (commands[i].IsArcCommand())
                 {
                     Shape shape = null;
-                    if (c.RadiusX == c.RadiusY && c.StartY == c.EndY) //IsCircular, IsHorizontal
+                    if (c.IsCircular() && c.IsHorizontal())
                     {
                         if (c.IsLower())
                         {
