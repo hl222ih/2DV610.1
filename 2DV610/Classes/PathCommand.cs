@@ -46,6 +46,9 @@ namespace _2DV610.Classes
                     case CType.MoveTo:
                         cx = EndX;
                         break;
+                    case CType.EllipticalArc:
+                        cx = (StartX + EndX) / 2;
+                        break;
                     default:
                     break;
                 }
@@ -64,6 +67,9 @@ namespace _2DV610.Classes
                     case CType.MoveTo:
                         cy = EndY;
                         break;
+                    case CType.EllipticalArc:
+                        cy = (StartY + EndY) / 2;
+                        break;
                     default:
                         break;
                 }
@@ -80,7 +86,7 @@ namespace _2DV610.Classes
                 switch (type)
                 {
                     case CType.EllipticalArc:
-                        rx = -1; //add logic
+                        float.TryParse(relativeElements[1], out rx);
                         break;
                     default:
                         break;
@@ -98,7 +104,7 @@ namespace _2DV610.Classes
                 switch (type)
                 {
                     case CType.EllipticalArc:
-                        ry = -1; //add logic
+                        float.TryParse(relativeElements[2], out ry);
                         break;
                     default:
                         break;

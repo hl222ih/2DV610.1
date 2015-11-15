@@ -16,6 +16,38 @@ namespace _2DV610.Classes
 
         public Symbol(PathCommand[] commands)
         {
+            symbols = new List<Symbol>();
+            shapes = new List<Shape>();
+
+            for (int i = 0; i < commands.Length; i++)
+            {
+                PathCommand c = commands[i];
+                
+                if (c.IsMoveToCommand())
+                {
+                    //
+                }
+                else if (commands[i].IsArcCommand())
+                {
+                    Shape shape = null;
+                    if (c.RadiusX == c.RadiusY && c.StartY == c.EndY) //IsCircular, IsHorizontal
+                    {
+                        if (c.IsLower())
+                        {
+                            shape = new LowerHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
+                        }
+                        else if (c.IsUpper())
+                        {
+                            //
+                        }
+                    }
+
+                    if (shape != null)
+                    {
+                        shapes.Add(shape);
+                    }
+                }
+            }
         }
         public Symbol(string svgPath)
         {
