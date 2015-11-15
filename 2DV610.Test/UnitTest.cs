@@ -607,9 +607,6 @@ namespace _2DV610.Test
             Assert.False(command2.IsVertical());
             Assert.True(command3.IsVertical());
             Assert.True(command4.IsVertical());
-
         }
-
-
     }
 }

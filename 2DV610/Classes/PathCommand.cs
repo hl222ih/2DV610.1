@@ -325,17 +325,53 @@ namespace _2DV610.Classes
 
         public bool IsCircular()
         {
-            throw new NotImplementedException();
+            bool isCircular = false;
+            CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
+
+            if (undefined.Contains(type))
+            {
+                throw new NotImplementedException("Not implemented for the command type");
+            }
+            if (type == CType.EllipticalArc)
+            {
+                isCircular = RadiusX == RadiusY;
+            }
+
+            return isCircular;
         }
 
         public bool IsHorizontal()
         {
-            throw new NotImplementedException();
+            bool isHorizontal = false;
+            CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
+
+            if (undefined.Contains(type))
+            {
+                throw new NotImplementedException("Not implemented for the command type");
+            }
+            if (type == CType.EllipticalArc)
+            {
+                isHorizontal = StartY == EndY;
+            }
+
+            return isHorizontal;
         }
 
         public bool IsVertical()
         {
-            throw new NotImplementedException();
+            bool isVertical = false;
+            CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
+
+            if (undefined.Contains(type))
+            {
+                throw new NotImplementedException("Not implemented for the command type");
+            }
+            if (type == CType.EllipticalArc)
+            {
+                isVertical = StartX == EndX;
+            }
+
+            return isVertical;
         }
     }
 }
