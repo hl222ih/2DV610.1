@@ -11,10 +11,16 @@ namespace _2DV610.Classes
     {
         private string[] relativeElements;
         private string[] absoluteElements;
+
         public float StartX { get; private set; }
         public float StartY { get; private set; }
         public float EndX { get; private set; }
         public float EndY { get; private set; }
+
+        public float CenterX { get; private set; }
+        public float CenterY { get; private set; }
+        public float RadiusX { get; private set; }
+        public float RadiusY { get; private set; }
 
         public PathCommand(string svgCommandPath, float startX = 0, float startY = 0)
         {
@@ -125,5 +131,34 @@ namespace _2DV610.Classes
             return String.Format("A{0},{1} {2} {3},{4} {5},{6}", rx, ry, xAxisRotation, largeArcFlag, sweepFlag, x, y);
         }
 
+        public bool IsMoveToCommand()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsArcCommand()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsUpper()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsLower()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsRight()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsLeft()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

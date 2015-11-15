@@ -508,5 +508,20 @@ namespace _2DV610.Test
             Assert.True(command4.EndY == 20);
         }
 
+        [Fact]
+        public void PathCommandTest()
+        {
+            PathCommand command = new PathCommand("M18,24");
+            Assert.True(command.IsMoveToCommand());
+            Assert.False(command.IsArcCommand());
+            Assert.False(command.IsUpper());
+            Assert.False(command.IsLower());
+            Assert.False(command.IsRight());
+            Assert.False(command.IsLeft());
+            Assert.True(command.CenterX == 18);
+            Assert.True(command.CenterY == 24);
+            Assert.True(command.RadiusX == 0);
+            Assert.True(command.RadiusY == 0);
+        }
     }
 }
