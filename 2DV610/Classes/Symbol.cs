@@ -30,41 +30,56 @@ namespace _2DV610.Classes
             }
         }
 
-        public Symbol(PathCommand[] commands)
-        {
-            symbols = new List<Symbol>();
-            shapes = new List<Shape>();
+        //public Symbol(PathCommand[] commands)
+        //{
+        //    shapes.Add(new LeftHalfCircle(50, 64, 32));
+        //    symbols = new List<Symbol>();
+        //    shapes = new List<Shape>();
 
-            for (int i = 0; i < commands.Length; i++)
-            {
-                PathCommand c = commands[i];
+        //    for (int i = 0; i < commands.Length; i++)
+        //    {
+        //        PathCommand c = commands[i];
                 
-                if (c.IsMoveToCommand())
-                {
-                    //
-                }
-                else if (commands[i].IsArcCommand())
-                {
-                    Shape shape = null;
-                    if (c.IsCircular() && c.IsHorizontal())
-                    {
-                        if (c.IsLower())
-                        {
-                            shape = new LowerHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
-                        }
-                        else if (c.IsUpper())
-                        {
-                            shape = new UpperHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
-                        }
-                    }
+        //        if (c.IsMoveToCommand())
+        //        {
+        //            //
+        //        }
+        //        else if (commands[i].IsArcCommand())
+        //        {
+        //            Shape shape = null;
+        //            if (c.IsCircular())
+        //            {
+        //                if (c.IsHorizontal())
+        //                {
+        //                    if (c.IsLower())
+        //                    {
+        //                        shape = new LowerHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
+        //                    }
+        //                    else if (c.IsUpper())
+        //                    {
+        //                        shape = new UpperHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
+        //                    }
+        //                }
+        //                else 
+        //                if (c.IsVertical())
+        //                {
+        //                    shape = new LeftHalfCircle(50, 64, 32);
+        //                    if (c.IsLeft())
+        //                    {
+        //                        shape = new LeftHalfCircle(50, 64, 32);
+        //                        //(int)c.CenterX, (int)c.CenterY, (int)c.RadiusY
+        //                    }
+        //                }
+        //            }
+        //            shape = new LeftHalfCircle(50, 64, 32);
 
-                    if (shape != null)
-                    {
-                        shapes.Add(shape);
-                    }
-                }
-            }
-        }
+        //            if (shape != null)
+        //            {
+        //                shapes.Add(shape);
+        //            }
+        //        }
+        //    }
+        //}
         public Symbol(string svgPath)
         {
             Initialize(svgPath);
@@ -77,18 +92,29 @@ namespace _2DV610.Classes
                 {
                     //
                 }
-                else if (pathCommands[i].IsArcCommand())
+                else if (c.IsArcCommand())
                 {
                     Shape shape = null;
-                    if (c.RadiusX == c.RadiusY && c.StartY == c.EndY) //IsCircular, IsHorizontal
+                    if (c.IsCircular())
                     {
-                        if (c.IsLower())
+                        if (c.IsHorizontal())
                         {
-                            shape = new LowerHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
+                            if (c.IsLower())
+                            {
+                                shape = new LowerHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
+                            }
+                            else if (c.IsUpper())
+                            {
+                                shape = new UpperHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
+                            }
                         }
-                        else if (c.IsUpper())
+                        else
+                        if (c.IsVertical())
                         {
-                            shape = new UpperHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
+                            if (c.IsLeft())
+                            {
+                                shape = new LeftHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
+                            }
                         }
                     }
 
