@@ -119,7 +119,7 @@ namespace _2DV610.Classes
         private string[] ParsePathElements(string svgPath)
         {
             //match path elements that are valid path commands and floats
-            MatchCollection matchList = Regex.Matches(svgPath, @"([MmZzLlHhVvCcSsQqTtAa]|\d+(?:\.\d+)?)");
+            MatchCollection matchList = Regex.Matches(svgPath, @"([MmZzLlHhVvCcSsQqTtAa]|\-?\d+(?:\.\d+)?)");
             string[] elems = matchList.Cast<Match>().Select(match => match.Value).ToArray();
 
             return elems;
@@ -235,12 +235,19 @@ namespace _2DV610.Classes
         public bool IsUpper()
         {
             bool isUpper = false;
-            CType[] undefined = new CType[] { CType.Undefined, CType.EllipticalArc, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
+            CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
             if (undefined.Contains(type))
             {
                 //adjust isUpper
                 throw new NotImplementedException("Not implemented for the command type");
+            }
+            if (type == CType.EllipticalArc)
+            {
+                if (relativeElements[5] == "1" && StartX <= EndX || relativeElements[5] == "0" && StartX >= EndX)
+                {
+                    isUpper = true;
+                }
             }
 
             return isUpper;
@@ -249,12 +256,20 @@ namespace _2DV610.Classes
         public bool IsLower()
         {
             bool isLower = false;
-            CType[] undefined = new CType[] { CType.Undefined, CType.EllipticalArc, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
+            CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
             if (undefined.Contains(type))
             {
                 //adjust isLower
                 throw new NotImplementedException("Not implemented for the command type");
+            }
+
+            if (type == CType.EllipticalArc)
+            {
+                if (relativeElements[5] == "1" && StartX >= EndX || relativeElements[5] == "0" && StartX <= EndX)
+                {
+                    isLower = true;
+                }
             }
 
             return isLower;
@@ -263,7 +278,7 @@ namespace _2DV610.Classes
         public bool IsRight()
         {
             bool isRight = false;
-            CType[] undefined = new CType[] { CType.Undefined, CType.EllipticalArc, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
+            CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
             if (undefined.Contains(type))
             {
@@ -277,7 +292,7 @@ namespace _2DV610.Classes
         public bool IsLeft()
         {
             bool isLeft = false;
-            CType[] undefined = new CType[] { CType.Undefined, CType.EllipticalArc, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
+            CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
             if (undefined.Contains(type))
             {
