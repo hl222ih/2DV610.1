@@ -14,7 +14,7 @@ namespace _2DV610.Classes
 
         string[] pathElements;
 
-        public Symbol(PathCommand command)
+        public Symbol(PathCommand[] commands)
         {
         }
         public Symbol(string svgPath)

@@ -4,12 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Collections.ObjectModel;
 
 namespace _2DV610.Classes
 {
     public class Svg
     {
-        private List<PathCommand> pathCommands;
+        List<PathCommand> pathCommands;
+
+        public PathCommand[] PathCommands
+        {
+            get
+            {
+                return pathCommands.ToArray();
+            }
+        }
 
         public int CommandCount {
             get
@@ -43,5 +52,6 @@ namespace _2DV610.Classes
 
             return paths;
         }
+
     }
 }
