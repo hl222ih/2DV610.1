@@ -30,11 +30,31 @@ namespace _2DV610.Classes
         private string[] relativeElements;
         private string[] absoluteElements;
 
+        /// <summary>
+        /// Gets the x coordinate of the point the path command is originating from.
+        /// </summary>
         public float StartX { get; private set; }
+
+        /// <summary>
+        /// Gets the y coordinate of the point the path command is originating from.
+        /// </summary>
         public float StartY { get; private set; }
+
+        /// <summary>
+        /// Gets the x coordinate of the point the path command is finishing in.
+        /// </summary>
         public float EndX { get; private set; }
+
+        /// <summary>
+        /// Gets the y coordinate of the point the path command is finishing in.
+        /// </summary>
         public float EndY { get; private set; }
 
+        /// <summary>
+        /// Gets the x coordinate of the middle point between the start and end point.
+        /// For M command: Same as EndX.
+        /// For A command: the x coordinate of the fully drawn circle/ellipse's center point.
+        /// </summary>
         public float CenterX
         {
             get
@@ -56,6 +76,12 @@ namespace _2DV610.Classes
                 return cx;
             }
         }
+
+        /// <summary>
+        /// Gets the y coordinate of the middle point between the start and end point.
+        /// For M command: Same as EndY.
+        /// For A command: the y coordinate of the fully drawn circle/ellipse's center point.
+        /// </summary>
         public float CenterY
         {
             get
@@ -77,6 +103,12 @@ namespace _2DV610.Classes
                 return cy;
             }
         }
+
+        /// <summary>
+        /// Gets the value 0.
+        /// For A command: The distance between a point on the left/right boundary to the center point of a non tilted circle/ellipse.
+        /// The x radius value does not change if the circle/ellipse is tilted.
+        /// </summary>
         public float RadiusX
         {
             get
@@ -95,6 +127,12 @@ namespace _2DV610.Classes
                 return rx;
             }
         }
+
+        /// <summary>
+        /// Gets the value 0.
+        /// For A command: The distance between a point on the upper/lower boundary to the center point of a non tilted circle/ellipse.
+        ///                The y radius value does not change if the circle/ellipse is tilted.
+        /// </summary>
         public float RadiusY
         {
             get
@@ -114,6 +152,17 @@ namespace _2DV610.Classes
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PathCommand"/> class.
+        /// Only pass a single command.
+        /// If M18,64a32,32 0 0,1 64,0a32,32 0 0,1 -64,0 is the full path, pass
+        /// "M18,64" first time and
+        /// "a32,32 0 0,1 64,0", 18, 64 next time.
+        /// Supports only a small subset of correct path data syntax and will throw an exception if string is not entirely parsable.
+        /// </summary>
+        /// <param name="svgCommandPath">The SVG command path.</param>
+        /// <param name="startX">The current x coordinate (default 0).</param>
+        /// <param name="startY">The current y coordinate (default 0).</param>
         public PathCommand(string svgCommandPath, float startX = 0, float startY = 0)
         {
             StartX = startX;
@@ -122,15 +171,24 @@ namespace _2DV610.Classes
             AdjustElementsValues(elems);
         }
 
-        private string[] ParsePathElements(string svgPath)
+        /// <summary>
+        /// Parses the command path into path elements: absolute and relative commands MmZzLlHhVvCcSsQqTtAa and float values.
+        /// </summary>
+        /// <param name="svgCommandPath">The SVG path.</param>
+        /// <returns>String array of the parsed svgCommandPath</returns>
+        private string[] ParsePathElements(string svgCommandPath)
         {
-            //match path elements that are valid path commands and floats
-            MatchCollection matchList = Regex.Matches(svgPath, @"([MmZzLlHhVvCcSsQqTtAa]|\-?\d+(?:\.\d+)?)");
+            MatchCollection matchList = Regex.Matches(svgCommandPath, @"([MmZzLlHhVvCcSsQqTtAa]|\-?\d+(?:\.\d+)?)");
             string[] elems = matchList.Cast<Match>().Select(match => match.Value).ToArray();
 
             return elems;
         }
 
+        /// <summary>
+        /// Adjusts the elements values, so that no matter if the original path was given with absolute or relative values,
+        /// there will be an array of relative commands and relative values as well as an array of absolute commands and absolute values;
+        /// </summary>
+        /// <param name="elems">The elements from a svg command path.</param>
         private void AdjustElementsValues(string[] elems)
         {
             relativeElements = (string[])elems.Clone();
@@ -176,6 +234,10 @@ namespace _2DV610.Classes
 
         }
 
+        /// <summary>
+        /// Gets the relative command path.
+        /// </summary>
+        /// <returns>The command path with relative commands and values.</returns>
         public string GetRelativePath()
         {
             string path = String.Empty;
@@ -192,6 +254,10 @@ namespace _2DV610.Classes
             return path;
         }
 
+        /// <summary>
+        /// Gets the absolute command path.
+        /// </summary>
+        /// <returns>The command path with absolute commands and values.</returns>
         public string GetAbsolutePath()
         {
             string path = String.Empty;

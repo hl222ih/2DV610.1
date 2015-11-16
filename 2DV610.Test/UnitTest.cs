@@ -177,7 +177,7 @@ namespace _2DV610.Test
             Circle circle1 = new Circle(84, 64, 32);
             Circle circle2 = new Circle(52, 32, 64, false);
             Assert.True(circle1.Equals(circle2), "the circles should be equal");
-            Assert.True(circle1.GetHashCode() == circle2.GetHashCode(), "the circles should generate the same hash code");
+            Assert.Equal(circle1.GetHashCode(), circle2.GetHashCode()); //the circles should generate the same hash code
         }
 
         [Fact]
@@ -621,10 +621,15 @@ namespace _2DV610.Test
         [Fact]
         public void APathCommandIsCircularVerticalHorizontalTest()
         {
+            //line in the shape of a lower half circle, clockwise from left to right, horizontal (line between start y and end y) 
             PathCommand command1 = new PathCommand("a32,32 0 0,1 64,0");
+            //like above, but elliptic with half the radius.
             PathCommand command2 = new PathCommand("a32,16 0 0,1 64,0");
+            //line in the shape of a right half ellipse (half radius compared to circle), counter-clockwise from top to bottom, vertical (line between start x and end x)
             PathCommand command3 = new PathCommand("a32,16 0 1,0 0,64");
+            //like above but a right half circle
             PathCommand command4 = new PathCommand("a32,32 0 1,0 0,64");
+
             Assert.True(command1.IsCircular());
             Assert.False(command2.IsCircular());
             Assert.False(command3.IsCircular());
