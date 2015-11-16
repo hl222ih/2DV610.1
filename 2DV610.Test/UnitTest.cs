@@ -31,31 +31,31 @@ namespace _2DV610.Test
             RightEar rightEar = new RightEar(0,0);
             Heart heart = new Heart();
 
-            Assert.True(line.ShapeType.Equals(ShapeType.Line));
-            Assert.True(circle.ShapeType.Equals(ShapeType.Circle));
-            Assert.True(leftHalfCircle.ShapeType.Equals(ShapeType.LeftHalfCircle));
-            Assert.True(rightHalfCircle.ShapeType.Equals(ShapeType.RightHalfCircle));
-            Assert.True(upperHalfCircle.ShapeType.Equals(ShapeType.UpperHalfCircle));
-            Assert.True(lowerHalfCircle.ShapeType.Equals(ShapeType.LowerHalfCircle));
-            Assert.True(quarterCircle.ShapeType.Equals(ShapeType.QuarterCircle));
-            Assert.True(eighthCircle.ShapeType.Equals(ShapeType.EighthCircle));
-            Assert.True(leftEar.ShapeType.Equals(ShapeType.LeftEar));
-            Assert.True(rightEar.ShapeType.Equals(ShapeType.RightEar));
-            Assert.True(heart.ShapeType.Equals(ShapeType.Heart));
+            Assert.Equal(ShapeType.Line, line.ShapeType);
+            Assert.Equal(ShapeType.Circle, circle.ShapeType);
+            Assert.Equal(ShapeType.LeftHalfCircle, leftHalfCircle.ShapeType);
+            Assert.Equal(ShapeType.RightHalfCircle, rightHalfCircle.ShapeType);
+            Assert.Equal(ShapeType.UpperHalfCircle, upperHalfCircle.ShapeType);
+            Assert.Equal(ShapeType.LowerHalfCircle, lowerHalfCircle.ShapeType);
+            Assert.Equal(ShapeType.QuarterCircle, quarterCircle.ShapeType);
+            Assert.Equal(ShapeType.EighthCircle, eighthCircle.ShapeType);
+            Assert.Equal(ShapeType.LeftEar, leftEar.ShapeType);
+            Assert.Equal(ShapeType.RightEar, rightEar.ShapeType);
+            Assert.Equal(ShapeType.Heart, heart.ShapeType);
         }
 
         [Fact]
         public void CircleValuesTest()
         {
             Circle circle = new Circle(84, 64, 32);
-            Assert.True(circle.CX.Equals(84), "x of circle's center is not correct");
-            Assert.True(circle.CY.Equals(64), "y of circle's center is not correct");
-            Assert.True(circle.Radius.Equals(32), "radius of circle is not correct");
-            Assert.True(circle.X.Equals(52), "x of square of inscribed circle is not correct");
-            Assert.True(circle.Y.Equals(32), "y of square of inscribed circle is not correct");
-            Assert.True(circle.Width.Equals(64), "width of square of inscribed circle is not correct");
-            Assert.True(circle.Height.Equals(64), "height of square of inscribed circle is not correct");
-            Assert.True(circle.Diameter.Equals(64), "diameter of circle is not correct");
+            Assert.Equal(84, circle.CX);       //x of circle's center is not correct
+            Assert.Equal(64, circle.CY);       //y of circle's center is not correct
+            Assert.Equal(32, circle.Radius);   //radius of circle is not correct
+            Assert.Equal(52, circle.X);        //x of square of inscribed circle is not correct
+            Assert.Equal(32, circle.Y);        //y of square of inscribed circle is not correct
+            Assert.Equal(64, circle.Width);    //width of square of inscribed circle is not correct
+            Assert.Equal(64, circle.Height);   //height of square of inscribed circle is not correct
+            Assert.Equal(64, circle.Diameter); //diameter of circle is not correct");
         }
 
         [Fact]
@@ -92,15 +92,15 @@ namespace _2DV610.Test
             double hypotenuse = Math.Sqrt(Math.Pow(width, 2) + Math.Pow(height, 2));
 
             Line line = new Line(x1, y1, x2, y2);
-            Assert.True(line.X1.Equals(x1), "x of line's upper left edge is not correct");
-            Assert.True(line.Y1.Equals(y1), "y of line's upper left edge is not correct");
-            Assert.True(line.X2.Equals(x2), "x of line's lower right edge is not correct");
-            Assert.True(line.Y2.Equals(y2), "y of line's lower right edge is not correct");
-            Assert.True(line.X.Equals(line.X1 < line.X2 ? line.X1 : line.X2 ), "X and X1 or X2 (whichever is smallest) should be equal");
-            Assert.True(line.Y.Equals(line.Y1 < line.Y2 ? line.Y1 : line.Y2), "Y and Y1 or Y2 (whichever is smallest) should be equal");
-            Assert.True(line.Width.Equals(width), "width of square of inscribed line is not correct");
-            Assert.True(line.Height.Equals(height), "height of square of inscribed line is not correct");
-            Assert.True(line.Length.Equals(hypotenuse), "line's length is not correct");
+            Assert.Equal(x1, line.X1);                                   //x of line's upper left edge is not correct");
+            Assert.Equal(y1, line.Y1);                                   //y of line's upper left edge is not correct");
+            Assert.Equal(x2, line.X2);                                   //x of line's lower right edge is not correct");
+            Assert.Equal(y2, line.Y2);                                   //y of line's lower right edge is not correct");
+            Assert.Equal(line.X1 < line.X2 ? line.X1 : line.X2, line.X); //X and X1 or X2 (whichever is smallest) should be equal");
+            Assert.Equal(line.Y1 < line.Y2 ? line.Y1 : line.Y2, line.Y); //Y and Y1 or Y2 (whichever is smallest) should be equal");
+            Assert.Equal(width, line.Width);                             //width of square of inscribed line is not correct");
+            Assert.Equal(height, line.Height);                           //height of square of inscribed line is not correct");
+            Assert.Equal(hypotenuse, line.Length);                       //line's length is not correct");
         }
 
         [Theory]
@@ -120,35 +120,35 @@ namespace _2DV610.Test
             //If the line is vertical, X1,Y1 should be the uppermost coordinates of the line.
             if (x1 > x2)
             {
-                Assert.True(line.X1.Equals(x2));
-                Assert.True(line.Y1.Equals(y2));
-                Assert.True(line.X2.Equals(x1));
-                Assert.True(line.Y2.Equals(y1));
+                Assert.Equal(x2, line.X1);
+                Assert.Equal(y2, line.Y1);
+                Assert.Equal(x1, line.X2);
+                Assert.Equal(y1, line.Y2);
             }
             else if (x1 < x2)
             {
-                Assert.True(line.X1.Equals(x1));
-                Assert.True(line.X2.Equals(x2));
-                Assert.True(line.Y1.Equals(y1));
-                Assert.True(line.Y2.Equals(y2));
+                Assert.Equal(x1, line.X1);
+                Assert.Equal(x2, line.X2);
+                Assert.Equal(y1, line.Y1);
+                Assert.Equal(y2, line.Y2);
             }
             else
             {
-                Assert.True(line.X1.Equals(x1));
-                Assert.True(line.X2.Equals(x2));
+                Assert.Equal(x1, line.X1);
+                Assert.Equal(x2, line.X2);
                 if (y1 > y2)
                 {
-                    Assert.True(line.Y1.Equals(y2));
-                    Assert.True(line.Y2.Equals(y1));
+                    Assert.Equal(y2, line.Y1);
+                    Assert.Equal(y1, line.Y2);
                 }
                 else
                 {
-                    Assert.True(line.Y1.Equals(y1));
-                    Assert.True(line.Y2.Equals(y2));
+                    Assert.Equal(y1, line.Y1);
+                    Assert.Equal(y2, line.Y2);
                 }
             }
-            Assert.True(line.X.Equals(line.X1 < line.X2 ? line.X1 : line.X2), "X and X1 or X2 (whichever is smallest) should be equal");
-            Assert.True(line.Y.Equals(line.Y1 < line.Y2 ? line.Y1 : line.Y2), "Y and Y1 or Y2 (whichever is smallest) should be equal");
+            Assert.Equal(line.X1 < line.X2 ? line.X1 : line.X2, line.X); //X and X1 or X2 (whichever is smallest) should be equal");
+            Assert.Equal(line.Y1 < line.Y2 ? line.Y1 : line.Y2, line.Y); //Y and Y1 or Y2 (whichever is smallest) should be equal");
 
         }
 
@@ -195,20 +195,20 @@ namespace _2DV610.Test
         {
             Circle circle1 = new Circle(50, 64, 32);
             //Assert.True(circle1.GetPath().Equals("M18,64a32,32 0 1,0 64,0a32,32 0 1,0 -64,0"), "didn't return the correct path string.");
-            Assert.True(circle1.GetPath().Equals("M18,64A32,32 0 1,0 82,64A32,32 0 1,0 18,64"), "didn't return the correct path string.");
+            Assert.Equal("M18,64A32,32 0 1,0 82,64A32,32 0 1,0 18,64", circle1.GetPath()); //didn't return the correct path string.");
         }
 
         [Fact]
         public void LeftHalfCircleValuesTest()
         {
             HalfCircle halfCircle = new LeftHalfCircle(84, 64, 32);
-            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
-            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
-            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
-            Assert.True(halfCircle.X.Equals(52), "x of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Y.Equals(32), "y of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Width.Equals(32), "width of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Height.Equals(64), "height of square of inscribed half circle is not correct");
+            Assert.Equal(84, halfCircle.CX);     //x of half circle's center is not correct");
+            Assert.Equal(64, halfCircle.CY);     //y of half circle's center is not correct");
+            Assert.Equal(32, halfCircle.Radius); //radius of half circle is not correct");
+            Assert.Equal(52, halfCircle.X);      //x of square of inscribed half circle is not correct");
+            Assert.Equal(32, halfCircle.Y);      //y of square of inscribed half circle is not correct");
+            Assert.Equal(32, halfCircle.Width);  //width of square of inscribed half circle is not correct");
+            Assert.Equal(64, halfCircle.Height); //height of square of inscribed half circle is not correct");
         }
 
         [Fact]
@@ -237,13 +237,13 @@ namespace _2DV610.Test
         public void RightHalfCircleValuesTest()
         {
             HalfCircle halfCircle = new RightHalfCircle(84, 64, 32);
-            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
-            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
-            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
-            Assert.True(halfCircle.X.Equals(84), "x of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Y.Equals(32), "y of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Width.Equals(32), "width of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Height.Equals(64), "height of square of inscribed half circle is not correct");
+            Assert.Equal(84, halfCircle.CX);     //x of half circle's center is not correct");
+            Assert.Equal(64, halfCircle.CY);     //y of half circle's center is not correct");
+            Assert.Equal(32, halfCircle.Radius); //radius of half circle is not correct");
+            Assert.Equal(84, halfCircle.X);      //x of square of inscribed half circle is not correct");
+            Assert.Equal(32, halfCircle.Y);      //y of square of inscribed half circle is not correct");
+            Assert.Equal(32, halfCircle.Width);  //width of square of inscribed half circle is not correct");
+            Assert.Equal(64, halfCircle.Height); //height of square of inscribed half circle is not correct");
         }
 
         [Fact]
@@ -271,13 +271,13 @@ namespace _2DV610.Test
         public void UpperHalfCircleValuesTest()
         {
             HalfCircle halfCircle = new UpperHalfCircle(84, 64, 32);
-            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
-            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
-            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
-            Assert.True(halfCircle.X.Equals(52), "x of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Y.Equals(32), "y of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Width.Equals(64), "width of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Height.Equals(32), "height of square of inscribed half circle is not correct");
+            Assert.Equal(84, halfCircle.CX);     //x of half circle's center is not correct");
+            Assert.Equal(64, halfCircle.CY);     //y of half circle's center is not correct");
+            Assert.Equal(32, halfCircle.Radius); //radius of half circle is not correct");
+            Assert.Equal(52, halfCircle.X);      //x of square of inscribed half circle is not correct");
+            Assert.Equal(32, halfCircle.Y);      //y of square of inscribed half circle is not correct");
+            Assert.Equal(64, halfCircle.Width);  //width of square of inscribed half circle is not correct");
+            Assert.Equal(32, halfCircle.Height); //height of square of inscribed half circle is not correct");
         }
 
         [Fact]
@@ -306,13 +306,13 @@ namespace _2DV610.Test
         public void LowerHalfCircleValuesTest()
         {
             HalfCircle halfCircle = new LowerHalfCircle(84, 64, 32);
-            Assert.True(halfCircle.CX.Equals(84), "x of half circle's center is not correct");
-            Assert.True(halfCircle.CY.Equals(64), "y of half circle's center is not correct");
-            Assert.True(halfCircle.Radius.Equals(32), "radius of half circle is not correct");
-            Assert.True(halfCircle.X.Equals(52), "x of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Y.Equals(64), "y of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Width.Equals(64), "width of square of inscribed half circle is not correct");
-            Assert.True(halfCircle.Height.Equals(32), "height of square of inscribed half circle is not correct");
+            Assert.Equal(84, halfCircle.CX);     //x of half circle's center is not correct");
+            Assert.Equal(64, halfCircle.CY);     //y of half circle's center is not correct");
+            Assert.Equal(32, halfCircle.Radius); //radius of half circle is not correct");
+            Assert.Equal(52, halfCircle.X);      //x of square of inscribed half circle is not correct");
+            Assert.Equal(64, halfCircle.Y);      //y of square of inscribed half circle is not correct");
+            Assert.Equal(64, halfCircle.Width);  //width of square of inscribed half circle is not correct");
+            Assert.Equal(32, halfCircle.Height); //height of square of inscribed half circle is not correct");
         }
 
         [Fact]
@@ -345,16 +345,16 @@ namespace _2DV610.Test
             const int Height = 512;
 
             LeftEar leftEar = new LeftEar(x, y);
-            Assert.True(leftEar.X.Equals(x));
-            Assert.True(leftEar.Y.Equals(y));
-            Assert.True(leftEar.Width.Equals(Width));
-            Assert.True(leftEar.Height.Equals(Height));
+            Assert.Equal(leftEar.X, x);
+            Assert.Equal(leftEar.Y, y);
+            Assert.Equal(leftEar.Width, Width);
+            Assert.Equal(leftEar.Height, Height);
 
-            Assert.True(leftEar.TopY.Equals(y));
-            Assert.True(leftEar.MidY.Equals(y + Height / 4));
-            Assert.True(leftEar.BottomY.Equals(y + Height));
-            Assert.True(leftEar.LeftX.Equals(x));
-            Assert.True(leftEar.RightX.Equals(x + Width));
+            Assert.Equal(leftEar.TopY, y);
+            Assert.Equal(leftEar.MidY, y + Height / 4);
+            Assert.Equal(leftEar.BottomY, y + Height);
+            Assert.Equal(leftEar.LeftX, x);
+            Assert.Equal(leftEar.RightX, x + Width);
         }
 
         [Fact]
@@ -366,16 +366,16 @@ namespace _2DV610.Test
             const int Height = 512;
 
             RightEar rightEar = new RightEar(x, y);
-            Assert.True(rightEar.X.Equals(x));
-            Assert.True(rightEar.Y.Equals(y));
-            Assert.True(rightEar.Width.Equals(Width));
-            Assert.True(rightEar.Height.Equals(Height));
+            Assert.Equal(rightEar.X, x);
+            Assert.Equal(rightEar.Y, y);
+            Assert.Equal(rightEar.Width, Width);
+            Assert.Equal(rightEar.Height, Height);
 
-            Assert.True(rightEar.TopY.Equals(y));
-            Assert.True(rightEar.MidY.Equals(y + Height / 4));
-            Assert.True(rightEar.BottomY.Equals(y + Height));
-            Assert.True(rightEar.LeftX.Equals(x));
-            Assert.True(rightEar.RightX.Equals(x + Width));
+            Assert.Equal(rightEar.TopY, y);
+            Assert.Equal(rightEar.MidY, y + Height / 4);
+            Assert.Equal(rightEar.BottomY, y + Height);
+            Assert.Equal(rightEar.LeftX, x);
+            Assert.Equal(rightEar.RightX, x + Width);
         }
 
 
@@ -385,7 +385,7 @@ namespace _2DV610.Test
             Shape shape = new LowerHalfCircle(50, 64, 32);
 
             Symbol symbol1 = new Symbol("M18,64 A 32,32 0 1,0 82,64"); //absolute left to right
-            Symbol symbol2 = new Symbol("M18,64 a 32,32 0 1,0 64,0"); //relative left to right
+            Symbol symbol2 = new Symbol("M18,64 a 32,32 0 1,0 64,0");  //relative left to right
             Symbol symbol3 = new Symbol("M82,64 A 32,32 0 0,1 18,64"); //absolute right to left
             Symbol symbol4 = new Symbol("M82,64 a 32,32 0 0,1 -64,0"); //relative right to left
             Assert.True(symbol1.Contains(shape));
