@@ -25,7 +25,7 @@ namespace _2DV610.Classes
         /// <param name="cx">the x coordinate of circle's center</param>
         /// <param name="cy">the y coordinate of circle's center</param>
         /// <param name="radius">the circle's radius</param>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when circle will not fit a box (0,0) to (intmax, 1280).</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when circle will not fit a box (0,0) to (128000, 1280).</exception>
         public Circle(int cx, int cy, int radius) : base(ShapeType.Circle)
         {
             CX = cx;
