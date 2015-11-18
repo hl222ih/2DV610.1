@@ -32,10 +32,10 @@ namespace _2DV610.Test
             int height = 512;
 
             RightEar sut = new RightEar(x, y);
-            Assert.Equal(sut.X, x);
-            Assert.Equal(sut.Y, y);
-            Assert.Equal(sut.Width, width);
-            Assert.Equal(sut.Height, height);
+            Assert.Equal(x, sut.X);
+            Assert.Equal(y, sut.Y);
+            Assert.Equal(width, sut.Width);
+            Assert.Equal(height, sut.Height);
 
             Assert.Equal(y, sut.TopY);
             Assert.Equal(y + height / 4, sut.MidY);

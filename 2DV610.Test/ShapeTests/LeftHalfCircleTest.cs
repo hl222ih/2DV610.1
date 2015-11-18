@@ -38,7 +38,7 @@ namespace _2DV610.Test
             Assert.Equal(cx - radius, sut.X);        //x of square of inscribed half circle is not correct");
             Assert.Equal(cy - radius, sut.Y);        //y of square of inscribed half circle is not correct");
             Assert.Equal(radius, sut.Width);         //width of square of inscribed half circle is not correct");
-            Assert.Equal(radius * 2, sut.Height); //height of square of inscribed half circle is not correct");
+            Assert.Equal(radius * 2, sut.Height);    //height of square of inscribed half circle is not correct");
         }
 
     }

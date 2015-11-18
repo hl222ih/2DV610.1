@@ -35,6 +35,7 @@ namespace _2DV610.Test
             double hypotenuse = Math.Sqrt(Math.Pow(width, 2) + Math.Pow(height, 2));
 
             Line line = new Line(x1, y1, x2, y2);
+
             Assert.Equal(x1, line.X1);                                   //x of line's upper left edge is not correct");
             Assert.Equal(y1, line.Y1);                                   //y of line's upper left edge is not correct");
             Assert.Equal(x2, line.X2);                                   //x of line's lower right edge is not correct");

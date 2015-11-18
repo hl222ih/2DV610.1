@@ -31,6 +31,7 @@ namespace _2DV610.Test
             int radius = 32;
 
             HalfCircle sut = new LowerHalfCircle(84, 64, 32);
+
             Assert.Equal(cx, sut.CX);            //x of half circle's center is not correct");
             Assert.Equal(cy, sut.CY);            //y of half circle's center is not correct");
             Assert.Equal(radius, sut.Radius);    //radius of half circle is not correct");
