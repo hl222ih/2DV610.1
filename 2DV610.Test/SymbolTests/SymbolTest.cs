@@ -161,18 +161,10 @@ namespace _2DV610.Test
             Assert.Equal(32, sut.PathCommands[1].RadiusY);
             Assert.True(sut.PathCommands[1].IsArcCommand());
         }
-
+        
         private class PathCommandStub : PathCommand
         {
             private bool isMoveToCommand;
-            private bool isArcCommand;
-            private bool isCircular;
-            private bool isVertical;
-            private bool isHorizontal;
-            private bool isUpper;
-            private bool isLower;
-            private bool isLeft;
-            private bool isRight;
 
             public PathCommandStub() : base("")
             {
@@ -183,89 +175,9 @@ namespace _2DV610.Test
                 isMoveToCommand = val;
             }
 
-            public void SetArcCommand(bool val)
-            {
-                isArcCommand = val;
-            }
-
-            public void SetCircular (bool val)
-            {
-                isCircular = val;
-            }
-
-            public void SetVertical (bool val)
-            {
-                isVertical = val;
-            }
-
-            public void SetHorizontal (bool val)
-            {
-                isHorizontal = val;
-            }
-
-            public void SetUpper (bool val)
-            {
-                isUpper = val;
-            }
-
-            public void SetLower (bool val)
-            {
-                isLower = val;
-            }
-
-            public void SetLeft (bool val)
-            {
-                isLeft = val;
-            }
-
-            public void SetRight (bool val)
-            {
-                isRight = val;
-            }
-
             public new bool IsMoveToCommand()
             {
                 return isMoveToCommand;
-            }
-
-            public new bool IsArcCommand()
-            {
-                return isArcCommand;
-            }
-
-            public new bool IsCircular()
-            {
-                return isCircular;
-            }
-
-            public new bool IsVertical()
-            {
-                return isVertical;
-            }
-
-            public new bool IsHorizontal()
-            {
-                return isHorizontal;
-            }
-
-            public new bool IsUpper()
-            {
-                return isUpper;
-            }
-
-            public new bool IsLower()
-            {
-                return isLower;
-            }
-
-            public new bool IsLeft()
-            {
-                return isLeft;
-            }
-
-            public new bool IsRight()
-            {
-                return isRight;
             }
         }
 
@@ -280,22 +192,6 @@ namespace _2DV610.Test
             Shape shape = sut.CreateShape(command);
 
             Assert.Null(shape);
-        }
-
-        [Fact]
-        public void CreateShapeShouldReturnLeftHalfCircle()
-        {
-            SymbolStub sut = new SymbolStub();
-
-            PathCommandStub command = new PathCommandStub();
-            command.SetArcCommand(true);
-            command.SetCircular(true);
-            command.SetLeft(true);
-            command.SetVertical(true);
-
-            Shape shape = sut.CreateShape(command);
-
-            Assert.Equal(ShapeType.LeftHalfCircle, shape.ShapeType);
         }
     }
 }

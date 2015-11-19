@@ -134,12 +134,12 @@ namespace _2DV610.Classes
             {
                 //MoveTo cannot produce a shape.
             }
-            else if (c.IsArcCommand())
-            {
-                if (c.IsCircular())
-                {
-                    if (c.IsHorizontal())
-                    {
+            //else if (c.IsArcCommand())
+            //{
+            //    if (c.IsCircular())
+            //    {
+            //        if (c.IsHorizontal())
+            //        {
             //            if (c.IsLower())
             //            {
             //                shape = new LowerHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
@@ -148,21 +148,21 @@ namespace _2DV610.Classes
             //            {
             //                shape = new UpperHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
             //            }
-                    }
-                    else
-                    if (c.IsVertical())
-                    {
-                        if (c.IsLeft())
-                        {
-                            shape = new LeftHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
-                        }
+            //        }
+            //        else
+            //        if (c.IsVertical())
+            //        {
+            //            if (c.IsLeft())
+            //            {
+            //                shape = new LeftHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
+            //            }
             //            else if (c.IsRight())
             //            {
             //                shape = new RightHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
             //            }
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
             return shape;
         }
     }
