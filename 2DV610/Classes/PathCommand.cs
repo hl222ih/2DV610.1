@@ -191,6 +191,8 @@ namespace _2DV610.Classes
         /// <param name="elems">The elements from a svg command path.</param>
         private void AdjustElementsValues(string[] elems)
         {
+            if (elems.Length == 0) return; 
+
             relativeElements = (string[])elems.Clone();
             absoluteElements = (string[])elems.Clone();
 

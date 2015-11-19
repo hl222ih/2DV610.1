@@ -128,12 +128,12 @@ namespace _2DV610.Classes
 
         protected Shape CreateShape(PathCommand c)
         {
-            throw new NotImplementedException();
-            //Shape shape = null;
-            //if (c.IsMoveToCommand())
-            //{
-            //    //
-            //}
+            Shape shape = null;
+            
+            if (c.IsMoveToCommand())
+            {
+                //MoveTo cannot produce a shape.
+            }
             //else if (c.IsArcCommand())
             //{
             //    if (c.IsCircular())
@@ -163,7 +163,7 @@ namespace _2DV610.Classes
             //        }
             //    }
             //}
-            //return shape;
+            return shape;
         }
     }
 }
