@@ -85,11 +85,6 @@ namespace _2DV610.Test
                 base.CreatePathCommands(paths);
             }
 
-            public new Shape CreateShape(PathCommand command)
-            {
-                return base.CreateShape(command);
-            }
-
         }
 
         [Fact]
@@ -160,38 +155,6 @@ namespace _2DV610.Test
             Assert.Equal(32, sut.PathCommands[1].RadiusX);
             Assert.Equal(32, sut.PathCommands[1].RadiusY);
             Assert.True(sut.PathCommands[1].IsArcCommand());
-        }
-        
-        private class PathCommandStub : PathCommand
-        {
-            private bool isMoveToCommand;
-
-            public PathCommandStub() : base("")
-            {
-            }
-
-            public void SetMoveToCommand(bool val)
-            {
-                isMoveToCommand = val;
-            }
-
-            public new bool IsMoveToCommand()
-            {
-                return isMoveToCommand;
-            }
-        }
-
-        [Fact]
-        public void CreateShapeShouldReturnNullForMPathCommand()
-        {
-            SymbolStub sut = new SymbolStub();
-
-            PathCommandStub command = new PathCommandStub();
-            command.SetMoveToCommand(true);
-
-            Shape shape = sut.CreateShape(command);
-
-            Assert.Null(shape);
         }
     }
 }
