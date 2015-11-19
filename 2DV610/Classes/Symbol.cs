@@ -25,7 +25,7 @@ namespace _2DV610.Classes
         {
             get
             {
-                return Symbols.ToArray();
+                return symbols.ToArray();
             }
         }
 
