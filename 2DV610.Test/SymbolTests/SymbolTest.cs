@@ -113,7 +113,7 @@ namespace _2DV610.Test
         {
             Symbol symbol = new Symbol("M18,64 A32,32 0 0,1 82,64");
             Assert.NotNull(symbol.Shapes);
-            //Assert.NotNull(symbol.PathCommands);
+            Assert.NotNull(symbol.PathCommands);
             //Assert.NotNull(symbol.Symbols);
         }
 
