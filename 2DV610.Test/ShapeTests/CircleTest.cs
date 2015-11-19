@@ -24,7 +24,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void ValuesTest()
+        public void ConstructorShouldSetCorrectValues()
         {
             int cx = 84;
             int cy = 64;
@@ -43,7 +43,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void CircleConstructorsEqualityTest()
+        public void ConstructorsEqualityTest()
         {
             Circle circle1 = new Circle(84, 64, 32);
             Circle circle2 = new Circle(52, 32, 64, false);
@@ -52,7 +52,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void CircleTranslationTest()
+        public void TranslationTest()
         {
             //Translation is when two shapes have the same size and form but might be differently positioned.
             Circle circle1 = new Circle(50, 64, 32);
@@ -62,7 +62,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void CircleGetPathTest()
+        public void GetPathTest()
         {
             Circle circle1 = new Circle(50, 64, 32);
             //Assert.True(circle1.GetPath().Equals("M18,64a32,32 0 1,0 64,0a32,32 0 1,0 -64,0"), "didn't return the correct path string.");

@@ -17,7 +17,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void SymbolOfLowerHalfCircleTest()
+        public void SymbolOfLowerHalfCircleIntegrationTest()
         {
             Shape shape = new LowerHalfCircle(50, 64, 32);
 
@@ -30,9 +30,8 @@ namespace _2DV610.Test
             Assert.True(symbol3.Contains(shape));
             Assert.True(symbol4.Contains(shape));
         }
-
         [Fact]
-        public void SymbolOfUpperHalfCircleTest()
+        public void SymbolOfUpperHalfCircleIntegrationTest()
         {
             Shape shape = new UpperHalfCircle(50, 64, 32);
 
@@ -47,7 +46,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void SymbolOfLeftHalfCircleTest()
+        public void SymbolOfLeftHalfCircleIntegrationTest()
         {
             Shape shape = new LeftHalfCircle(50, 96, 32);
 
@@ -62,7 +61,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void SymbolOfRightHalfCircleTest()
+        public void SymbolOfRightHalfCircleIntegrationTest()
         {
             Shape shape = new RightHalfCircle(50, 96, 32);
 
@@ -76,11 +75,5 @@ namespace _2DV610.Test
             Assert.True(symbol4.Contains(shape));
         }
 
-        [Fact]
-        public void SymbolTest()
-        {
-            Symbol symbol = new Symbol("M18,64 A32,32 0 0,1 82,64");
-            Assert.True(symbol.CommandCount == 2);
-        }
     }
 }

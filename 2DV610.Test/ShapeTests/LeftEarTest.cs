@@ -24,7 +24,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void LeftEarValuesTest()
+        public void ConstructorShouldSetCorrectValues()
         {
             int x = 32;
             int y = 64;

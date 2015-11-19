@@ -9,10 +9,9 @@ namespace _2DV610.Classes
 {
     public class Symbol
     {
-        private List<Symbol> symbols;
-        private List<Shape> shapes;
-        private string[] pathElements;
-        private List<PathCommand> pathCommands; //extracted from path, used to create shapes
+        protected List<Symbol> symbols;
+        protected List<Shape> shapes;
+        protected List<PathCommand> pathCommands; //extracted from path, used to create shapes
 
         public PathCommand[] PathCommands
         {
@@ -32,52 +31,20 @@ namespace _2DV610.Classes
 
         public Symbol(string svgPath)
         {
-            Initialize(svgPath);
+            Initialize();
 
-            for (int i = 0; i < pathCommands.Count; i++)
-            {
-                PathCommand c = pathCommands[i];
+            string[] paths = SplitPath(svgPath);
+            CreatePathCommands(paths);
 
-                if (c.IsMoveToCommand())
-                {
-                    //
-                }
-                else if (c.IsArcCommand())
-                {
-                    Shape shape = null;
-                    if (c.IsCircular())
-                    {
-                        if (c.IsHorizontal())
-                        {
-                            if (c.IsLower())
-                            {
-                                shape = new LowerHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
-                            }
-                            else if (c.IsUpper())
-                            {
-                                shape = new UpperHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
-                            }
-                        }
-                        else
-                        if (c.IsVertical())
-                        {
-                            if (c.IsLeft())
-                            {
-                                shape = new LeftHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
-                            }
-                            else if (c.IsRight())
-                            {
-                                shape = new RightHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
-                            }
-                        }
-                    }
+            CreateShapes();
 
-                    if (shape != null)
-                    {
-                        shapes.Add(shape);
-                    }
-                }
-            }
+        }
+
+        private void Initialize()
+        {
+            pathCommands = new List<PathCommand>();
+            symbols = new List<Symbol>();
+            shapes = new List<Shape>();
         }
 
         public Symbol(string[] svgPaths)
@@ -100,10 +67,9 @@ namespace _2DV610.Classes
             return shapes.Exists(s => s.HorizontallyTranslates(shape));
         }
 
-        private void Initialize(string svgPath)
+
+        protected void CreatePathCommands(string[] paths)
         {
-            pathCommands = new List<PathCommand>();
-            string[] paths = SplitMultiCommandSvgPath(svgPath);
             float startX = 0;
             float startY = 0;
             for (int i = 0; i < paths.Length; i++)
@@ -113,15 +79,14 @@ namespace _2DV610.Classes
                 startY = command.EndY;
                 pathCommands.Add(command);
             }
-
-            symbols = new List<Symbol>();
-            shapes = new List<Shape>();
-
-            MatchCollection matchList = Regex.Matches(svgPath, @"(\d+|[MAa]|,)");
-            pathElements = matchList.Cast<Match>().Select(match => match.Value).ToArray();
-
         }
-        private string[] SplitMultiCommandSvgPath(string path)
+
+        /// <summary>
+        /// Splits the SVG path data to a string array with one path command in each string.
+        /// </summary>
+        /// <param name="path">The path data with one or more path commands.</param>
+        /// <returns>The splitted path.</returns>
+        protected string[] SplitPath(string path)
         {
             MatchCollection matchList = Regex.Matches(path, @"([MmZzLlHhVvCcSsQqTtAa][^MmZzLlHhVvCcSsQqTtAa]*)");
             string[] paths = matchList.Cast<Match>().Select(match => match.Value).ToArray();
@@ -129,5 +94,59 @@ namespace _2DV610.Classes
             return paths;
         }
 
+        protected void CreateShapes()
+        {
+            for (int i = 0; i < pathCommands.Count; i++)
+            {
+                PathCommand c = pathCommands[i];
+
+                Shape shape = CreateShape(c);
+                if (shape != null)
+                {
+                    shapes.Add(shape);
+                }
+
+            }
+
+        }
+
+        protected Shape CreateShape(PathCommand c)
+        {
+            Shape shape = null;
+            if (c.IsMoveToCommand())
+            {
+                //
+            }
+            else if (c.IsArcCommand())
+            {
+                if (c.IsCircular())
+                {
+                    if (c.IsHorizontal())
+                    {
+                        if (c.IsLower())
+                        {
+                            shape = new LowerHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
+                        }
+                        else if (c.IsUpper())
+                        {
+                            shape = new UpperHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusX);
+                        }
+                    }
+                    else
+                    if (c.IsVertical())
+                    {
+                        if (c.IsLeft())
+                        {
+                            shape = new LeftHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
+                        }
+                        else if (c.IsRight())
+                        {
+                            shape = new RightHalfCircle((int)c.CenterX, (int)c.CenterY, (int)c.RadiusY);
+                        }
+                    }
+                }
+            }
+            return shape;
+        }
     }
 }

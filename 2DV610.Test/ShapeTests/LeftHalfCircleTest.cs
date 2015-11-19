@@ -24,7 +24,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void ValuesTest()
+        public void ConstructorShouldSetCorrectValues()
         {
             int cx = 84;
             int cy = 64;
