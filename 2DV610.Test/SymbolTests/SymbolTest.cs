@@ -117,5 +117,25 @@ namespace _2DV610.Test
             Assert.NotNull(symbol.Symbols);
         }
 
+        private class SymbolStub2 : Symbol
+        {
+            public SymbolStub2(string s) : base(s)
+            {
+            }
+
+            public new string[] SplitPath(string path)
+            {
+                return base.SplitPath(path);
+            }
+        }
+        [Fact]
+        public void SplitPathShouldSplitCommandParts()
+        {
+            SymbolStub2 sut = new SymbolStub2("M84,64 a32,32 0 0,1 -10,64");
+            string[] paths = sut.SplitPath("M84,64 a32,32 0 0,1 -10,64");
+            
+            Assert.Equal("M84,64 ", paths[0]);
+            Assert.Equal("a32,32 0 0,1 -10,64", paths[1]);
+        }
     }
 }
