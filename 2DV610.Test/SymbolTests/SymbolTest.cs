@@ -79,6 +79,12 @@ namespace _2DV610.Test
             {
                 return base.SplitPath(path);
             }
+
+            public new void CreatePathCommands(string[] paths)
+            {
+                base.CreatePathCommands(paths);
+            }
+
         }
 
         [Fact]
@@ -130,6 +136,25 @@ namespace _2DV610.Test
             
             Assert.Equal("M84,64 ", paths[0]);
             Assert.Equal("a32,32 0 0,1 -10,64", paths[1]);
+        }
+
+        [Fact]
+        public void CreatePathCommandsShouldCreatePathCommandsWithCorrectInParameters()
+        {
+            SymbolStub sut = new SymbolStub();
+            string[] paths = new string[] { "M18,64", "a32,32 0 0,1 64,32" };
+
+            sut.CreatePathCommands(paths);
+
+            Assert.Equal(2, sut.PathCommands.Length);
+            Assert.Equal(18, sut.PathCommands[0].EndX);
+            Assert.Equal(64, sut.PathCommands[0].EndY);
+            Assert.True(sut.PathCommands[0].IsMoveToCommand());
+            Assert.Equal(82, sut.PathCommands[1].EndX);
+            Assert.Equal(96, sut.PathCommands[1].EndY);
+            Assert.Equal(32, sut.PathCommands[1].RadiusX);
+            Assert.Equal(32, sut.PathCommands[1].RadiusY);
+            Assert.True(sut.PathCommands[1].IsArcCommand());
         }
     }
 }
