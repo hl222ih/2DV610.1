@@ -49,7 +49,7 @@ namespace _2DV610.Classes
         {
             Initialize();
 
-            //string[] paths = SplitPath(svgPath);
+            string[] paths = SplitPath(svgPath);
             //CreatePathCommands(paths);
 
             //CreateShapes();
@@ -105,11 +105,10 @@ namespace _2DV610.Classes
         /// <returns>The splitted path.</returns>
         protected string[] SplitPath(string path)
         {
-            throw new NotImplementedException();
-            //MatchCollection matchList = Regex.Matches(path, @"([MmZzLlHhVvCcSsQqTtAa][^MmZzLlHhVvCcSsQqTtAa]*)");
-            //string[] paths = matchList.Cast<Match>().Select(match => match.Value).ToArray();
+            MatchCollection matchList = Regex.Matches(path, @"([MmZzLlHhVvCcSsQqTtAa][^MmZzLlHhVvCcSsQqTtAa]*)");
+            string[] paths = matchList.Cast<Match>().Select(match => match.Value).ToArray();
 
-            //return paths;
+            return paths;
         }
 
         protected void CreateShapes()
