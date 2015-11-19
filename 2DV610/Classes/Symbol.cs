@@ -59,7 +59,7 @@ namespace _2DV610.Classes
         private void Initialize()
         {
             pathCommands = new List<PathCommand>();
-            //symbols = new List<Symbol>();
+            symbols = new List<Symbol>();
             shapes = new List<Shape>();
         }
 
