@@ -60,7 +60,7 @@ namespace _2DV610.Classes
         {
             //pathCommands = new List<PathCommand>();
             //symbols = new List<Symbol>();
-            //shapes = new List<Shape>();
+            shapes = new List<Shape>();
         }
 
         public Symbol(string[] svgPaths)
