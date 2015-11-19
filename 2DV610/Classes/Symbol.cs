@@ -86,16 +86,15 @@ namespace _2DV610.Classes
 
         protected void CreatePathCommands(string[] paths)
         {
-            throw new NotImplementedException();
-            //float startX = 0;
-            //float startY = 0;
-            //for (int i = 0; i < paths.Length; i++)
-            //{
-            //    PathCommand command = new PathCommand(paths[i], startX, startY);
-            //    startX = command.EndX;
-            //    startY = command.EndY;
-            //    pathCommands.Add(command);
-            //}
+            float startX = 0;
+            float startY = 0;
+            for (int i = 0; i < paths.Length; i++)
+            {
+                PathCommand command = new PathCommand(paths[i], startX, startY);
+                startX = command.EndX;
+                startY = command.EndY;
+                pathCommands.Add(command);
+            }
         }
 
         /// <summary>
