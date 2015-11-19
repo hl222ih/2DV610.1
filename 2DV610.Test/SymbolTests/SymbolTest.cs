@@ -61,11 +61,11 @@ namespace _2DV610.Test
         }
 
         /// <summary>
-        /// Symbol Stub to simplify adding shapes to Symbol.
+        /// Symbol Stub to simplify adding shapes to Symbol, access to protected methods etc.
         /// </summary>
         private class SymbolStub : Symbol
         {
-            public SymbolStub() : base("")
+            public SymbolStub() : base("M84,64 a32,32 0 0,1 -10,64")
             {
                 shapes = new List<Shape>();
             }
@@ -73,6 +73,11 @@ namespace _2DV610.Test
             public new void AddShape(Shape shape)
             {
                 shapes.Add(shape);
+            }
+
+            public new string[] SplitPath(string path)
+            {
+                return base.SplitPath(path);
             }
         }
 
@@ -117,21 +122,10 @@ namespace _2DV610.Test
             Assert.NotNull(symbol.Symbols);
         }
 
-        private class SymbolStub2 : Symbol
-        {
-            public SymbolStub2(string s) : base(s)
-            {
-            }
-
-            public new string[] SplitPath(string path)
-            {
-                return base.SplitPath(path);
-            }
-        }
         [Fact]
         public void SplitPathShouldSplitCommandParts()
         {
-            SymbolStub2 sut = new SymbolStub2("M84,64 a32,32 0 0,1 -10,64");
+            SymbolStub sut = new SymbolStub();
             string[] paths = sut.SplitPath("M84,64 a32,32 0 0,1 -10,64");
             
             Assert.Equal("M84,64 ", paths[0]);
