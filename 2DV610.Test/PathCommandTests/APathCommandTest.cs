@@ -102,7 +102,17 @@ namespace _2DV610.Test
             Assert.Equal(-54, sut.EndX);
             Assert.Equal(20, sut.EndY);
         }
-        
+
+        [Fact]
+        public void ConstructorShouldSetCorrectValues5()
+        {
+            string path = "a32,32 0 0,1 32,32";
+            PathCommand sut = new PathCommand(path);
+
+            Assert.Equal(0, sut.CenterX);
+            Assert.Equal(32, sut.CenterY);
+        }
+
         [Fact]
         public void APathCommandIsUpperLowerTest()
         {
