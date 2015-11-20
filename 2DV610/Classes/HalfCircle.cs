@@ -21,9 +21,10 @@ namespace _2DV610.Classes
 
         public override bool HorizontallyTranslates(Shape shape)
         {
-            if (ShapeType != shape.ShapeType) return false;
+            throw new NotImplementedException();
+            //if (ShapeType != shape.ShapeType) return false;
 
-            return Y == shape.Y && Radius == ((HalfCircle)shape).Radius;
+            //return Y == shape.Y && Radius == ((HalfCircle)shape).Radius;
         }
 
         public override string GetPath()
