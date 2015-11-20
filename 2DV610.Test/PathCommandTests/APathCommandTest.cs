@@ -120,7 +120,7 @@ namespace _2DV610.Test
             PathCommand sut = new PathCommand(path);
 
             Assert.Equal(32, sut.CenterX);
-            Assert.Equal(32, sut.CenterY);
+            Assert.Equal(0, sut.CenterY);
         }
 
         [Fact]
