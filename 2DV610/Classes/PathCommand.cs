@@ -448,15 +448,31 @@ namespace _2DV610.Classes
             
             if (c.CommandType != CommandType) return false;
 
-            bool isEqual = false;
+            bool isEqual = c.EndX == EndX &&
+                c.EndY == EndY &&
+                c.StartX == StartX &&
+                c.StartY == StartY &&
+                c.CenterX == CenterX &&
+                c.CenterY == CenterY &&
+                c.RadiusX == RadiusX &&
+                c.RadiusY == RadiusY;
 
-            switch(c.CommandType)
+            if (isEqual)
             {
-                case CType.MoveTo:
-                    isEqual = c.EndX == EndX && c.EndY == EndY && c.StartX == StartX && c.StartY == StartY;
-                    break;
-                default:
-                    break;
+                switch (c.CommandType)
+                {
+                    case CType.MoveTo:
+                        break;
+                    case CType.EllipticalArc:
+                        isEqual = c.IsLeft() == IsLeft() && 
+                            c.IsRight() == IsRight() && 
+                            c.IsLower() == IsLower() && 
+                            c.IsUpper() == IsUpper();
+                        break;
+                    default:
+                        break;
+                }
+
             }
 
             return isEqual;
