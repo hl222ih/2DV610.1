@@ -127,7 +127,7 @@ namespace _2DV610.Classes
                                 }
                                 else if (relativeElements[5] == "0")
                                 {
-                                    cy = EndY;
+                                    cy = StartY;
                                 }
                             }
                             else if (StartX - EndX == RadiusX)
