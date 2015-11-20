@@ -88,18 +88,29 @@ namespace _2DV610.Classes
                         }
                         else if (StartX - EndX == RadiusX)
                         {
-                            if (relativeElements[5] == "1")
+                            if (EndY - StartY == RadiusY)
                             {
-                                cx = EndX;
+                                if (relativeElements[5] == "1")
+                                {
+                                    cx = EndX;
+                                }
+                                else if (relativeElements[5] == "0")
+                                {
+                                    cx = StartX;
+                                }
+
                             }
-                            else if (relativeElements[5] == "0")
+                            else if (StartY - EndY == RadiusY)
                             {
-                                cx = StartX;
+                                if (relativeElements[5] == "0")
+                                {
+                                    cx = EndX;
+                                }
                             }
                         }
                         break;
                     default:
-                    break;
+                        break;
                 }
 
                 return cx;
