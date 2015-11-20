@@ -30,5 +30,17 @@ namespace _2DV610.Test
             Assert.False(sut4.HorizontallyTranslates(sut1), "horizontal translation between the half circles should be false.");
         }
 
+        [Fact]
+        public void EqualsTest()
+        {
+            HalfCircle sut1 = new LeftHalfCircle(50, 64, 32);
+            HalfCircle sut2 = new LeftHalfCircle(50, 64, 32);
+            HalfCircle sut3 = new LeftHalfCircle(100, 64, 32);
+
+            Assert.True(sut1.Equals(sut2));
+            Assert.False(sut1.Equals(sut3));
+        }
+
     }
 }
+
