@@ -116,7 +116,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues6()
         {
-            string path = "a32,32 0 1,0 32,32";
+            string path = "a32,32 0 0,0 32,32";
             PathCommand sut = new PathCommand(path);
 
             Assert.Equal(32, sut.CenterX);
@@ -131,6 +131,16 @@ namespace _2DV610.Test
 
             Assert.Equal(-32, sut.CenterX);
             Assert.Equal(0, sut.CenterY);
+        }
+
+        [Fact]
+        public void ConstructorShouldSetCorrectValues8()
+        {
+            string path = "a32,32 0 0,0 -32,32";
+            PathCommand sut = new PathCommand(path);
+
+            Assert.Equal(0, sut.CenterX);
+            Assert.Equal(32, sut.CenterY);
         }
 
         [Fact]
