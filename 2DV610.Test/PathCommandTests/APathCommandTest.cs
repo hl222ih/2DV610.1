@@ -107,61 +107,62 @@ namespace _2DV610.Test
         public void ConstructorShouldSetCorrectValues5()
         {
             string path = "a32,32 0 0,1 32,32";
-            PathCommand sut = new PathCommand(path);
+            PathCommand sut = new PathCommand(path, 10, 20);
 
-            Assert.Equal(0, sut.CenterX);
-            Assert.Equal(32, sut.CenterY);
+            Assert.Equal(10, sut.CenterX);
+            Assert.Equal(52, sut.CenterY);
         }
 
         [Fact]
         public void ConstructorShouldSetCorrectValues6()
         {
             string path = "a32,32 0 0,0 32,32";
-            PathCommand sut = new PathCommand(path);
+            PathCommand sut = new PathCommand(path, 10, 20);
 
-            Assert.Equal(32, sut.CenterX);
-            Assert.Equal(0, sut.CenterY);
+            Assert.Equal(42, sut.CenterX);
+            Assert.Equal(20, sut.CenterY);
         }
 
         [Fact]
         public void ConstructorShouldSetCorrectValues7()
         {
             string path = "a32,32 0 0,1 -32,32";
-            PathCommand sut = new PathCommand(path);
+            PathCommand sut = new PathCommand(path, 10, 20);
 
-            Assert.Equal(-32, sut.CenterX);
-            Assert.Equal(0, sut.CenterY);
+            Assert.Equal(-22, sut.CenterX);
+            Assert.Equal(20, sut.CenterY);
         }
 
         [Fact]
         public void ConstructorShouldSetCorrectValues8()
         {
             string path = "a32,32 0 0,0 -32,32";
-            PathCommand sut = new PathCommand(path);
+            PathCommand sut = new PathCommand(path, 10, 20);
 
-            Assert.Equal(0, sut.CenterX);
-            Assert.Equal(32, sut.CenterY);
+            Assert.Equal(10, sut.CenterX);
+            Assert.Equal(52, sut.CenterY);
         }
 
         [Fact]
         public void ConstructorShouldSetCorrectValues9()
         {
             string path = "a32,32 0 0,0 -32,-32";
-            PathCommand sut = new PathCommand(path);
+            PathCommand sut = new PathCommand(path, 10, 20);
 
-            Assert.Equal(-32, sut.CenterX);
-            Assert.Equal(0, sut.CenterY);
+            Assert.Equal(-22, sut.CenterX);
+            Assert.Equal(20, sut.CenterY);
         }
 
         [Fact]
         public void ConstructorShouldSetCorrectValues10()
         {
             string path = "a32,32 0 0,1 -32,-32";
-            PathCommand sut = new PathCommand(path);
+            PathCommand sut = new PathCommand(path, 10, 20);
 
-            Assert.Equal(0, sut.CenterX);
-            Assert.Equal(-32, sut.CenterY);
+            Assert.Equal(10, sut.CenterX);
+            Assert.Equal(-12, sut.CenterY);
         }
+
 
         [Fact]
         public void APathCommandIsUpperLowerTest()
