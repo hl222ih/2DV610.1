@@ -93,6 +93,10 @@ namespace _2DV610.Classes
                                 {
                                     cx = StartX;
                                 }
+                                else if (relativeElements[5] == "0")
+                                {
+                                    cx = EndX;
+                                }
                             }
                         }
                         else if (StartX - EndX == RadiusX)
@@ -197,6 +201,10 @@ namespace _2DV610.Classes
                                 if (relativeElements[5] == "1")
                                 {
                                     cy = EndY;
+                                }
+                                else if (relativeElements[5] == "0")
+                                {
+                                    cy = StartY;
                                 }
                             }
                         }
