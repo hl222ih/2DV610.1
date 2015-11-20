@@ -106,6 +106,10 @@ namespace _2DV610.Classes
                                 {
                                     cx = EndX;
                                 }
+                                else if (relativeElements[5] == "1")
+                                {
+                                    cx = StartX;
+                                }
                             }
                         }
                         break;
@@ -162,6 +166,20 @@ namespace _2DV610.Classes
                                     cy = StartY;
                                 }
                                 else if (relativeElements[5] == "0")
+                                {
+                                    cy = EndY;
+                                }
+                            }
+                        }
+                        else if (StartY - EndY == RadiusY)
+                        {
+                            if (StartX - EndX == RadiusX)
+                            {
+                                if (relativeElements[5] == "0")
+                                {
+                                    cy = StartY;
+                                }
+                                else if (relativeElements[5] == "1")
                                 {
                                     cy = EndY;
                                 }
