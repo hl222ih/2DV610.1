@@ -26,6 +26,15 @@ namespace _2DV610.Classes
             return Y == shape.Y && Radius == ((HalfCircle)shape).Radius;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
+
+            HalfCircle h = (HalfCircle)obj;
+
+            return X == h.X && Y == h.Y && Radius == h.Radius;
+        }
+
         public override string GetPath()
         {
             throw new NotImplementedException();
