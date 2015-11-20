@@ -95,6 +95,7 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PathCommandTests\PathCommandTest.cs" />
     <Compile Include="ShapeTests\EighthCircleTest.cs" />
     <Compile Include="ShapeTests\HeartTest.cs" />
     <Compile Include="PathCommandTests\APathCommandTest.cs" />

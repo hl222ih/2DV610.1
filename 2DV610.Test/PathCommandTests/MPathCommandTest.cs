@@ -76,14 +76,5 @@ namespace _2DV610.Test
             Assert.True(command1.RadiusX == 0);
             Assert.True(command1.RadiusY == 0);
         }
-
-        [Fact]
-        public void EqualsShouldReturnTrueOnSameValues()
-        {
-            PathCommand command1 = new PathCommand("M64,32");
-            PathCommand command2 = new PathCommand("m64,32");
-
-            Assert.True(command1.Equals(command2));
-        }
     }
 }
