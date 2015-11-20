@@ -444,11 +444,22 @@ namespace _2DV610.Classes
         {
             if (obj == null || GetType() != obj.GetType()) return false;
 
-            PathCommand command = (PathCommand)obj;
+            PathCommand c = (PathCommand)obj;
             
-            if (command.CommandType != CommandType) return false;
+            if (c.CommandType != CommandType) return false;
 
-            return command.EndX == EndX && command.EndY == EndY && command.StartX == StartX && command.StartY == StartY;
+            bool isEqual = false;
+
+            switch(c.CommandType)
+            {
+                case CType.MoveTo:
+                    isEqual = c.EndX == EndX && c.EndY == EndY && c.StartX == StartX && c.StartY == StartY;
+                    break;
+                default:
+                    break;
+            }
+
+            return isEqual;
         }
     }
 }
