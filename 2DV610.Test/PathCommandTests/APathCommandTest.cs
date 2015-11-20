@@ -150,5 +150,15 @@ namespace _2DV610.Test
             Assert.True(command3.IsVertical());
             Assert.True(command4.IsVertical());
         }
+
+        [Fact]
+        public void EqualsShouldReturnTrueOnSameValues()
+        {
+            PathCommand command1 = new PathCommand("A32,16 0 1,0 10,64", 10, 10);
+            PathCommand command2 = new PathCommand("a32,16 0 1,0 0,54", 10, 10);
+
+            Assert.True(command1.Equals(command2));
+        }
+
     }
 }
