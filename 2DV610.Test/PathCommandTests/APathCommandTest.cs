@@ -54,15 +54,15 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues1()
         {
-            string path = "A32,32 0 0,1 82,64";
-            PathCommand sut = new PathCommand(path);
+            string path = "A32,32 0 0,1 74,20";
+            PathCommand sut = new PathCommand(path,10,20);
 
-            Assert.Equal(0, sut.StartX);
-            Assert.Equal(0, sut.StartY);
-            Assert.Equal(82, sut.EndX);
-            Assert.Equal(64, sut.EndY);
-            Assert.Equal(41, sut.CenterX);
-            Assert.Equal(32, sut.CenterY);
+            Assert.Equal(10, sut.StartX);
+            Assert.Equal(20, sut.StartY);
+            Assert.Equal(74, sut.EndX);
+            Assert.Equal(20, sut.EndY);
+            Assert.Equal(42, sut.CenterX);
+            Assert.Equal(20, sut.CenterY);
             Assert.Equal(32, sut.RadiusX);
             Assert.Equal(32, sut.RadiusY);
         }

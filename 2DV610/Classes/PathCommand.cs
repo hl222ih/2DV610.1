@@ -67,8 +67,15 @@ namespace _2DV610.Classes
                         cx = EndX;
                         break;
                     case CType.EllipticalArc:
-                        cx = (StartX + EndX) / 2;
-                        if (EndX - StartX == RadiusX)
+                        if (StartX == EndX)
+                        {
+                            cx = EndX;
+                        }
+                        else if (StartY == EndY)
+                        {
+                            cx = (StartX + EndX) / 2;
+                        }
+                        else if (EndX - StartX == RadiusX)
                         {
                             if (relativeElements[5] == "1")
                             {
@@ -116,8 +123,15 @@ namespace _2DV610.Classes
                         cy = EndY;
                         break;
                     case CType.EllipticalArc:
-                        cy = (StartY + EndY) / 2;
-                        if (EndY - StartY == RadiusY)
+                        if (StartY == EndY)
+                        {
+                            cy = EndY; 
+                        }
+                        else if (StartX == EndX)
+                        {
+                            cy = (StartY + EndY) / 2;
+                        }
+                        else if (EndY - StartY == RadiusY)
                         {
                             if (EndX - StartX == RadiusX)
                             {
