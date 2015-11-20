@@ -16,55 +16,93 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void APathCommandTest_()
+        public void GetPathShouldReturnCorrectPath1()
         {
-            string svgPath1 = "A32,32 0 0,1 82,64";
-            string svgPath2 = "a32,32 0 0,1 64,0";
-            PathCommand command1 = new PathCommand(svgPath1);
-            PathCommand command2 = new PathCommand(svgPath1, 10, 20);
-            PathCommand command3 = new PathCommand(svgPath2);
-            PathCommand command4 = new PathCommand(svgPath2, 10, 20);
-            Assert.True(command1.GetRelativePath() == "a32,32 0 0,1 82,64");
-            Assert.True(command1.GetAbsolutePath() == "A32,32 0 0,1 82,64");
-            Assert.True(command2.GetRelativePath() == "a32,32 0 0,1 72,44");
-            Assert.True(command2.GetAbsolutePath() == "A32,32 0 0,1 82,64");
-            Assert.True(command3.GetRelativePath() == "a32,32 0 0,1 64,0");
-            Assert.True(command3.GetAbsolutePath() == "A32,32 0 0,1 64,0");
-            Assert.True(command4.GetRelativePath() == "a32,32 0 0,1 64,0");
-            Assert.True(command4.GetAbsolutePath() == "A32,32 0 0,1 74,20");
+            string path = "A32,32 0 0,1 82,64";
+            PathCommand sut = new PathCommand(path);
+            Assert.True(sut.GetRelativePath() == "a32,32 0 0,1 82,64");
+            Assert.True(sut.GetAbsolutePath() == "A32,32 0 0,1 82,64");
         }
 
         [Fact]
-        public void APathCommandStartEndValuesTest()
+        public void GetPathShouldReturnCorrectPath2()
         {
-            string svgPath1 = "A32,32 0 0,1 82,64";
-            string svgPath2 = "a32,32 0 0,1 -64,0";
-            PathCommand command1 = new PathCommand(svgPath1);
-            PathCommand command2 = new PathCommand(svgPath1, 10, 20);
-            PathCommand command3 = new PathCommand(svgPath2);
-            PathCommand command4 = new PathCommand(svgPath2, 10, 20);
-            Assert.True(command1.StartX == 0);
-            Assert.True(command1.StartY == 0);
-            Assert.True(command1.EndX == 82);
-            Assert.True(command1.EndY == 64);
-            Assert.True(command2.StartX == 10);
-            Assert.True(command2.StartY == 20);
-            Assert.True(command2.EndX == 82);
-            Assert.True(command2.EndY == 64);
-            Assert.True(command3.StartX == 0);
-            Assert.True(command3.StartY == 0);
-            Assert.True(command3.EndX == -64);
-            Assert.True(command3.EndY == 0);
-            Assert.True(command4.StartX == 10);
-            Assert.True(command4.StartY == 20);
-            Assert.True(command4.EndX == -54);
-            Assert.True(command4.EndY == 20);
-            Assert.True(command1.CenterX == 41);
-            Assert.True(command1.CenterY == 32);
-            Assert.True(command1.RadiusX == 32);
-            Assert.True(command1.RadiusY == 32);
+            string path = "A32,32 0 0,1 82,64";
+            PathCommand sut = new PathCommand(path, 10, 20);
+            Assert.True(sut.GetRelativePath() == "a32,32 0 0,1 72,44");
+            Assert.True(sut.GetAbsolutePath() == "A32,32 0 0,1 82,64");
         }
 
+        [Fact]
+        public void GetPathShouldReturnCorrectPath3()
+        {
+            string path = "a32,32 0 0,1 64,0";
+            PathCommand sut = new PathCommand(path);
+            Assert.True(sut.GetRelativePath() == "a32,32 0 0,1 64,0");
+            Assert.True(sut.GetAbsolutePath() == "A32,32 0 0,1 64,0");
+        }
+
+        [Fact]
+        public void GetPathShouldReturnCorrectPath4()
+        {
+            string path = "a32,32 0 0,1 64,0";
+            PathCommand sut = new PathCommand(path, 10, 20);
+            Assert.True(sut.GetRelativePath() == "a32,32 0 0,1 64,0");
+            Assert.True(sut.GetAbsolutePath() == "A32,32 0 0,1 74,20");
+        }
+
+        [Fact]
+        public void ConstructorShouldSetCorrectValues1()
+        {
+            string path = "A32,32 0 0,1 82,64";
+            PathCommand sut = new PathCommand(path);
+
+            Assert.Equal(0, sut.StartX);
+            Assert.Equal(0, sut.StartY);
+            Assert.Equal(82, sut.EndX);
+            Assert.Equal(64, sut.EndY);
+            Assert.Equal(41, sut.CenterX);
+            Assert.Equal(32, sut.CenterY);
+            Assert.Equal(32, sut.RadiusX);
+            Assert.Equal(32, sut.RadiusY);
+        }
+
+        [Fact]
+        public void ConstructorShouldSetCorrectValues2()
+        {
+            string path = "A32,32 0 0,1 82,64";
+            PathCommand sut = new PathCommand(path, 10, 20);
+
+            Assert.Equal(10, sut.StartX);
+            Assert.Equal(20, sut.StartY);
+            Assert.Equal(82, sut.EndX);
+            Assert.Equal(64, sut.EndY);
+        }
+
+        [Fact]
+        public void ConstructorShouldSetCorrectValues3()
+        {
+            string path = "a32,32 0 0,1 -64,0";
+            PathCommand sut = new PathCommand(path);
+
+            Assert.Equal(0, sut.StartX);
+            Assert.Equal(0, sut.StartY);
+            Assert.Equal(-64, sut.EndX);
+            Assert.Equal(0, sut.EndY);
+        }
+
+        [Fact]
+        public void ConstructorShouldSetCorrectValues4()
+        {
+            string path = "a32,32 0 0,1 -64,0";
+            PathCommand sut = new PathCommand(path, 10, 20);
+
+            Assert.Equal(10, sut.StartX);
+            Assert.Equal(20, sut.StartY);
+            Assert.Equal(-54, sut.EndX);
+            Assert.Equal(20, sut.EndY);
+        }
+        
         [Fact]
         public void APathCommandIsUpperLowerTest()
         {
