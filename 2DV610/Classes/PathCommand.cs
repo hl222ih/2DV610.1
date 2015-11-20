@@ -9,7 +9,7 @@ namespace _2DV610.Classes
 {
     public class PathCommand
     {
-        private enum CType
+        public enum CType
         {
             Undefined,
             MoveTo, //M
@@ -25,7 +25,7 @@ namespace _2DV610.Classes
 
         }
 
-        private CType type;
+        public CType CommandType { get; set; }
 
         private string[] relativeElements;
         private string[] absoluteElements;
@@ -61,7 +61,7 @@ namespace _2DV610.Classes
             {
                 float cx = 0;
 
-                switch (type)
+                switch (CommandType)
                 {
                     case CType.MoveTo:
                         cx = EndX;
@@ -88,7 +88,7 @@ namespace _2DV610.Classes
             {
                 float cy = 0;
 
-                switch (type)
+                switch (CommandType)
                 {
                     case CType.MoveTo:
                         cy = EndY;
@@ -115,7 +115,7 @@ namespace _2DV610.Classes
             {
                 float rx = 0;
 
-                switch (type)
+                switch (CommandType)
                 {
                     case CType.EllipticalArc:
                         float.TryParse(relativeElements[1], out rx);
@@ -139,7 +139,7 @@ namespace _2DV610.Classes
             {
                 float ry = 0;
 
-                switch (type)
+                switch (CommandType)
                 {
                     case CType.EllipticalArc:
                         float.TryParse(relativeElements[2], out ry);
@@ -200,35 +200,35 @@ namespace _2DV610.Classes
             switch (elems[0])
             {
                 case "M":
-                    type = CType.MoveTo;
+                    CommandType = CType.MoveTo;
                     EndX = float.Parse(elems[1]);
                     EndY = float.Parse(elems[2]);
                     relativeElements[1] = (EndX - StartX).ToString();
                     relativeElements[2] = (EndY - StartY).ToString();
                     break;
                 case "m":
-                    type = CType.MoveTo;
+                    CommandType = CType.MoveTo;
                     EndX = float.Parse(elems[1]) + StartX;
                     EndY = float.Parse(elems[2]) + StartY;
                     absoluteElements[1] = EndX.ToString();
                     absoluteElements[2] = EndY.ToString();
                     break;
                 case "A":
-                    type = CType.EllipticalArc;
+                    CommandType = CType.EllipticalArc;
                     EndX = float.Parse(elems[6]);
                     EndY = float.Parse(elems[7]);
                     relativeElements[6] = (EndX - StartX).ToString();
                     relativeElements[7] = (EndY - StartY).ToString();
                     break;
                 case "a":
-                    type = CType.EllipticalArc;
+                    CommandType = CType.EllipticalArc;
                     EndX = float.Parse(elems[6]) + StartX;
                     EndY = float.Parse(elems[7]) + StartY;
                     absoluteElements[6] = EndX.ToString();
                     absoluteElements[7] = EndY.ToString();
                     break;
                 default:
-                    type = CType.Undefined;
+                    CommandType = CType.Undefined;
                     break;
             }
 
@@ -296,12 +296,12 @@ namespace _2DV610.Classes
 
         public bool IsMoveToCommand()
         {
-            return (type == CType.MoveTo);
+            return (CommandType == CType.MoveTo);
         }
 
         public bool IsArcCommand()
         {
-            return (type == CType.EllipticalArc);
+            return (CommandType == CType.EllipticalArc);
         }
 
         public bool IsUpper()
@@ -309,12 +309,12 @@ namespace _2DV610.Classes
             bool isUpper = false;
             CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
-            if (undefined.Contains(type))
+            if (undefined.Contains(CommandType))
             {
                 //adjust isUpper
                 throw new NotImplementedException("Not implemented for the command type");
             }
-            if (type == CType.EllipticalArc)
+            if (CommandType == CType.EllipticalArc)
             {
                 if (relativeElements[5] == "1" && StartX <= EndX || relativeElements[5] == "0" && StartX >= EndX)
                 {
@@ -330,13 +330,13 @@ namespace _2DV610.Classes
             bool isLower = false;
             CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
-            if (undefined.Contains(type))
+            if (undefined.Contains(CommandType))
             {
                 //adjust isLower
                 throw new NotImplementedException("Not implemented for the command type");
             }
 
-            if (type == CType.EllipticalArc)
+            if (CommandType == CType.EllipticalArc)
             {
                 if (relativeElements[5] == "1" && StartX >= EndX || relativeElements[5] == "0" && StartX <= EndX)
                 {
@@ -352,12 +352,12 @@ namespace _2DV610.Classes
             bool isRight = false;
             CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
-            if (undefined.Contains(type))
+            if (undefined.Contains(CommandType))
             {
                 //adjust isRight
                 throw new NotImplementedException("Not implemented for the command type");
             }
-            if (type == CType.EllipticalArc)
+            if (CommandType == CType.EllipticalArc)
             {
                 if (relativeElements[5] == "1" && StartY <= EndY || relativeElements[5] == "0" && StartY >= EndY)
                 {
@@ -373,12 +373,12 @@ namespace _2DV610.Classes
             bool isLeft = false;
             CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
-            if (undefined.Contains(type))
+            if (undefined.Contains(CommandType))
             {
                 //adjust isLeft
                 throw new NotImplementedException("Not implemented for the command type");
             }
-            if (type == CType.EllipticalArc)
+            if (CommandType == CType.EllipticalArc)
             {
                 if (relativeElements[5] == "1" && StartY >= EndY || relativeElements[5] == "0" && StartY <= EndY)
                 {
@@ -394,11 +394,11 @@ namespace _2DV610.Classes
             bool isCircular = false;
             CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
-            if (undefined.Contains(type))
+            if (undefined.Contains(CommandType))
             {
                 throw new NotImplementedException("Not implemented for the command type");
             }
-            if (type == CType.EllipticalArc)
+            if (CommandType == CType.EllipticalArc)
             {
                 isCircular = RadiusX == RadiusY;
             }
@@ -411,11 +411,11 @@ namespace _2DV610.Classes
             bool isHorizontal = false;
             CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
-            if (undefined.Contains(type))
+            if (undefined.Contains(CommandType))
             {
                 throw new NotImplementedException("Not implemented for the command type");
             }
-            if (type == CType.EllipticalArc)
+            if (CommandType == CType.EllipticalArc)
             {
                 isHorizontal = StartY == EndY;
             }
@@ -428,16 +428,27 @@ namespace _2DV610.Classes
             bool isVertical = false;
             CType[] undefined = new CType[] { CType.Undefined, CType.CurveTo, CType.ShorthandCurveTo, CType.QuadraticCurveTo, CType.QuadraticCurveTo, CType.ShorthandQuadraticCurveTo };
 
-            if (undefined.Contains(type))
+            if (undefined.Contains(CommandType))
             {
                 throw new NotImplementedException("Not implemented for the command type");
             }
-            if (type == CType.EllipticalArc)
+            if (CommandType == CType.EllipticalArc)
             {
                 isVertical = StartX == EndX;
             }
 
             return isVertical;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
+
+            PathCommand command = (PathCommand)obj;
+            
+            if (command.CommandType != CommandType) return false;
+
+            return command.EndX == EndX && command.EndY == EndY && command.StartX == StartX && command.StartY == StartY;
         }
     }
 }
