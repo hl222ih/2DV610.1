@@ -85,6 +85,10 @@ namespace _2DV610.Classes
                             {
                                 cx = EndX;
                             }
+                            else if (relativeElements[5] == "0")
+                            {
+                                cx = StartX;
+                            }
                         }
                         break;
                     default:
@@ -131,6 +135,10 @@ namespace _2DV610.Classes
                                 if (relativeElements[5] == "1")
                                 {
                                     cy = StartY;
+                                }
+                                else if (relativeElements[5] == "0")
+                                {
+                                    cy = EndY;
                                 }
                             }
                         }
