@@ -232,6 +232,18 @@ namespace _2DV610.Test
         }
 
         [Fact]
+        public void ConstructorShouldSetCorrectValues16()
+        {
+            //Quarter circle, horizontal, right to left, counter-clockwise
+            float radius = (float)(Math.Sqrt(2) * 32);
+            string path = "a" + radius + "," + radius + " 0 0,0 -32,0";
+            PathCommand sut = new PathCommand(path, 10, 20);
+
+            Assert.Equal(-6, sut.CenterX);
+            Assert.Equal(36, sut.CenterY);
+        }
+
+        [Fact]
         public void APathCommandIsUpperLowerTest()
         {
             PathCommand command1 = new PathCommand("A32,32 0 0,1 64,0");
