@@ -14,6 +14,8 @@ namespace _2DV610.Classes
 
         public QuarterCircle(int cx, int cy, int radius, ShapeType shapeType) : base(shapeType)
         {
+            if (radius < 0) throw new ArgumentOutOfRangeException("Radius not allowed to be negative.");
+
             CX = cx;
             CY = cy;
             Radius = radius;
