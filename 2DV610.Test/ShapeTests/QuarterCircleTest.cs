@@ -15,12 +15,26 @@ namespace _2DV610.Test
             this.output = output;
         }
 
-        [Fact]
-        public void ShouldBeCorrectShapeType()
-        {
-            QuarterCircle sut = new QuarterCircle();
+        //[Fact]
+        //public void ShouldBeCorrectShapeType()
+        //{
+        //    QuarterCircle sut = new QuarterCircle();
 
-            Assert.Equal(ShapeType.QuarterCircle, sut.ShapeType);
+        //    Assert.Equal(ShapeType.QuarterCircle, sut.ShapeType);
+        //}
+
+        [Fact]
+        public void ConstructorShouldSetCorrectValues()
+        {
+            int cx = 84;
+            int cy = 64;
+            int radius = 32;
+
+            QuarterCircle sut = new UpperLeftQuarterCircle(cx, cy, radius);
+
+            Assert.Equal(cx, sut.CX);            
+            Assert.Equal(cy, sut.CY);            
+            Assert.Equal(radius, sut.Radius);
         }
     }
 }

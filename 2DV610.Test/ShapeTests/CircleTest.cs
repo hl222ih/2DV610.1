@@ -30,7 +30,7 @@ namespace _2DV610.Test
             int cy = 64;
             int radius = 32;
 
-            Circle sut = new Circle(84, 64, 32);
+            Circle sut = new Circle(cx, cy, radius);
 
             Assert.Equal(cx, sut.CX);               //x of circle's center is not correct
             Assert.Equal(cy, sut.CY);               //y of circle's center is not correct

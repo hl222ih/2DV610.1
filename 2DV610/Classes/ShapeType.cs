@@ -11,7 +11,6 @@ namespace _2DV610.Classes
         Unspecified,
         Line,
         Circle,
-        QuarterCircle,
         EighthCircle,
         LeftEar,
         RightEar,
@@ -19,6 +18,14 @@ namespace _2DV610.Classes
         RightHalfCircle,
         UpperHalfCircle,
         LowerHalfCircle,
+        LeftQuarterCircle,
+        RightQuarterCircle,
+        UpperQuarterCircle,
+        LowerQuarterCircle,
+        UpperLeftQuarterCircle,
+        UpperRightQuarterCircle,
+        LowerLeftQuarterCircle,
+        LowerRightQuarterCircle,
         Heart
     }
 }

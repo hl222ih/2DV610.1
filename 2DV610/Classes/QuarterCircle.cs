@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace _2DV610.Classes
 {
-    public class QuarterCircle : Shape
+    public abstract class QuarterCircle : Shape
     {
-        public QuarterCircle() : base(ShapeType.QuarterCircle)
+        public int CX { get; protected set; }
+        public int CY { get; protected set; }
+        public int Radius { get; protected set; }
+
+        public QuarterCircle(int cx, int cy, int radius, ShapeType shapeType) : base(shapeType)
         {
+            throw new NotImplementedException();
         }
 
         public override bool HorizontallyTranslates(Shape shape)
