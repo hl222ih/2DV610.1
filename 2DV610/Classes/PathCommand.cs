@@ -128,7 +128,7 @@ namespace _2DV610.Classes
                             {
                                 if (sweepFlag)
                                 {
-                                    cy = StartY + Math.Abs(StartX - EndX) / 2;
+                                    cy = StartY + (EndX - StartX) / 2;
                                 }
                                 else
                                 {
