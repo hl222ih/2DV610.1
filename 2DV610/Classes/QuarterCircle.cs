@@ -14,7 +14,9 @@ namespace _2DV610.Classes
 
         public QuarterCircle(int cx, int cy, int radius, ShapeType shapeType) : base(shapeType)
         {
-            throw new NotImplementedException();
+            CX = cx;
+            CY = cy;
+            Radius = radius;
         }
 
         public override bool HorizontallyTranslates(Shape shape)
