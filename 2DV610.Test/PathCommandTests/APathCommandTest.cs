@@ -282,7 +282,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues20()
         {
-            //Quarter circle, vertical, lower to upper, clockwise
+            //Quarter circle, vertical, lower to upper, counter-clockwise
             float radius = (float)(Math.Sqrt(2) * 32);
             string path = "a" + radius + "," + radius + " 0 0,0 0,-32";
             PathCommand sut = new PathCommand(path, 10, 20);

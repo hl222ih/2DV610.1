@@ -76,14 +76,7 @@ namespace _2DV610.Classes
                             }
                             else if (RadiusX - (float)(Math.Sqrt(2) * Math.Abs(StartY - EndY)) < 0.001)
                             {
-                                if (sweepFlag)
-                                {
-                                    cx = StartX + Math.Abs(EndY - StartY) / 2;
-                                }
-                                else
-                                {
-                                    cx = StartX - Math.Abs(EndY - StartY) / 2;
-                                }
+                                cx = StartX + (sweepFlag ? 1 : -1) * Math.Abs(EndY - StartY) / 2;
                             }
                         }
                         else if (StartY == EndY)
@@ -140,14 +133,7 @@ namespace _2DV610.Classes
                             }
                             else if (RadiusY - (float)(Math.Sqrt(2) * Math.Abs(StartX - EndX)) < 0.001)
                             {
-                                if (sweepFlag)
-                                {
-                                    cy = StartY + (EndX - StartX) / 2;
-                                }
-                                else
-                                {
-                                    cy = StartY - (EndX - StartX) / 2;
-                                }
+                                cy = StartY + (sweepFlag ? 1 : -1) * (EndX - StartX) / 2;
                             }
 
                         }
@@ -181,8 +167,7 @@ namespace _2DV610.Classes
 
         /// <summary>
         /// Gets the value 0.
-        /// For A command: The distance between a point on the left/right boundary to the center point of a non tilted circle/ellipse.
-        /// The x radius value does not change if the circle/ellipse is tilted.
+        /// For A command: Gets the value of x radius of the ellipse/circle the a command is a part of.
         /// </summary>
         public float RadiusX
         {
@@ -205,8 +190,7 @@ namespace _2DV610.Classes
 
         /// <summary>
         /// Gets the value 0.
-        /// For A command: The distance between a point on the upper/lower boundary to the center point of a non tilted circle/ellipse.
-        ///                The y radius value does not change if the circle/ellipse is tilted.
+        /// For A command: Gets the value of y radius of the ellipse/circle the a command is a part of.
         /// </summary>
         public float RadiusY
         {
