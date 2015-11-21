@@ -375,7 +375,8 @@ namespace _2DV610.Classes
             }
             if (CommandType == CType.EllipticalArc)
             {
-                if (relativeElements[5] == "1" && StartX <= EndX || relativeElements[5] == "0" && StartX >= EndX)
+                bool sweepFlag = relativeElements[5] == "1";
+                if (sweepFlag && StartX <= EndX || !sweepFlag && StartX >= EndX)
                 {
                     isUpper = true;
                 }
@@ -397,7 +398,8 @@ namespace _2DV610.Classes
 
             if (CommandType == CType.EllipticalArc)
             {
-                if (relativeElements[5] == "1" && StartX >= EndX || relativeElements[5] == "0" && StartX <= EndX)
+                bool sweepFlag = relativeElements[5] == "1";
+                if (sweepFlag && StartX >= EndX || !sweepFlag && StartX <= EndX)
                 {
                     isLower = true;
                 }
@@ -418,7 +420,8 @@ namespace _2DV610.Classes
             }
             if (CommandType == CType.EllipticalArc)
             {
-                if (relativeElements[5] == "1" && StartY <= EndY || relativeElements[5] == "0" && StartY >= EndY)
+                bool sweepFlag = relativeElements[5] == "1";
+                if (sweepFlag && StartY <= EndY || !sweepFlag && StartY >= EndY)
                 {
                     isRight = true;
                 }
@@ -439,7 +442,8 @@ namespace _2DV610.Classes
             }
             if (CommandType == CType.EllipticalArc)
             {
-                if (relativeElements[5] == "1" && StartY >= EndY || relativeElements[5] == "0" && StartY <= EndY)
+                bool sweepFlag = relativeElements[5] == "1";
+                if (sweepFlag && StartY >= EndY || !sweepFlag && StartY <= EndY)
                 {
                     isLeft = true;
                 }
