@@ -36,5 +36,15 @@ namespace _2DV610.Test
             Assert.Equal(cy, sut.CY);            
             Assert.Equal(radius, sut.Radius);
         }
+
+        [Fact]
+        public void NegativeRadiusThrowsArgumentOutOfRangeException()
+        {
+            int cx = 84;
+            int cy = 64;
+            int radius = -32;
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => new UpperLeftQuarterCircle(cx, cy, radius));
+        }
     }
 }
