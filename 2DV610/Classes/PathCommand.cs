@@ -82,7 +82,7 @@ namespace _2DV610.Classes
                                 }
                                 else
                                 {
-                                    cx = StartX - (EndY - StartY) / 2;
+                                    cx = StartX - Math.Abs(EndY - StartY) / 2;
                                 }
                             }
                         }
