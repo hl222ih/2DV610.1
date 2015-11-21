@@ -67,6 +67,7 @@ namespace _2DV610.Classes
                         cx = EndX;
                         break;
                     case CType.EllipticalArc:
+                        bool sweepFlag = relativeElements[5] == "1";
                         if (StartX == EndX)
                         {
                             cx = EndX;
@@ -77,52 +78,17 @@ namespace _2DV610.Classes
                         }
                         else if (EndX - StartX == RadiusX)
                         {
-                            if (EndY - StartY == RadiusY)
-                            {
-                                if (relativeElements[5] == "1")
-                                {
-                                    cx = StartX;
-                                }
-                                else if (relativeElements[5] == "0")
-                                {
-                                    cx = EndX;
-                                }
-                            } else if (StartY - EndY == RadiusX)
-                            {
-                                if (relativeElements[5] == "1")
-                                {
-                                    cx = StartX;
-                                }
-                                else if (relativeElements[5] == "0")
-                                {
-                                    cx = EndX;
-                                }
-                            }
+                            cx = sweepFlag ? StartX : EndX;
                         }
                         else if (StartX - EndX == RadiusX)
                         {
                             if (EndY - StartY == RadiusY)
                             {
-                                if (relativeElements[5] == "1")
-                                {
-                                    cx = EndX;
-                                }
-                                else if (relativeElements[5] == "0")
-                                {
-                                    cx = StartX;
-                                }
-
+                                cx = sweepFlag ? EndX : StartX;
                             }
                             else if (StartY - EndY == RadiusY)
                             {
-                                if (relativeElements[5] == "0")
-                                {
-                                    cx = EndX;
-                                }
-                                else if (relativeElements[5] == "1")
-                                {
-                                    cx = StartX;
-                                }
+                                cx = sweepFlag ? StartX : EndX;
                             }
                         }
                         break;
@@ -151,6 +117,7 @@ namespace _2DV610.Classes
                         cy = EndY;
                         break;
                     case CType.EllipticalArc:
+                        bool sweepFlag = relativeElements[5] == "1";
                         if (StartY == EndY)
                         {
                             cy = EndY; 
@@ -159,53 +126,19 @@ namespace _2DV610.Classes
                         {
                             cy = (StartY + EndY) / 2;
                         }
+                        else if (StartY - EndY == RadiusY)
+                        {
+                            cy = sweepFlag ? EndY : StartY;
+                        }
                         else if (EndY - StartY == RadiusY)
                         {
                             if (EndX - StartX == RadiusX)
                             {
-                                if (relativeElements[5] == "1")
-                                {
-                                    cy = EndY;
-                                }
-                                else if (relativeElements[5] == "0")
-                                {
-                                    cy = StartY;
-                                }
+                                cy = sweepFlag ? EndY : StartY;
                             }
                             else if (StartX - EndX == RadiusX)
                             {
-                                if (relativeElements[5] == "1")
-                                {
-                                    cy = StartY;
-                                }
-                                else if (relativeElements[5] == "0")
-                                {
-                                    cy = EndY;
-                                }
-                            }
-                        }
-                        else if (StartY - EndY == RadiusY)
-                        {
-                            if (StartX - EndX == RadiusX)
-                            {
-                                if (relativeElements[5] == "0")
-                                {
-                                    cy = StartY;
-                                }
-                                else if (relativeElements[5] == "1")
-                                {
-                                    cy = EndY;
-                                }
-                            } else if (EndX - StartX == RadiusX)
-                            {
-                                if (relativeElements[5] == "1")
-                                {
-                                    cy = EndY;
-                                }
-                                else if (relativeElements[5] == "0")
-                                {
-                                    cy = StartY;
-                                }
+                                cy = sweepFlag ? StartY : EndY;
                             }
                         }
                         break;

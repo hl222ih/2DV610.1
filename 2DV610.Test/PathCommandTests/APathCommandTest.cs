@@ -54,6 +54,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues1()
         {
+            //Half circle left to right, clockwise
             string path = "A32,32 0 0,1 74,20";
             PathCommand sut = new PathCommand(path,10,20);
 
@@ -70,30 +71,33 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues2()
         {
-            string path = "A32,32 0 0,1 82,64";
+            //Half circle right to left, clockwise
+            string path = "A32,32 0 0,1 -54,-20";
             PathCommand sut = new PathCommand(path, 10, 20);
 
             Assert.Equal(10, sut.StartX);
             Assert.Equal(20, sut.StartY);
-            Assert.Equal(82, sut.EndX);
-            Assert.Equal(64, sut.EndY);
+            Assert.Equal(-54, sut.EndX);
+            Assert.Equal(-20, sut.EndY);
         }
 
         [Fact]
         public void ConstructorShouldSetCorrectValues3()
         {
+            //Half circle right to left, clockwise
             string path = "a32,32 0 0,1 -64,0";
-            PathCommand sut = new PathCommand(path);
+            PathCommand sut = new PathCommand(path, 10, 20);
 
-            Assert.Equal(0, sut.StartX);
-            Assert.Equal(0, sut.StartY);
-            Assert.Equal(-64, sut.EndX);
-            Assert.Equal(0, sut.EndY);
+            Assert.Equal(10, sut.StartX);
+            Assert.Equal(20, sut.StartY);
+            Assert.Equal(-54, sut.EndX);
+            Assert.Equal(20, sut.EndY);
         }
 
         [Fact]
         public void ConstructorShouldSetCorrectValues4()
         {
+            //Half circle right to left, clockwise
             string path = "a32,32 0 0,1 -64,0";
             PathCommand sut = new PathCommand(path, 10, 20);
 
@@ -106,9 +110,10 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues5()
         {
+            //Quarter circle upper left to lower right, clockwise
             string path = "a32,32 0 0,1 32,32";
             PathCommand sut = new PathCommand(path, 10, 20);
-
+            
             Assert.Equal(10, sut.CenterX);
             Assert.Equal(52, sut.CenterY);
         }
@@ -116,6 +121,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues6()
         {
+            //Quarter circle upper left to lower right, counter-clockwise
             string path = "a32,32 0 0,0 32,32";
             PathCommand sut = new PathCommand(path, 10, 20);
 
@@ -126,6 +132,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues7()
         {
+            //Quarter circle upper right to lower left, clockwise
             string path = "a32,32 0 0,1 -32,32";
             PathCommand sut = new PathCommand(path, 10, 20);
 
@@ -136,6 +143,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues8()
         {
+            //Quarter circle upper right to lower left, counter-clockwise
             string path = "a32,32 0 0,0 -32,32";
             PathCommand sut = new PathCommand(path, 10, 20);
 
@@ -146,6 +154,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues9()
         {
+            //Quarter circle lower right to upper left, counter-clockwise
             string path = "a32,32 0 0,0 -32,-32";
             PathCommand sut = new PathCommand(path, 10, 20);
 
@@ -156,6 +165,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues10()
         {
+            //Quarter circle lower right to upper left, clockwise
             string path = "a32,32 0 0,1 -32,-32";
             PathCommand sut = new PathCommand(path, 10, 20);
 
@@ -166,6 +176,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues11()
         {
+            //Quarter circle lower left to upper right, clockwise
             string path = "a32,32 0 0,1 32,-32";
             PathCommand sut = new PathCommand(path, 10, 20);
 
@@ -176,6 +187,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorShouldSetCorrectValues12()
         {
+            //Quarter circle lower left to upper right, counter-clockwise
             string path = "a32,32 0 0,0 32,-32";
             PathCommand sut = new PathCommand(path, 10, 20);
 
