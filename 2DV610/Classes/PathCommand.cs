@@ -76,7 +76,14 @@ namespace _2DV610.Classes
                             }
                             else if (RadiusX - (float)(Math.Sqrt(2) * Math.Abs(StartY - EndY)) < 0.001)
                             {
-                                cx = StartX + (EndY - StartY) / 2;
+                                if (sweepFlag)
+                                {
+                                    cx = StartX + (EndY - StartY) / 2;
+                                }
+                                else
+                                {
+                                    cx = StartX - (EndY - StartY) / 2;
+                                }
                             }
                         }
                         else if (StartY == EndY)
