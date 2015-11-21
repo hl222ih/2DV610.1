@@ -70,7 +70,14 @@ namespace _2DV610.Classes
                         bool sweepFlag = relativeElements[5] == "1";
                         if (StartX == EndX)
                         {
-                            cx = EndX;
+                            if (StartX == Math.Abs(StartY - EndY) / 2)
+                            {
+                                cx = EndX;
+                            }
+                            else if (RadiusX - (float)(Math.Sqrt(2) * Math.Abs(StartY - EndY)) < 0.001)
+                            {
+                                cx = StartX - (EndY - StartY) / 2;
+                            }
                         }
                         else if (StartY == EndY)
                         {
