@@ -120,6 +120,7 @@ namespace _2DV610.Test
 
             QuarterCircle sut = new UpperQuarterCircle(cx, cy, radius);
 
+            Assert.Equal(48, sut.Radius);
             Assert.Equal(ShapeType.UpperQuarterCircle, sut.ShapeType);
             Assert.Equal(cx - 32, sut.X);
             Assert.Equal(cy - 16, sut.Y);
