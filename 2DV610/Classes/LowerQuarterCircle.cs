@@ -12,12 +12,11 @@ namespace _2DV610.Classes
 
         public LowerQuarterCircle(int cx, int cy, float radius) : base(cx, cy, (int)Math.Round(radius / Math.Sqrt(2) * 1.5, 0), ShapeType.LowerQuarterCircle)
         {
-            Width = (int)Math.Round(radius / Math.Sqrt(2), 0) * 2;
+            Width = (int)Math.Round(radius / Math.Sqrt(2) * 2, 0);
             base.Height = Width / 4;
             Height = radius - Width / 2;
             X = cx - Width / 2;
             Y = cy;
-
         }
     }
 }
