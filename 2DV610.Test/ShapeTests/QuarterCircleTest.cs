@@ -50,6 +50,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorOfUpperLeftQShouldSetCorrectValues()
         {
+            //upper left quarter of a circle inscribed in a square with sides 64.
             int cx = 64;
             int cy = 64;
             int radius = 32;
@@ -66,6 +67,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorOfUpperRightQShouldSetCorrectValues()
         {
+            //upper right quarter of a circle inscribed in a square with sides 64.
             int cx = 64;
             int cy = 64;
             int radius = 32;
@@ -82,6 +84,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorOfLowerLeftQShouldSetCorrectValues()
         {
+            //lower left quarter of a circle inscribed in a square with sides 64.
             int cx = 64;
             int cy = 64;
             int radius = 32;
@@ -98,6 +101,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorOfLowerRightQShouldSetCorrectValues()
         {
+            //lower right quarter of a circle inscribed in a square with sides 64.
             int cx = 64;
             int cy = 64;
             int radius = 32;
@@ -114,6 +118,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorOfUpperQShouldSetCorrectValues()
         {
+            //upper quarter of a circle circumscribing a square with sides 64.
             int cx = 64;
             int cy = 64;
             float radius = (float)(Math.Sqrt(2) * 32); //≈45.254833
@@ -133,6 +138,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorOfLowerQShouldSetCorrectValues()
         {
+            //lower quarter of a circle circumscribing a square with sides 64.
             int cx = 64;
             int cy = 64;
             float radius = (float)(Math.Sqrt(2) * 32); //≈45.254833
@@ -151,6 +157,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorOfLeftQShouldSetCorrectValues()
         {
+            //left quarter of a circle circumscribing a square with sides 64.
             int cx = 64;
             int cy = 64;
             float radius = (float)(Math.Sqrt(2) * 32); //≈45.254833
@@ -170,6 +177,7 @@ namespace _2DV610.Test
         [Fact]
         public void ConstructorOfRightQShouldSetCorrectValues()
         {
+            //right quarter of a circle circumscribing a square with sides 64.
             int cx = 64;
             int cy = 64;
             float radius = (float)(Math.Sqrt(2) * 32); //≈45.254833
