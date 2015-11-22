@@ -46,5 +46,21 @@ namespace _2DV610.Test
 
             Assert.Throws<ArgumentOutOfRangeException>(() => new UpperLeftQuarterCircle(cx, cy, radius));
         }
+
+        [Fact]
+        public void ConstructorOfULQShouldSetCorrectValues()
+        {
+            int cx = 64;
+            int cy = 64;
+            int radius = 32;
+            
+            QuarterCircle sut = new UpperLeftQuarterCircle(cx, cy, radius);
+
+            Assert.Equal(ShapeType.UpperLeftQuarterCircle, sut.ShapeType);
+            Assert.Equal(cx - radius, sut.X);        
+            Assert.Equal(cy - radius, sut.Y);        
+            Assert.Equal(radius, sut.Width);         
+            Assert.Equal(radius, sut.Height);    
+        }
     }
 }
