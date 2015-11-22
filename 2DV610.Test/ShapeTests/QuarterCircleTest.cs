@@ -62,5 +62,21 @@ namespace _2DV610.Test
             Assert.Equal(radius, sut.Width);         
             Assert.Equal(radius, sut.Height);    
         }
+
+        [Fact]
+        public void ConstructorOfURQShouldSetCorrectValues()
+        {
+            int cx = 64;
+            int cy = 64;
+            int radius = 32;
+
+            QuarterCircle sut = new UpperRightQuarterCircle(cx, cy, radius);
+
+            Assert.Equal(ShapeType.UpperRightQuarterCircle, sut.ShapeType);
+            Assert.Equal(cx, sut.X);
+            Assert.Equal(cy - radius, sut.Y);
+            Assert.Equal(radius, sut.Width);
+            Assert.Equal(radius, sut.Height);
+        }
     }
 }
