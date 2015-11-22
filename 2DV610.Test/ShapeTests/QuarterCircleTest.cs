@@ -48,7 +48,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void ConstructorOfULQShouldSetCorrectValues()
+        public void ConstructorOfUpperLeftQShouldSetCorrectValues()
         {
             int cx = 64;
             int cy = 64;
@@ -64,7 +64,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void ConstructorOfURQShouldSetCorrectValues()
+        public void ConstructorOfUpperRightQShouldSetCorrectValues()
         {
             int cx = 64;
             int cy = 64;
@@ -80,7 +80,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void ConstructorOfLLQShouldSetCorrectValues()
+        public void ConstructorOfLowerLeftQShouldSetCorrectValues()
         {
             int cx = 64;
             int cy = 64;
@@ -96,7 +96,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void ConstructorOfLRQShouldSetCorrectValues()
+        public void ConstructorOfLowerRightQShouldSetCorrectValues()
         {
             int cx = 64;
             int cy = 64;
@@ -112,7 +112,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void ConstructorOfUQShouldSetCorrectValues()
+        public void ConstructorOfUpperQShouldSetCorrectValues()
         {
             int cx = 64;
             int cy = 64;
@@ -131,7 +131,7 @@ namespace _2DV610.Test
         }
 
         [Fact]
-        public void ConstructorOfLQShouldSetCorrectValues()
+        public void ConstructorOfLowerQShouldSetCorrectValues()
         {
             int cx = 64;
             int cy = 64;
@@ -146,6 +146,25 @@ namespace _2DV610.Test
             Assert.Equal(64, sut.Width);
             Assert.Equal(16, sut.Height); // 1/4 of Width
             Assert.Equal(radius - 32, ((LowerQuarterCircle)sut).Height);
+        }
+
+        [Fact]
+        public void ConstructorOfLeftQShouldSetCorrectValues()
+        {
+            int cx = 64;
+            int cy = 64;
+            float radius = (float)(Math.Sqrt(2) * 32); //≈45.254833
+
+            QuarterCircle sut = new LeftQuarterCircle(cx, cy, radius);
+
+            Assert.Equal(ShapeType.LeftQuarterCircle, sut.ShapeType);
+            Assert.Equal(48, sut.Radius);
+            Assert.Equal(cx - 16, sut.X);
+            Assert.Equal(cx - radius, ((LeftQuarterCircle)sut).X);
+            Assert.Equal(cy - 32, sut.Y);
+            Assert.Equal(16, sut.Width); // 1/4 of Height
+            Assert.Equal(radius - 32, ((LeftQuarterCircle)sut).Width);
+            Assert.Equal(64, sut.Height); 
         }
 
     }
