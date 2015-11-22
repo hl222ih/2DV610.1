@@ -123,6 +123,7 @@ namespace _2DV610.Test
             Assert.Equal(ShapeType.UpperQuarterCircle, sut.ShapeType);
             Assert.Equal(cx - 32, sut.X);
             Assert.Equal(cy - 16, sut.Y);
+            Assert.Equal(cy - radius, ((UpperQuarterCircle)sut).Y);
             Assert.Equal(64, sut.Width);
             Assert.Equal(16, sut.Height); // 1/4 of Width
             Assert.Equal(radius-32, ((UpperQuarterCircle)sut).Height);
