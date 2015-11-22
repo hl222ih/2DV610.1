@@ -167,5 +167,23 @@ namespace _2DV610.Test
             Assert.Equal(64, sut.Height); 
         }
 
+        [Fact]
+        public void ConstructorOfRightQShouldSetCorrectValues()
+        {
+            int cx = 64;
+            int cy = 64;
+            float radius = (float)(Math.Sqrt(2) * 32); //≈45.254833
+
+            QuarterCircle sut = new RightQuarterCircle(cx, cy, radius);
+
+            Assert.Equal(ShapeType.RightQuarterCircle, sut.ShapeType);
+            Assert.Equal(48, sut.Radius);
+            Assert.Equal(cy - 32, sut.Y);
+            Assert.Equal(cx, sut.X);
+            Assert.Equal(64, sut.Height);
+            Assert.Equal(16, sut.Width); // 1/4 of Height
+            Assert.Equal(radius - 32, ((RightQuarterCircle)sut).Width);
+        }
+
     }
 }
