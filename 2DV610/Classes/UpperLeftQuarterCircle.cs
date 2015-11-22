@@ -8,9 +8,12 @@ namespace _2DV610.Classes
 {
     public class UpperLeftQuarterCircle : QuarterCircle
     {
-        public UpperLeftQuarterCircle(int cx, int cy, int radius) : base(cx, cy, radius, ShapeType.Unspecified)
+        public UpperLeftQuarterCircle(int cx, int cy, int radius) : base(cx, cy, radius, ShapeType.UpperLeftQuarterCircle)
         {
-
+            X = cx - radius;
+            Y = cy - radius;
+            Height = radius;
+            Width = radius;
         }
     }
 }
