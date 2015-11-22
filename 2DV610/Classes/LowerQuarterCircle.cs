@@ -8,7 +8,7 @@ namespace _2DV610.Classes
 {
     public class LowerQuarterCircle : QuarterCircle
     {
-        public LowerQuarterCircle(int cx, int cy, int radius) : base(cx, cy, radius, ShapeType.Unspecified)
+        public LowerQuarterCircle(int cx, int cy, float radius) : base(cx, cy, (int)radius, ShapeType.Unspecified)
         {
 
         }

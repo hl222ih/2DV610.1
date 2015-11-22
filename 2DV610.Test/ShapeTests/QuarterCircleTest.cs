@@ -120,14 +120,32 @@ namespace _2DV610.Test
 
             QuarterCircle sut = new UpperQuarterCircle(cx, cy, radius);
 
-            Assert.Equal(48, sut.Radius);
             Assert.Equal(ShapeType.UpperQuarterCircle, sut.ShapeType);
+            Assert.Equal(48, sut.Radius);
             Assert.Equal(cx - 32, sut.X);
             Assert.Equal(cy - 16, sut.Y);
             Assert.Equal(cy - radius, ((UpperQuarterCircle)sut).Y);
             Assert.Equal(64, sut.Width);
             Assert.Equal(16, sut.Height); // 1/4 of Width
             Assert.Equal(radius-32, ((UpperQuarterCircle)sut).Height);
+        }
+
+        [Fact]
+        public void ConstructorOfLQShouldSetCorrectValues()
+        {
+            int cx = 64;
+            int cy = 64;
+            float radius = (float)(Math.Sqrt(2) * 32); //≈45.254833
+
+            QuarterCircle sut = new LowerQuarterCircle(cx, cy, radius);
+
+            Assert.Equal(ShapeType.LowerQuarterCircle, sut.ShapeType);
+            Assert.Equal(48, sut.Radius);
+            Assert.Equal(cx - 32, sut.X);
+            Assert.Equal(cy, sut.Y);
+            Assert.Equal(64, sut.Width);
+            Assert.Equal(16, sut.Height); // 1/4 of Width
+            Assert.Equal(radius - 32, ((LowerQuarterCircle)sut).Height);
         }
 
     }
