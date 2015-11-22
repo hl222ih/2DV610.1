@@ -78,5 +78,22 @@ namespace _2DV610.Test
             Assert.Equal(radius, sut.Width);
             Assert.Equal(radius, sut.Height);
         }
+
+        [Fact]
+        public void ConstructorOfLLQShouldSetCorrectValues()
+        {
+            int cx = 64;
+            int cy = 64;
+            int radius = 32;
+
+            QuarterCircle sut = new LowerLeftQuarterCircle(cx, cy, radius);
+
+            Assert.Equal(ShapeType.LowerLeftQuarterCircle, sut.ShapeType);
+            Assert.Equal(cx - radius, sut.X);
+            Assert.Equal(cy, sut.Y);
+            Assert.Equal(radius, sut.Width);
+            Assert.Equal(radius, sut.Height);
+        }
+
     }
 }
