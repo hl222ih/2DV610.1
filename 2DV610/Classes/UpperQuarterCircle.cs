@@ -9,6 +9,7 @@ namespace _2DV610.Classes
     public class UpperQuarterCircle : QuarterCircle
     {
         public new float Height { get; protected set; }
+        public new float Y { get; protected set; }
 
         public UpperQuarterCircle(int cx, int cy, float radius) : base(cx, cy, (int)radius, ShapeType.UpperQuarterCircle)
         {
@@ -16,7 +17,8 @@ namespace _2DV610.Classes
             base.Height = Width / 4;
             Height = radius - Width / 2;
             X = cx - Width / 2;
-            Y = cy - base.Height;
+            base.Y = cy - base.Height;
+            Y = cy - radius;
         }
     }
 }
