@@ -9,12 +9,13 @@ namespace _2DV610.Classes
     public class SymbolService
     {
         private ISymbolRepository repo;
+        private List<Symbol> symbols;
 
         public int SymbolCount
         {
             get
             {
-                return 0;
+                return symbols.Count;
             }
         }
 
@@ -23,6 +24,7 @@ namespace _2DV610.Classes
             if (repo == null) throw new ArgumentNullException("The symbol repository cannot be null.");
 
             this.repo = repo;
+            symbols = repo.GetAllSymbols();
         }
     }
 }
