@@ -18,6 +18,10 @@ namespace _2DV610.Test
 
         private class SymbolRepositoryMock : ISymbolRepository
         {
+
+            List<Symbol> symbols = new List<Symbol>() {
+                new Symbol("")
+            };
             public List<Symbol> GetAllSymbols()
             {
                 return new List<Symbol>();
