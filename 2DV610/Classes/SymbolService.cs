@@ -12,6 +12,8 @@ namespace _2DV610.Classes
 
         public SymbolService(ISymbolRepository repo)
         {
+            if (repo == null) throw new ArgumentNullException();
+
             this.repo = repo;
         }
     }
