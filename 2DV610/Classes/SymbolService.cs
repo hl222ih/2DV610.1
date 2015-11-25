@@ -8,9 +8,11 @@ namespace _2DV610.Classes
 {
     public class SymbolService
     {
+        ISymbolRepository repo;
+
         public SymbolService(ISymbolRepository repo)
         {
-            throw new NotImplementedException();
+            this.repo = repo;
         }
     }
 }
