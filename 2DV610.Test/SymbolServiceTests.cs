@@ -31,5 +31,11 @@ namespace _2DV610.Test
             
             SymbolService sut = new SymbolService(mock);
         }
+
+        [Fact]
+        public void ConstructorShouldThrowNullArgumentExceptionIfPassedNullArgument()
+        {
+            Assert.Throws<ArgumentNullException>(() => new SymbolService(null));
+        }
     }
 }
