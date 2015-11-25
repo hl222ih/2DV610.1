@@ -8,7 +8,7 @@ namespace _2DV610.Classes
 {
     public class SymbolService
     {
-        ISymbolRepository repo;
+        private ISymbolRepository repo;
 
         public SymbolService(ISymbolRepository repo)
         {
