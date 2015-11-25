@@ -19,12 +19,16 @@ namespace _2DV610.Test
         private class SymbolRepositoryMock : ISymbolRepository
         {
 
-            List<Symbol> symbols = new List<Symbol>() {
-                new Symbol("")
-            };
+            List<Symbol> symbols;
+
             public List<Symbol> GetAllSymbols()
             {
-                return new List<Symbol>();
+                return symbols;
+            }
+
+            public void SetupSymbols(List<Symbol> symbols)
+            {
+                this.symbols = symbols;
             }
         }
 
@@ -40,6 +44,22 @@ namespace _2DV610.Test
         public void ConstructorShouldThrowNullArgumentExceptionIfPassedNullArgument()
         {
             Assert.Throws<ArgumentNullException>(() => new SymbolService(null));
+        }
+
+        [Fact] void CountSymbolsShouldReturnCorrectCount()
+        {
+            SymbolRepositoryMock mock = new SymbolRepositoryMock();
+
+            List<Symbol> symbols = new List<Symbol>()
+            {
+                new Symbol("M18,64 A32,32 0 0,1 82,64")
+            };
+
+            mock.SetupSymbols(symbols);
+
+            SymbolService sut = new SymbolService(mock);
+
+            Assert.Equal(1, sut.SymbolCount);
         }
     }
 }

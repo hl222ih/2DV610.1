@@ -10,6 +10,14 @@ namespace _2DV610.Classes
     {
         private ISymbolRepository repo;
 
+        public int SymbolCount
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
         public SymbolService(ISymbolRepository repo)
         {
             if (repo == null) throw new ArgumentNullException("The symbol repository cannot be null.");
