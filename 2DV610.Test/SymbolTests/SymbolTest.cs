@@ -123,6 +123,7 @@ namespace _2DV610.Test
             
             Symbol symbol = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0M640,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0");
             Assert.Equal(2, symbol.Symbols.Length);
+            Assert.Equal(ShapeType.Circle, symbol.Symbols[0].Shapes[0].ShapeType);
         }
 
         //        [Fact]
