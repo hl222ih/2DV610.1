@@ -116,19 +116,27 @@ namespace _2DV610.Test
             Assert.NotNull(symbol.PathCommands);
             Assert.NotNull(symbol.Symbols);
         }
+        
+        [Fact]
+        public void ConstructorShouldCreateTwoSymbolsForATwoSymbolPath()
+        {
+            
+            Symbol symbol = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0M640,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0");
+            Assert.Equal(2, symbol.Symbols.Length);
+        }
 
-//        [Fact]
-//        public void ConstructorShouldCreatePathCommandsAsIndividuallyCreated()
-//        {
-//            Symbol sut = new Symbol("M84,64 a32,32 0 0,1 -10,64");
-//            PathCommand[] commands = sut.PathCommands;
+        //        [Fact]
+        //        public void ConstructorShouldCreatePathCommandsAsIndividuallyCreated()
+        //        {
+        //            Symbol sut = new Symbol("M84,64 a32,32 0 0,1 -10,64");
+        //            PathCommand[] commands = sut.PathCommands;
 
-//            PathCommand command1 = new PathCommand("M84, 64");
-//            //PathCommand command2 = new PathCommand("M84, 64");
+        //            PathCommand command1 = new PathCommand("M84, 64");
+        //            //PathCommand command2 = new PathCommand("M84, 64");
 
-//            Assert.True(command1.Equals(commands[0]));
-////            Assert.Equal("a32,32 0 0,1 -10,64", paths[1]);
-//        }
+        //            Assert.True(command1.Equals(commands[0]));
+        ////            Assert.Equal("a32,32 0 0,1 -10,64", paths[1]);
+        //        }
 
         [Fact]
         public void CreatePathCommandsShouldCreatePathCommandsWithCorrectInParameters()

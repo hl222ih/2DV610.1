@@ -83,6 +83,10 @@ namespace _2DV610.Classes
             return shapes.Exists(s => s.HorizontallyTranslates(shape));
         }
 
+        public bool Contains(Symbol symbol)
+        {
+            throw new NotImplementedException();
+        }
 
         protected void CreatePathCommands(string[] paths)
         {
