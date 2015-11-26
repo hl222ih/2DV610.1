@@ -77,7 +77,10 @@ namespace _2DV610.Classes
         public void AddShape(Shape shape, int adjust)
         {
             shape.X += adjust;
-            shapes.Add(shape);
+            if (!TryAttachShape(shape))
+            {
+                shapes.Add(shape);
+            }
         }
 
         public List<Shape> GetShapes()
@@ -130,10 +133,33 @@ namespace _2DV610.Classes
                 Shape shape = CreateShape(c);
                 if (shape != null)
                 {
-                    shapes.Add(shape);
+                    if (!TryAttachShape(shape))
+                    {
+                        shapes.Add(shape);
+                    }
                 }
 
             }
+        }
+
+        protected bool TryAttachShape(Shape shape)
+        {
+            bool isAttached = false;
+
+            if (shape.ShapeType == ShapeType.UpperHalfCircle)
+            {
+                UpperHalfCircle castShape = (UpperHalfCircle)shape;
+                int matchIndex = shapes.FindIndex(s => s.ShapeType == ShapeType.LowerHalfCircle && 
+                    ((LowerHalfCircle)s).CX == castShape.CX &&
+                    ((LowerHalfCircle)s).CY == castShape.CY &&
+                    ((LowerHalfCircle)s).Radius == castShape.Radius);
+                if (matchIndex != -1)
+                {
+                    isAttached = true;
+                    shapes[matchIndex] = new Circle(castShape.CX, castShape.CY, castShape.Radius);
+                }
+            }
+            return isAttached;
         }
 
         protected Shape CreateShape(PathCommand c)
@@ -178,7 +204,6 @@ namespace _2DV610.Classes
         private void PutShapesIntoSymbols()
         {
             shapes = shapes.OrderBy(s => s.X).ToList();
-
             Symbol symbol = new Symbol();
             int adjust = 0;
             for (int i = 0; i < shapes.Count; i++)
@@ -187,6 +212,7 @@ namespace _2DV610.Classes
                 if (shape.X <= symbol.Width)
                 {
                     symbol.AddShape(shape, adjust);
+
                     if (shape.X + shape.Width > symbol.Width)
                     {
                         symbol.Width = shape.X + shape.Width;
@@ -195,11 +221,12 @@ namespace _2DV610.Classes
                 else
                 {
                     symbols.Add(symbol);
-                    adjust += -symbol.Width; //-128 
+                    adjust += -symbol.Width; 
                     symbol = new Symbol();
                     symbol.AddShape(shape, adjust);
                 }
             }
+            symbols.Add(symbol);
         }
     }
 }
