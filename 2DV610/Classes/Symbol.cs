@@ -59,30 +59,7 @@ namespace _2DV610.Classes
 
             CreateShapes();
 
-            shapes.OrderBy(s => s.X);
-
-            Symbol symbol = new Symbol();
-            int adjust = 0;
-            for (int i = 0; i < shapes.Count; i++)
-            {
-                Shape shape = shapes[i];
-                if (shape.X <= symbol.Width) // && shape.X + shape.Width >= 0
-                {
-                    symbol.AddShape(shape, adjust);
-                    if (shape.X + shape.Width > symbol.Width)
-                    {
-                        symbol.Width = shape.X + shape.Width;
-                    }
-                }
-                else
-                {
-                    symbols.Add(symbol);
-                    adjust += - symbol.Width; //-128 
-                    symbol = new Symbol();
-                    symbol.AddShape(shape, adjust);
-                }
-            }
-
+            PutShapesIntoSymbols();
         }
 
         private void Initialize()
@@ -196,6 +173,33 @@ namespace _2DV610.Classes
                 }
             }
             return shape;
+        }
+
+        private void PutShapesIntoSymbols()
+        {
+            shapes = shapes.OrderBy(s => s.X).ToList();
+
+            Symbol symbol = new Symbol();
+            int adjust = 0;
+            for (int i = 0; i < shapes.Count; i++)
+            {
+                Shape shape = shapes[i];
+                if (shape.X <= symbol.Width)
+                {
+                    symbol.AddShape(shape, adjust);
+                    if (shape.X + shape.Width > symbol.Width)
+                    {
+                        symbol.Width = shape.X + shape.Width;
+                    }
+                }
+                else
+                {
+                    symbols.Add(symbol);
+                    adjust += -symbol.Width; //-128 
+                    symbol = new Symbol();
+                    symbol.AddShape(shape, adjust);
+                }
+            }
         }
     }
 }
