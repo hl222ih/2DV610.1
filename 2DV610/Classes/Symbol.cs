@@ -204,8 +204,10 @@ namespace _2DV610.Classes
         private void PutShapesIntoSymbols()
         {
             shapes = shapes.OrderBy(s => s.X).ToList();
+
             Symbol symbol = new Symbol();
             int adjust = 0;
+
             for (int i = 0; i < shapes.Count; i++)
             {
                 Shape shape = shapes[i];
@@ -221,11 +223,12 @@ namespace _2DV610.Classes
                 else
                 {
                     symbols.Add(symbol);
-                    adjust += -symbol.Width; 
+                    adjust -= symbol.Width; 
                     symbol = new Symbol();
                     symbol.AddShape(shape, adjust);
                 }
             }
+
             symbols.Add(symbol);
         }
     }
