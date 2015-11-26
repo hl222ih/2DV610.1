@@ -159,6 +159,20 @@ namespace _2DV610.Classes
                     shapes[matchIndex] = new Circle(castShape.CX, castShape.CY, castShape.Radius);
                 }
             }
+            else if (shape.ShapeType == ShapeType.LowerHalfCircle)
+            {
+                LowerHalfCircle castShape = (LowerHalfCircle)shape;
+                int matchIndex = shapes.FindIndex(s => s.ShapeType == ShapeType.UpperHalfCircle &&
+                    ((UpperHalfCircle)s).CX == castShape.CX &&
+                    ((UpperHalfCircle)s).CY == castShape.CY &&
+                    ((UpperHalfCircle)s).Radius == castShape.Radius);
+                if (matchIndex != -1)
+                {
+                    isAttached = true;
+                    shapes[matchIndex] = new Circle(castShape.CX, castShape.CY, castShape.Radius);
+                }
+            }
+
             return isAttached;
         }
 
