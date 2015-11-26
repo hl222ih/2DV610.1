@@ -12,6 +12,7 @@ namespace _2DV610.Classes
         protected List<Symbol> symbols;
         protected List<Shape> shapes;
         protected List<PathCommand> pathCommands; //extracted from path, used to create shapes
+        protected int Width { get; private set; }
 
         public PathCommand[] PathCommands
         {
@@ -45,6 +46,10 @@ namespace _2DV610.Classes
             }
         }
 
+        public Symbol()
+        {
+            Initialize();
+        }
         public Symbol(string svgPath)
         {
             Initialize();
@@ -53,6 +58,30 @@ namespace _2DV610.Classes
             CreatePathCommands(paths);
 
             CreateShapes();
+
+            shapes.OrderBy(s => s.X);
+
+            Symbol symbol = new Symbol();
+            int adjust = 0;
+            for (int i = 0; i < shapes.Count; i++)
+            {
+                Shape shape = shapes[i];
+                if (shape.X <= symbol.Width) // && shape.X + shape.Width >= 0
+                {
+                    symbol.AddShape(shape, adjust);
+                    if (shape.X + shape.Width > symbol.Width)
+                    {
+                        symbol.Width = shape.X + shape.Width;
+                    }
+                }
+                else
+                {
+                    symbols.Add(symbol);
+                    adjust += - symbol.Width; //-128 
+                    symbol = new Symbol();
+                    symbol.AddShape(shape, adjust);
+                }
+            }
 
         }
 
@@ -68,9 +97,10 @@ namespace _2DV610.Classes
             throw new NotImplementedException();
         }
 
-        public void AddShape(Shape shape)
+        public void AddShape(Shape shape, int adjust)
         {
-            throw new NotImplementedException();
+            shape.X += adjust;
+            shapes.Add(shape);
         }
 
         public List<Shape> GetShapes()

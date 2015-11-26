@@ -25,7 +25,7 @@ namespace _2DV610.Classes
         public int X
         {
             get { return x; }
-            protected set
+            set
             {
                 if (value < 0 || value > BoxWidth - Width)
                     throw new ArgumentOutOfRangeException("Shape outside box (0,0),(128000,1280)");
