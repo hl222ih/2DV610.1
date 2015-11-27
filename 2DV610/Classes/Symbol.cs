@@ -95,7 +95,12 @@ namespace _2DV610.Classes
 
         public bool Contains(Symbol symbol)
         {
-            throw new NotImplementedException();
+            return symbols.Contains(symbol);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return true;
         }
 
         protected void CreatePathCommands(string[] paths)
