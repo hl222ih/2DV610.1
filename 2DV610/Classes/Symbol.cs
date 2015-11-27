@@ -166,6 +166,26 @@ namespace _2DV610.Classes
                     shapes[matchIndex] = new Circle(halfCircle.CX, halfCircle.CY, halfCircle.Radius);
                 }
             }
+            else if (shape.ShapeType == ShapeType.LeftHalfCircle)
+            {
+                HalfCircle halfCircle = (HalfCircle)shape;
+                int matchIndex = shapes.FindIndex(s => s is HalfCircle && AreTwoHalfCirclesACircle(halfCircle, (HalfCircle)s));
+                if (matchIndex != -1)
+                {
+                    isAttached = true;
+                    shapes[matchIndex] = new Circle(halfCircle.CX, halfCircle.CY, halfCircle.Radius);
+                }
+            }
+            else if (shape.ShapeType == ShapeType.RightHalfCircle)
+            {
+                HalfCircle halfCircle = (HalfCircle)shape;
+                int matchIndex = shapes.FindIndex(s => s is HalfCircle && AreTwoHalfCirclesACircle(halfCircle, (HalfCircle)s));
+                if (matchIndex != -1)
+                {
+                    isAttached = true;
+                    shapes[matchIndex] = new Circle(halfCircle.CX, halfCircle.CY, halfCircle.Radius);
+                }
+            }
 
             return isAttached;
         }
@@ -173,7 +193,9 @@ namespace _2DV610.Classes
         private bool AreTwoHalfCirclesACircle(HalfCircle hc1, HalfCircle hc2)
         {
             return ((hc1.ShapeType == ShapeType.LowerHalfCircle && hc2.ShapeType == ShapeType.UpperHalfCircle) ||
-                (hc1.ShapeType == ShapeType.UpperHalfCircle && hc2.ShapeType == ShapeType.LowerHalfCircle)) &&
+                (hc1.ShapeType == ShapeType.UpperHalfCircle && hc2.ShapeType == ShapeType.LowerHalfCircle) ||
+                (hc1.ShapeType == ShapeType.LeftHalfCircle && hc2.ShapeType == ShapeType.RightHalfCircle) ||
+                (hc1.ShapeType == ShapeType.RightHalfCircle && hc2.ShapeType == ShapeType.LeftHalfCircle)) &&
                 hc1.CX == hc2.CX && hc1.CY == hc2.CY && hc1.Radius == hc2.Radius;
         }
         protected Shape CreateShape(PathCommand c)
