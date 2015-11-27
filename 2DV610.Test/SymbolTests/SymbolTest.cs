@@ -121,12 +121,17 @@ namespace _2DV610.Test
         public void ConstructorShouldCreateTwoSymbolsForATwoSymbolPath()
         {
             //two circles made of two lower half circles combined with two upper half circles
-            Symbol sut = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0 M640,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0 ");
+            Symbol sut = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0 M640,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0");
             Assert.Equal(2, sut.Symbols.Length);
             Assert.Equal(ShapeType.Circle, sut.Symbols[0].Shapes[0].ShapeType);
             //two circles made of one lower half circle + upper half circle and one upper half circle + one lower half circle
-            sut = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0 M640,768a256,256 0 0,1 512,0a256,256 0 0,1 -512,0 ");
+            sut = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0 M640,768a256,256 0 0,1 512,0a256,256 0 0,1 -512,0");
             Assert.Equal(2, sut.Symbols.Length);
+            //two circles, one made of a left half circle + a right half circle. the second one upper half circle + one lower half circle
+            sut = new Symbol("M256,512a256,256 0 1,0 0,512a256,256 0 1,0 0,-512 M640,768a256,256 0 0,1 512,0a256,256 0 0,1 -512,0");
+            Assert.Equal(1, sut.Symbols[0].Shapes.Length);
+            Assert.Equal(ShapeType.Circle, sut.Symbols[0].Shapes[0].ShapeType);
+            Assert.True(sut.Symbols[0].Shapes[0].HorizontallyTranslates(sut.Symbols[1].Shapes[0]));
         }
 
         //        [Fact]
