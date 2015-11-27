@@ -141,6 +141,13 @@ namespace _2DV610.Test
             Assert.Equal(0, sut.Symbols.Length);
         }
 
+        [Fact]
+        public void SymbolOfMultipleSymbolsShouldContainSymbol()
+        {
+            Symbol sutTwoSymbols = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0 M640,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0");
+            Symbol sutOneSymbol = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0");
+            Assert.True(sutTwoSymbols.Contains(sutOneSymbol));
+        }
 
         //        [Fact]
         //        public void ConstructorShouldCreatePathCommandsAsIndividuallyCreated()
