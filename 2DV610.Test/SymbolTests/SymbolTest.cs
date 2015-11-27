@@ -134,6 +134,14 @@ namespace _2DV610.Test
             Assert.True(sut.Symbols[0].Shapes[0].HorizontallyTranslates(sut.Symbols[1].Shapes[0]));
         }
 
+        [Fact]
+        public void SymbolOfOneSymbolShouldNotContainSubSymbols()
+        {
+            Symbol sut = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0");
+            Assert.Equal(0, sut.Symbols.Length);
+        }
+
+
         //        [Fact]
         //        public void ConstructorShouldCreatePathCommandsAsIndividuallyCreated()
         //        {
