@@ -148,6 +148,9 @@ namespace _2DV610.Test
             Symbol sutOneSymbol = new Symbol("M0,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0");
             Assert.True(sutTwoSymbols.Contains(sutOneSymbol));
             Assert.False(sutOneSymbol.Contains(sutTwoSymbols));
+            Symbol sutOneSymbolOffset = new Symbol("M128,768a256,256 0 1,0 512,0a256,256 0 1,0 -512,0");
+            Assert.Equal(0, sutOneSymbolOffset.Symbols.Length);
+            Assert.True(sutTwoSymbols.Contains(sutOneSymbolOffset));
         }
 
         //        [Fact]
