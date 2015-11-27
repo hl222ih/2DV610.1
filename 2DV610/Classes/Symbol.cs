@@ -100,7 +100,14 @@ namespace _2DV610.Classes
 
         public override bool Equals(object obj)
         {
-            return true;
+            if (obj == null || GetType() != obj.GetType()) return false;
+
+            Symbol s = (Symbol)obj;
+
+            bool symbolsEquals = symbols.SequenceEqual(s.Symbols);
+            bool shapesEquals = shapes.SequenceEqual(s.Shapes);
+
+            return symbolsEquals && shapesEquals;
         }
 
         protected void CreatePathCommands(string[] paths)
