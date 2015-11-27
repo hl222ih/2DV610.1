@@ -146,37 +146,7 @@ namespace _2DV610.Classes
         {
             bool isAttached = false;
 
-            if (shape.ShapeType == ShapeType.UpperHalfCircle)
-            {
-                HalfCircle halfCircle = (HalfCircle)shape;
-                int matchIndex = shapes.FindIndex(s => s is HalfCircle && AreTwoHalfCirclesACircle(halfCircle, (HalfCircle)s));
-                if (matchIndex != -1)
-                {
-                    isAttached = true;
-                    shapes[matchIndex] = new Circle(halfCircle.CX, halfCircle.CY, halfCircle.Radius);
-                }
-            }
-            else if (shape.ShapeType == ShapeType.LowerHalfCircle)
-            {
-                HalfCircle halfCircle = (HalfCircle)shape;
-                int matchIndex = shapes.FindIndex(s => s is HalfCircle && AreTwoHalfCirclesACircle(halfCircle, (HalfCircle)s));
-                if (matchIndex != -1)
-                {
-                    isAttached = true;
-                    shapes[matchIndex] = new Circle(halfCircle.CX, halfCircle.CY, halfCircle.Radius);
-                }
-            }
-            else if (shape.ShapeType == ShapeType.LeftHalfCircle)
-            {
-                HalfCircle halfCircle = (HalfCircle)shape;
-                int matchIndex = shapes.FindIndex(s => s is HalfCircle && AreTwoHalfCirclesACircle(halfCircle, (HalfCircle)s));
-                if (matchIndex != -1)
-                {
-                    isAttached = true;
-                    shapes[matchIndex] = new Circle(halfCircle.CX, halfCircle.CY, halfCircle.Radius);
-                }
-            }
-            else if (shape.ShapeType == ShapeType.RightHalfCircle)
+            if (shape is HalfCircle)
             {
                 HalfCircle halfCircle = (HalfCircle)shape;
                 int matchIndex = shapes.FindIndex(s => s is HalfCircle && AreTwoHalfCirclesACircle(halfCircle, (HalfCircle)s));
