@@ -235,7 +235,10 @@ namespace _2DV610.Classes
                 }
             }
 
-            symbols.Add(symbol);
+            if (symbols.Count > 0)
+            {
+                symbols.Add(symbol);
+            }
         }
     }
 }
