@@ -229,8 +229,13 @@ namespace _2DV610.Classes
             for (int i = 0; i < shapes.Count; i++)
             {
                 Shape shape = shapes[i];
-                if (shape.X <= symbol.Width)
+
+                if (shape.X <= symbol.Width || symbol.Width == 0)
                 {
+                    if (symbol.Width == 0)
+                    {
+                        adjust -= shape.X;
+                    }
                     symbol.AddShape(shape, adjust);
 
                     if (shape.X + shape.Width > symbol.Width)
