@@ -148,34 +148,34 @@ namespace _2DV610.Classes
 
             if (shape.ShapeType == ShapeType.UpperHalfCircle)
             {
-                UpperHalfCircle castShape = (UpperHalfCircle)shape;
-                int matchIndex = shapes.FindIndex(s => s.ShapeType == ShapeType.LowerHalfCircle && 
-                    ((LowerHalfCircle)s).CX == castShape.CX &&
-                    ((LowerHalfCircle)s).CY == castShape.CY &&
-                    ((LowerHalfCircle)s).Radius == castShape.Radius);
+                HalfCircle halfCircle = (HalfCircle)shape;
+                int matchIndex = shapes.FindIndex(s => s is HalfCircle && AreTwoHalfCirclesACircle(halfCircle, (HalfCircle)s));
                 if (matchIndex != -1)
                 {
                     isAttached = true;
-                    shapes[matchIndex] = new Circle(castShape.CX, castShape.CY, castShape.Radius);
+                    shapes[matchIndex] = new Circle(halfCircle.CX, halfCircle.CY, halfCircle.Radius);
                 }
             }
             else if (shape.ShapeType == ShapeType.LowerHalfCircle)
             {
-                LowerHalfCircle castShape = (LowerHalfCircle)shape;
-                int matchIndex = shapes.FindIndex(s => s.ShapeType == ShapeType.UpperHalfCircle &&
-                    ((UpperHalfCircle)s).CX == castShape.CX &&
-                    ((UpperHalfCircle)s).CY == castShape.CY &&
-                    ((UpperHalfCircle)s).Radius == castShape.Radius);
+                HalfCircle halfCircle = (HalfCircle)shape;
+                int matchIndex = shapes.FindIndex(s => s is HalfCircle && AreTwoHalfCirclesACircle(halfCircle, (HalfCircle)s));
                 if (matchIndex != -1)
                 {
                     isAttached = true;
-                    shapes[matchIndex] = new Circle(castShape.CX, castShape.CY, castShape.Radius);
+                    shapes[matchIndex] = new Circle(halfCircle.CX, halfCircle.CY, halfCircle.Radius);
                 }
             }
 
             return isAttached;
         }
 
+        private bool AreTwoHalfCirclesACircle(HalfCircle hc1, HalfCircle hc2)
+        {
+            return ((hc1.ShapeType == ShapeType.LowerHalfCircle && hc2.ShapeType == ShapeType.UpperHalfCircle) ||
+                (hc1.ShapeType == ShapeType.UpperHalfCircle && hc2.ShapeType == ShapeType.LowerHalfCircle)) &&
+                hc1.CX == hc2.CX && hc1.CY == hc2.CY && hc1.Radius == hc2.Radius;
+        }
         protected Shape CreateShape(PathCommand c)
         {
             Shape shape = null;
